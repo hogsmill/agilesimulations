@@ -75,6 +75,8 @@
 </template>
 
 <script>
+import bus from '../socket.js'
+
 import mailFuns from '../lib/mail.js'
 
 export default {
@@ -90,6 +92,12 @@ export default {
     tab() {
       return this.$store.getters.getTab
     }
+  },
+  created() {
+    const self = this
+    bus.$on('showContact', () => {
+      self.show()
+    })
   },
   methods: {
     show() {

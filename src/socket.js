@@ -12,11 +12,19 @@ const socket = io(labsConnStr)
 
 // Send
 
+// Contact
+
+bus.$on('contact', () => { bus.$emit('showContact') })
+
+// Labs
+
 bus.$on('sendLoadGames', () => { socket.emit('sendLoadGames') })
 
 bus.$on('sendVoteFor', (data) => { socket.emit('sendVoteFor', data) })
 
 // Receive
+
+// Labs
 
 socket.on('loadGames', (data) => { bus.$emit('loadGames', data) })
 

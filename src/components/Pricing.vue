@@ -10,7 +10,7 @@
     </div>
     <p class="contact">
       Do
-      <a href="#contact">
+      <a @click="contact()">
         Contact Us
       </a>
       if you have other requirements
@@ -19,11 +19,18 @@
 </template>
 
 <script>
+import bus from '../socket.js'
+
 import Panel from './Pricing/Panel.vue'
 
 export default {
   components: {
     Panel
+  },
+  methods: {
+    contact() {
+      bus.$emit('contact', {})
+    }
   }
 }
 </script>
