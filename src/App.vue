@@ -1,0 +1,105 @@
+<template>
+  <div>
+    <Header />
+    <Jumbotron />
+    <div class="content">
+      <Main v-if="tab == 'main'" />
+      <Games v-if="tab == 'games'" />
+      <Engaging v-if="tab == 'engaging'" />
+      <Epiphanising v-if="tab == 'epiphanising'" />
+      <Relevant v-if="tab == 'relevant'" />
+      <Pricing v-if="tab == 'pricing'" />
+      <Resources v-if="tab == 'resources'" />
+      <Labs v-if="tab == 'labs'" />
+      <Suggest v-if="tab == 'suggest'" />
+    </div>
+  </div>
+</template>
+
+<script>
+
+import Header from './components/Header.vue'
+import Jumbotron from './components/Jumbotron.vue'
+import Main from './components/Main.vue'
+import Engaging from './components/Main/Engaging.vue'
+import Epiphanising from './components/Main/Epiphanising.vue'
+import Relevant from './components/Main/Relevant.vue'
+import Games from './components/Games.vue'
+import Pricing from './components/Pricing.vue'
+import Resources from './components/Resources.vue'
+import Labs from './components/Labs.vue'
+import Suggest from './components/Labs/Suggest.vue'
+
+export default {
+  name: 'App',
+  components: {
+    Header,
+    Jumbotron,
+    Main,
+    Engaging,
+    Epiphanising,
+    Relevant,
+    Games,
+    Pricing,
+    Resources,
+    Labs,
+    Suggest
+  },
+  data() {
+    return {
+      selectedTab: '',
+      windowWidth: 0
+    }
+  },
+  computed: {
+    mobile() {
+      return this.$store.getters.getMobile
+    },
+    tab() {
+      return this.$store.getters.getTab
+    }
+  },
+  created() {
+    this.$store.dispatch('updateMobile', window.outerWidth < 768)
+  }
+}
+</script>
+
+<style lang="scss">
+
+@font-face {
+  font-family: "Lato";
+  src: local("Lato"),
+   url(./assets/fonts/lato/Lato-Regular.ttf) format("truetype");
+}
+
+* {
+  font-family: Lato, Helvetica, Arial, sans-serif;
+  color: #444;
+}
+body, p {
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.8;
+}
+h2 {
+  font-size: 36px;
+  margin-bottom: 30px !important;
+  color: #666;
+}
+h4 {
+  font-size: 24px;
+  line-height: 1.375em;
+  font-weight: 400;
+  margin-bottom: 30px;
+  color: #666;
+}
+b, strong {
+  color: #444!important;
+}
+.section-icon {
+  font-size: 50px;
+  color: #f4511e;
+  margin: 10px auto;
+}
+</style>

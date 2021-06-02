@@ -1,0 +1,32 @@
+<template>
+  <div class="hero jumbotron text-center">
+    <h1>Agile Activities for the New Normal</h1>
+    <p>Discovering your agile mindset through online gamification</p>
+    <div class="input-group subscribe">
+      <input type="email" id="subscribe-email" class="form-control" size="50" placeholder="Email Address" required>
+      <div class="input-group-btn">
+        <button id="subscribe" class="btn btn-danger">
+          Contact Us
+        </button>
+      </div>
+    </div>
+  </div>
+</template>
+
+<style lang="scss">
+  .jumbotron {
+    background-color: #f4511e;
+    color: #fff !important;
+    padding: 1px 25px 36px 25px;
+    font-family: Montserrat, sans-serif;
+
+    p {
+      color: #fff !important;
+    }
+
+    .subscribe {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+  }
+</style>

@@ -1,0 +1,57 @@
+
+font-face { font-family: Lato; src: url('./fonts/lato/Lato-Regular.ttf'); }
+
+#app {
+  font-family: Lato, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+}
+
+button { margin: 2px; }
+
+.rounded {
+  border-radius: 3px;
+}
+.game-name {
+  padding-right: 2px;
+}
+.set-game-name-modal {
+  height: 120px;
+}
+
+#game-name {
+  display: inline-block;
+  width: 30%;
+}
+
+.btn-info {
+  color: #fff;
+  background-color: #f4511e;
+  border-color: #f4511e;
+}
+
+.btn-info:hover {
+  color: #f4511e;
+  background-color: #ffffff;
+  border-color: #f4511e;
+}
+
+.btn-info:disabled {
+  background-color: #ddd;
+  border-color: #aaa;
+}
+
+.btn-info:hover:disabled {
+  color: #fff;
+}
+
+.red { background-color: red; }
+.blue { background-color: blue; }
+.green { background-color: green; }
+.yellow { background-color: yellow; }
+.orange { background-color: orange; }
+.purple { background-color: purple; }
+
+.empty { background-color: #eee; border: 1px solid #aaa; }
