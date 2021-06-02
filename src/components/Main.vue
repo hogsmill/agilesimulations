@@ -8,7 +8,8 @@
           Engaging
         </h4>
         <p>
-          Lore ipsum
+          All games keep the current game state in real-time on your local browser;
+          it's impossible to not engage when everyone sees what everybody is doing...
         </p>
         <a @click="setTab('engaging')">Learn more...</a>
       </div>
@@ -18,7 +19,9 @@
           Epiphanising
         </h4>
         <p>
-          Lore ipsum
+          As well as being fun, all the games give that "light-bulb" moment
+          when players realise their mindset has been challenged and they have
+          learned something...
         </p>
         <a @click="setTab('epiphanising')">Learn more...</a>
       </div>
@@ -28,7 +31,9 @@
           Relevant
         </h4>
         <p>
-          Lore ipsum
+          All games can be customised to make them as relevant to the players'
+          teams/organisations as possible. Making it real improves the
+          engagement even further...
         </p>
         <a @click="setTab('relevant')">Learn more...</a>
       </div>
