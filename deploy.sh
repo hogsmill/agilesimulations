@@ -4,9 +4,6 @@ if [ "$1" == "-f" ]; then
   FORCE=true
 fi
 
-PORT=3013
-PWD=`pwd`
-APP=`basename $PWD`
 git stash
 GIT=`git pull`
 echo $GIT
@@ -16,12 +13,6 @@ fi
 
 npm install
 npm run build
-rm /var/www/html/$APP/css/*
-rm /var/www/html/$APP/js/*
-cp -R dist/* /var/www/html/$APP
-if [ -f "src/server.js" ]; then
-  SERVER=`ps -ef | grep server.js | grep $PORT | awk {'print $2'}`
-  if [ "$SERVER" != "" ]; then
-    kill -9 $SERVER
-  fi
-fi
+rm /var/www/html/css/*
+rm /var/www/html/js/*
+cp -R dist/* /var/www/html/

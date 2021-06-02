@@ -1,7 +1,10 @@
 <template>
-  <div class="suggest" :class="{ 'mobile': mobile }">
-    <div class="row">
+  <div class="suggest" :class="{ 'not-mobile': !mobile }">
+    <div class="suggest-row">
       <div class="col-sm-5 center">
+        <p v-if="!mobile" class="icon">
+          <i class="far fa-lightbulb" />
+        </p>
         <p class="text-left">
           We're constantly on the lookout for new agile games and activities that
           would benefit from the Agile Simulations treatment. The kind of thing we
@@ -41,9 +44,7 @@
       <div class="col-sm-6 form-group">
         <textarea class="form-control" id="suggest-comments" name="comments" placeholder="What is your game idea?" rows="20" /><br>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12 form-group">
+      <div class="col-sm-6 form-group">
         <button id="suggest" class="btn btn-info pull-right" @click="sendSuggestion()">
           Send
         </button>
@@ -79,9 +80,18 @@ export default {
 <style lang="scss">
 .suggest {
 
-  &.mobile {
+  &.not-mobile {
     width: 80%;
     margin: 0 auto;
+  }
+
+  .icon {
+    text-align: center;
+  }
+
+  .far {
+    font-size: 72px;
+    color: #f4511e;
   }
 }
 </style>
