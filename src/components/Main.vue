@@ -128,7 +128,7 @@ export default {
 
   .pic {
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
     margin: 12px auto;
     min-height: 200px;
     background-position-x: center;
