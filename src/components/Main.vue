@@ -39,7 +39,7 @@
       </div>
     </div>
     <div class="row slideanim screenshots">
-      <h2>Screenshots...</h2>
+      <h2>The Games In Action...</h2>
       <div class="col-sm-4">
         <div class="pic no-estimates" title="The No Estimates Game">
           <div class="caption">
