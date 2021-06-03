@@ -10,7 +10,6 @@ const required = {
 const Mail = {
 
   post: function(data, message) {
-    console.log(data)
     let ok = true
     for (const key in data) {
       data[key] = data[key].trim()

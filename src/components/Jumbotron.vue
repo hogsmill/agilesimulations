@@ -3,15 +3,37 @@
     <h1>Agile Activities for the New Normal</h1>
     <p>Discovering your agile mindset through online gamification</p>
     <div class="input-group subscribe">
-      <input type="email" id="subscribe-email" class="form-control" size="50" placeholder="Email Address" required>
+      <input type="email" id="jumbotron-email" class="form-control" size="50" placeholder="Email Address" required>
       <div class="input-group-btn">
-        <button id="subscribe" class="btn btn-danger">
+        <button id="subscribe" class="btn btn-danger" @click="contact()">
           Contact Us
         </button>
       </div>
     </div>
   </div>
 </template>
+
+<script>
+import mailFuns from '../lib/mail.js'
+
+export default {
+  methods: {
+    contact() {
+      const email = document.getElementById('jumbotron-email').value
+      if (!email) {
+        alert('Please enter an email')
+      } else {
+        mailFuns.post({
+          action: 'Contact from Agile Simulations (Jumbotron)',
+          email: email,
+          },
+          'Thanks for your interest - we\'ll get back to you soon!'
+        )
+      }
+    }
+  }
+}
+</script>
 
 <style lang="scss">
   .jumbotron {
