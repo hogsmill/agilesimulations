@@ -11,6 +11,7 @@
       <Pricing v-if="tab == 'pricing'" />
       <Resources v-if="tab == 'resources'" />
       <Labs v-if="tab == 'labs'" />
+      <Diary v-if="tab == 'diary'" />
       <Suggest v-if="tab == 'suggest'" />
     </div>
   </div>
@@ -28,6 +29,7 @@ import Games from './components/Games.vue'
 import Pricing from './components/Pricing.vue'
 import Resources from './components/Resources.vue'
 import Labs from './components/Labs.vue'
+import Diary from './components/Diary.vue'
 import Suggest from './components/Labs/Suggest.vue'
 
 export default {
@@ -43,6 +45,7 @@ export default {
     Pricing,
     Resources,
     Labs,
+    Diary,
     Suggest
   },
   data() {

@@ -129,7 +129,7 @@
         <div class="col-sm-4">
           <i class="far section-icon fa-lightbulb" />
           <h4>
-            <button class="btn btn-default btn-lg" onclick="document.location.href='/suggest.html';">
+            <button class="btn btn-default btn-lg" @click="setTab('suggest')">
               Suggest an Activity
             </button>
           </h4>
@@ -180,7 +180,7 @@
         <div class="col-sm-4">
           <i class="far section-icon fa-lightbulb" />
           <h4>
-            <button class="btn btn-default btn-lg" onclick="document.location.href='/suggest.html';">
+            <button class="btn btn-default btn-lg" @click="setTab('suggest')">
               Suggest a Game
             </button>
           </h4>
@@ -197,3 +197,13 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  methods: {
+    setTab(tab) {
+      this.$store.dispatch('updateTab', tab)
+    }
+  }
+}
+</script>

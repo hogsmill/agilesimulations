@@ -18,31 +18,111 @@
         </button>
       </div>
     </div>
+
+    <modal :name="'quote-' + scope" :height="560" :classes="['rounded', 'quote']">
+      <div class="float-right mr-2 mt-1">
+        <button type="button" class="close" @click="hide" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="mt-4 quote-form">
+        <h4>{{ headingStr() }}</h4>
+        <p>
+          Thanks for visiting Agile Simulations; please let us know anything further
+          information on your requirements in the comments box below.
+        </p>
+        <div v-if="scope == 'facilitation'">
+          I am interested in facilitation of
+          <select id="game-select">
+            <option>-- Select --</option>
+            <option>No Estimates</option>
+            <option>Pipeline Game</option>
+            <option>Coin Game</option>
+            <option>Kanban Playground</option>
+            <option>Agile Battleships</option>
+            <option>Simulations</option>
+            <option>All Games</option>
+          </select>
+        </div>
+        <div>
+          <input type="text" :id="'name-' + scope" class="form-control" placeholder="Name">
+          <br>
+          <input type="text" :id="'email-' + scope" class="form-control" placeholder="Email">
+          <br>
+          <input type="text" :id="'company-' + scope" class="form-control" placeholder="Company (Optional)">
+          <br>
+          <input type="text" :id="'mobile-' + scope" class="form-control" placeholder="Mobile (optional)">
+          <br>
+          <textarea :id="'comments-' + scope" rows="3" class="form-control" placeholder="Other information" />
+          <button class="btn btn-primary" @click="send()">
+            Send
+          </button>
+        </div>
+      </div>
+    </modal>
   </div>
 </template>
 
 <script>
+import mailFuns from '../../lib/mail.js'
+
 export default {
   props: [
     'scope'
   ],
+  data() {
+    return {
+      quote: true
+    }
+  },
   computed: {
     pricing() {
       return this.$store.getters.getPricing
     }
   },
   methods: {
-    showMoreInfo() {
-      this.$modal.show('moreInfo')
+    headingStr() {
+      let str = this.quote ? 'Request Quote for' : 'Request More Info on'
+      switch(this.scope) {
+        case 'dedicated':
+          str = str + ' Dedicated'
+          break
+        case 'facilitation':
+          str = str + ' Facilitation'
+          break
+        case 'using':
+          str = str + ' Using'
+          break
+      }
+      return str
     },
-    hideMoreInfo() {
-      this.$modal.hide('moreInfo')
+    showMoreInfo() {
+      this.quote = false
+      this.$modal.show('quote-' + this.scope)
+    },
+    hide() {
+      this.$modal.hide('quote-' + this.scope)
     },
     showQuote() {
-      this.$modal.show('quote')
+      this.quote = true
+      this.$modal.show('quote-' + this.scope)
     },
-    hideQuote() {
-      this.$modal.hide('quote')
+    send() {
+      const success = mailFuns.post({
+        action: 'Request from Agile Simulations (' + this.scope + ')',
+        type: this.quote ? 'Quote' : 'More Info',
+        game: this.scope == 'facilitation' ? document.getElementById('game-select').value : '',
+        name: encodeURIComponent(document.getElementById('name-' + this.scope).value),
+        company: encodeURIComponent(document.getElementById('company-' + this.scope).value),
+        email: encodeURIComponent(document.getElementById('email-' + this.scope).value),
+        mobile: encodeURIComponent(document.getElementById('mobile-' + this.scope).value),
+        comments: encodeURIComponent(document.getElementById('comments-' + this.scope).value)
+        },
+        'Thanks for your request - we\'ll get back to you soon!'
+      )
+      if (success) {
+        this.hide()
+      }
     }
   }
 }
@@ -87,6 +167,33 @@ export default {
       bottom: 0;
       height: 96px;
       width: 84%;
+    }
+  }
+
+  .quote {
+    h4 {
+      letter-spacing: initial;
+      text-align: center;
+      font-size: xx-large;
+    }
+
+    #game-select {
+      margin-bottom: 12px;
+    }
+
+    p {
+      margin-bottom: 12px;
+      line-height: 1.5;
+      color: #444;
+    }
+
+    .quote-form {
+      width: 80%;
+      margin: 0 auto;
+    }
+
+    button {
+      margin-top: 12px;
     }
   }
 

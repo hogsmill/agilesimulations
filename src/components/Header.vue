@@ -14,6 +14,9 @@
         <li :class="{'active': tab == 'labs'}" @click="setTab('labs')">
           LABS
         </li>
+        <li :class="{'active': tab == 'diary'}" @click="setTab('diary')">
+          DIARY
+        </li>
         <li :class="{'active': tab == 'contact'}" @click="show()">
           CONTACT
         </li>
@@ -49,7 +52,7 @@
       </div>
     </modal>
 
-    <div class="feedback-mobile" v-if="mobileContact">
+    <div id="feedback-mobile" class="feedback-mobile" v-if="mobileContact">
       <div class="float-right mr-2 mt-1">
         <button type="button" class="close" @click="hide" aria-label="Close">
           <span aria-hidden="true">&times;</span>
@@ -103,6 +106,7 @@ export default {
     show() {
       if (this.mobile) {
         this.mobileContact = !this.mobileContact
+        window.scrollTo(0, 0)
       } else {
         this.$modal.show('feedback')
       }
@@ -117,7 +121,7 @@ export default {
     setTab(tab) {
       this.$store.dispatch('updateTab', tab)
     },
-    sendFeedback() {
+    sendContact() {
       mailFuns.post({
         action: 'Contact from Agile Simulations',
         email: encodeURIComponent(document.getElementById('email').value),
