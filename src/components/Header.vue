@@ -45,7 +45,7 @@
           <br>
           <textarea id="comments" rows="6" class="form-control" placeholder="Your comments" />
           <br>
-          <button class="btn btn-sm btn-secondary smaller-font" @click="sendContact()">
+          <button class="btn btn-primary" @click="sendContact()">
             Send
           </button>
         </div>
@@ -68,7 +68,7 @@
           <br>
           <textarea id="comments" rows="6" class="form-control" placeholder="Your comments" />
           <br>
-          <button class="btn btn-sm btn-secondary smaller-font" @click="sendContact()">
+          <button class="btn btn-primary smaller-font" @click="sendContact()">
             Send
           </button>
         </div>
