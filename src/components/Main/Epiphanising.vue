@@ -17,7 +17,7 @@
         </p>
         <p>
           These games are designed to ensure this happens. The kinds of realisations that happen
-          through playing the games are things such as:
+          through playing the games are:
         </p>
         <div>
           <ul>
