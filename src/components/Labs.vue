@@ -298,7 +298,10 @@ $on-hold: #bbb;
 @media screen and (max-width: 768px) {
   .game-holder {
     width: 100%;
-    box-shadow: none;
+
+    .game {
+      box-shadow: none !important;
+    }
   }
 }
 </style>
