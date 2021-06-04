@@ -109,6 +109,7 @@ export default {
   methods: {
     toggleMenu() {
       this.hideMenu = !this.hideMenu
+      this.hide()
     },
     show() {
       if (this.mobile) {
