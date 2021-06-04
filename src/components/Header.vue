@@ -1,7 +1,7 @@
 <template>
   <nav class="nav">
-    <div class="navbar">
-      <ul class="nav navbar-nav navbar-right">
+    <div class="nav-bar">
+      <ul>
         <li :class="{'active': tab == 'main'}" @click="setTab('main')">
           HOME
         </li>
@@ -139,10 +139,11 @@ export default {
   .nav {
     background-color: #f4511e;
     padding: 0 12px;
+    position: fixed;
+    width: 100%;
+    z-index: 10;
 
-    .navbar {
-      padding: 2px 0 3px 0;
-      margin-bottom: 0;
+    .nav-bar {
       border: 0;
       font-size: 12px !important;
       line-height: 1.42857143 !important;
@@ -150,16 +151,23 @@ export default {
       border-radius: 0;
       font-family: Montserrat, sans-serif;
 
-      li {
-        padding: 15px;
-        color: #fff !important;
+      ul {
+        float: right;
+        margin-bottom: 0;
 
-        &:hover {
-          opacity: 0.9;
-        }
-        &:hover, &.active  {
-          color: #f4511e !important;
-          background-color: #fff !important;
+        li {
+          display: inline-block;
+          list-style-type: none;
+          padding: 15px;
+          color: #fff !important;
+
+          &:hover {
+            opacity: 0.9;
+          }
+          &:hover, &.active  {
+            color: #f4511e !important;
+            background-color: #fff !important;
+          }
         }
       }
     }

@@ -39,7 +39,7 @@ export default {
   .jumbotron {
     background-color: #f4511e;
     color: #fff !important;
-    padding: 1px 25px 36px 25px;
+    padding: 50px 25px 36px 25px !important;
     font-family: Montserrat, sans-serif;
 
     p {
