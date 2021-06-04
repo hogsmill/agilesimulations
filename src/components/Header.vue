@@ -1,6 +1,9 @@
 <template>
   <nav class="nav">
-    <div class="nav-bar">
+    <div v-if="mobile" class="hamburger">
+      <i class="fas fa-hamburger" @click="toggleMenu()" />
+    </div>
+    <div class="nav-bar" :class="{ 'hide': hideMenu }">
       <ul>
         <li :class="{'active': tab == 'main'}" @click="setTab('main')">
           HOME
@@ -85,7 +88,8 @@ import mailFuns from '../lib/mail.js'
 export default {
   data() {
     return {
-      mobileContact: false
+      mobileContact: false,
+      hideMenu: true
     }
   },
   computed: {
@@ -103,6 +107,9 @@ export default {
     })
   },
   methods: {
+    toggleMenu() {
+      this.hideMenu = !this.hideMenu
+    },
     show() {
       if (this.mobile) {
         this.mobileContact = !this.mobileContact
@@ -119,6 +126,9 @@ export default {
       }
     },
     setTab(tab) {
+      if (this.mobile) {
+        this.toggleMenu()
+      }
       this.$store.dispatch('updateTab', tab)
     },
     sendContact() {
@@ -200,4 +210,35 @@ export default {
       color: #fff;
     }
   }
+
+@media screen and (max-width: 768px) {
+  nav {
+
+    .hamburger {
+      height: 42px;
+
+      .fa-hamburger {
+        color: #fff;
+        font-size: 32px;
+        margin: 4px 0 0 0;
+        float: right;
+      }
+    }
+
+    .nav-bar {
+
+      &.hide {
+        display: none;
+      }
+
+      ul {
+        padding: 0;
+
+        li {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
 </style>

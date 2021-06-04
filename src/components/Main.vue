@@ -190,4 +190,12 @@ export default {
     background-image: url("../assets/img/tech.jpg");
   }
 }
+
+@media screen and (max-width: 768px) {
+  #main-tab {
+    .pic {
+      margin-bottom: 24px;
+    }
+  }
+}
 </style>
