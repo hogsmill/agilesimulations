@@ -66,4 +66,10 @@ export default {
     }
   }
 }
+
+@media screen and (max-width: 768px) {
+  th, td {
+    border-bottom: 1px solid;
+  }
+}
 </style>
