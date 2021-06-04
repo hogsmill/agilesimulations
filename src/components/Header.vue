@@ -3,7 +3,7 @@
     <div v-if="mobile" class="hamburger">
       <i class="fas fa-hamburger" @click="toggleMenu()" />
     </div>
-    <div class="nav-bar" :class="{ 'hide': hideMenu }">
+    <div class="nav-bar" :class="{ 'hide': mobile && hideMenu }">
       <ul>
         <li :class="{'active': tab == 'main'}" @click="setTab('main')">
           HOME
