@@ -3,8 +3,8 @@
     <div v-if="mobile" class="hamburger">
       <i class="fas fa-hamburger" @click="toggleMenu()" />
     </div>
-    <div class="nav-bar" :class="{ 'hide': mobile && hideMenu }">
-      <ul>
+    <div class="nav-bar">
+      <ul :class="{ 'hide': mobile && hideMenu }">
         <li :class="{'active': tab == 'main'}" @click="setTab('main')">
           HOME
         </li>
@@ -166,6 +166,10 @@ export default {
         float: right;
         margin-bottom: 0;
 
+        &.hide {
+          height: 0;
+        }
+
         li {
           display: inline-block;
           list-style-type: none;
@@ -212,7 +216,7 @@ export default {
     }
   }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
   nav {
 
     .hamburger {
