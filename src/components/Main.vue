@@ -147,7 +147,7 @@ export default {
       background-image: url("../assets/img/screenshots/coin-game.jpg");
     }
     &.agile-battleships {
-      background-image: url("../assets/img/screenshots/agile-battleships.jpg");
+      background-image: url("../assets/img/screenshots/agile-battleships.png");
     }
     &.flow-efficiency {
       background-image: url("../assets/img/screenshots/flow-efficiency.jpg");
