@@ -71,9 +71,9 @@
         </div>
       </div>
       <div class="col-sm-4">
-        <div class="pic flow-efficiency" title="Flow efficiency graphs from the No Estimates Game">
+        <div class="pic agile-battleships" title="Agile Battleships!">
           <div class="caption">
-            Flow efficiency graphs from the No Estimates Game
+            Agile Battleships!
           </div>
         </div>
       </div>
@@ -145,6 +145,9 @@ export default {
     }
     &.coin-game {
       background-image: url("../assets/img/screenshots/coin-game.jpg");
+    }
+    &.agile-battleships {
+      background-image: url("../assets/img/screenshots/agile-battleships.jpg");
     }
     &.flow-efficiency {
       background-image: url("../assets/img/screenshots/flow-efficiency.jpg");
