@@ -167,6 +167,12 @@ export default {
       margin: 0 20px;
       text-align: center;
     }
+
+    &:hover {
+      .caption {
+        opacity: 1;
+      }
+    }
   }
 
   .contact {
