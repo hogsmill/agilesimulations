@@ -16,17 +16,20 @@
   </div>
 </template>
 
-  <script>
-  import bus from '../../socket.js'
+<script>
+import bus from '../../socket.js'
 
-  export default {
-    methods: {
-      contact() {
-        bus.$emit('contact', {})
-      }
+export default {
+  created() {
+    window.scrollTo(0, 0)
+  },
+  methods: {
+    contact() {
+      bus.$emit('contact', {})
     }
   }
-  </script>
+}
+</script>
 
 <style lang="scss">
   .monte-carlo {

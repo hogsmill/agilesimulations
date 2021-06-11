@@ -52,6 +52,9 @@
 import bus from '../../socket.js'
 
 export default {
+  created() {
+    window.scrollTo(0, 0)
+  },
   methods: {
     contact() {
       bus.$emit('contact', {})
