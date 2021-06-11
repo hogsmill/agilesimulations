@@ -21,7 +21,7 @@
 <script>
 import bus from '../socket.js'
 
-import Panel from './Pricing/Panel.vue'
+import Panel from './pricing/Panel.vue'
 
 export default {
   components: {
