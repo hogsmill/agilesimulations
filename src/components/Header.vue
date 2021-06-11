@@ -23,6 +23,12 @@
         <li :class="{'active': tab == 'contact'}" @click="show()">
           CONTACT
         </li>
+        <li v-if="mobile" :class="{'active': tab == 'tandcs'}" @click="setTab('tandcs')">
+          Ts AND Cs
+        </li>
+        <li v-if="mobile" :class="{'active': tab == 'security'}" @click="setTab('security')">
+          SECURITY
+        </li>
         <!--
         <li :class="{'active': tab == 'signin'}">
           SIGN UP OR LOGIN

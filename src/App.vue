@@ -13,6 +13,9 @@
       <Labs v-if="tab == 'labs'" />
       <Diary v-if="tab == 'diary'" />
       <Suggest v-if="tab == 'suggest'" />
+      <TandCs v-if="tab == 'tandcs'" />
+      <Security v-if="tab == 'security'" />
+      <Footer v-if="!mobile" />
     </div>
   </div>
 </template>
@@ -30,6 +33,9 @@ import Resources from './components/Resources.vue'
 import Labs from './components/Labs.vue'
 import Diary from './components/Diary.vue'
 import Suggest from './components/Labs/Suggest.vue'
+import TandCs from './components/footer/TandCs.vue'
+import Security from './components/footer/Security.vue'
+import Footer from './components/Footer.vue'
 
 export default {
   name: 'App',
@@ -45,7 +51,10 @@ export default {
     Resources,
     Labs,
     Diary,
-    Suggest
+    Suggest,
+    TandCs,
+    Security,
+    Footer
   },
   data() {
     return {
