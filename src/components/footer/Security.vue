@@ -47,6 +47,18 @@
   </div>
 </template>
 
+<script>
+import bus from '../../socket.js'
+
+export default {
+  methods: {
+    contact() {
+      bus.$emit('contact', {})
+    }
+  }
+}
+</script>
+
 <style lang="scss">
   .t-and-cs {
     padding: 12px;

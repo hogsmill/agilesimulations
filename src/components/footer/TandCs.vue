@@ -179,6 +179,16 @@
   </div>
 </template>
 
+<script>
+export default {
+  methods: {
+    setTab(tab) {
+      this.$store.dispatch('updateTab', tab)
+    }
+  }
+}
+</script>
+
 <style lang="scss">
   .t-and-cs {
     padding: 12px 24px;
