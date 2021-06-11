@@ -50,18 +50,22 @@
         </a>
       </div>
       <div class="col-sm-4">
-        <div class="pic pipeline-game" title="The Pipeline Game">
-          <div class="caption">
-            The Pipeline Game
+        <a @click="setTab('pipeline')">
+          <div class="pic pipeline-game" title="The Pipeline Game">
+            <div class="caption">
+              The Pipeline Game
+            </div>
           </div>
-        </div>
+        </a>
       </div>
       <div class="col-sm-4">
-        <div class="pic no-estimates-mobile" title="The mobile app for No Estimates Game">
-          <div class="caption">
-            The mobile app for No Estimates Game
+        <a @click="setTab('no-estimates-mobile')">
+          <div class="pic no-estimates-mobile" title="The mobile app for No Estimates Game">
+            <div class="caption">
+              The mobile app for No Estimates Game
+            </div>
           </div>
-        </div>
+        </a>
       </div>
     </div>
     <div class="row slideanim">
@@ -84,11 +88,13 @@
         </a>
       </div>
       <div class="col-sm-4">
-        <div class="pic monte-carlo" title="Monte Carlo simulations from the No Estimates Game">
-          <div class="caption">
-            Monte Carlo simulations from the No Estimates Game
+        <a @click="setTab('monte-carlo')">
+          <div class="pic monte-carlo" title="Monte Carlo simulations from the No Estimates Game">
+            <div class="caption">
+              Monte Carlo simulations from the No Estimates Game
+            </div>
           </div>
-        </div>
+        </a>
       </div>
     </div>
     <div class="contact">

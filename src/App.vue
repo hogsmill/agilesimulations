@@ -4,6 +4,9 @@
     <Jumbotron />
     <div class="content">
       <Main v-if="tab == 'main'" />
+      <MonteCarlo v-if="tab == 'monte-carlo'" />
+      <Pipeline v-if="tab == 'pipeline'" />
+      <NoEstimatesMobile v-if="tab == 'no-estimates-mobile'" />
       <Games v-if="tab == 'games'" />
       <Engaging v-if="tab == 'engaging'" />
       <Epiphanising v-if="tab == 'epiphanising'" />
@@ -24,15 +27,18 @@
 import Header from './components/Header.vue'
 import Jumbotron from './components/Jumbotron.vue'
 import Main from './components/Main.vue'
-import Engaging from './components/Main/Engaging.vue'
-import Epiphanising from './components/Main/Epiphanising.vue'
-import Relevant from './components/Main/Relevant.vue'
+import MonteCarlo from './components/games/MonteCarlo.vue'
+import Pipeline from './components/games/Pipeline.vue'
+import NoEstimatesMobile from './components/games/NoEstimatesMobile.vue'
+import Engaging from './components/main/Engaging.vue'
+import Epiphanising from './components/main/Epiphanising.vue'
+import Relevant from './components/main/Relevant.vue'
 import Games from './components/Games.vue'
 import Pricing from './components/Pricing.vue'
 import Resources from './components/Resources.vue'
 import Labs from './components/Labs.vue'
 import Diary from './components/Diary.vue'
-import Suggest from './components/Labs/Suggest.vue'
+import Suggest from './components/labs/Suggest.vue'
 import TandCs from './components/footer/TandCs.vue'
 import Security from './components/footer/Security.vue'
 import Footer from './components/Footer.vue'
@@ -43,6 +49,9 @@ export default {
     Header,
     Jumbotron,
     Main,
+    MonteCarlo,
+    Pipeline,
+    NoEstimatesMobile,
     Engaging,
     Epiphanising,
     Relevant,
