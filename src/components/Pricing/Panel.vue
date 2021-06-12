@@ -22,7 +22,7 @@
     <modal :name="'quote-' + scope" :height="560" :classes="['rounded', 'quote']">
       <div class="float-right mr-2 mt-1">
         <button type="button" class="close" @click="hide" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
+          <i class="fas fa-times" />
         </button>
       </div>
       <div class="mt-4 quote-form">
@@ -171,6 +171,10 @@ export default {
   }
 
   .quote {
+    .fa-times {
+      margin: 0 6px;
+    }
+
     h4 {
       letter-spacing: initial;
       text-align: center;

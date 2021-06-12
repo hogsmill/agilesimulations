@@ -42,7 +42,7 @@
       <div v-if="selectedGame.status" class="game-details" :class="selectedGame.status.replace(/ /g, '-').toLowerCase()">
         <div class="float-right mr-2 mt-1">
           <button type="button" class="close" @click="hide" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
+            <i class="fas fa-times" />
           </button>
         </div>
         <div class="mt-4">
@@ -118,6 +118,10 @@ $on-hold: #bbb;
 
 .labs {
 
+  .fa-times {
+    margin: 6px;
+  }
+  
   h2 {
     text-align: center;
   }

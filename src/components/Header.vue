@@ -40,7 +40,7 @@
     <modal name="feedback" :height="420" :classes="['rounded', 'feedback']">
       <div class="float-right mr-2 mt-1">
         <button type="button" class="close" @click="hide" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
+          <i class="fas fa-times" />
         </button>
       </div>
       <div class="mt-4">
@@ -64,7 +64,7 @@
     <div id="feedback-mobile" class="feedback-mobile" v-if="mobileContact">
       <div class="float-right mr-2 mt-1">
         <button type="button" class="close" @click="hide" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
+          <i class="fas fa-times" />
         </button>
       </div>
       <div class="mt-4">
@@ -195,6 +195,10 @@ export default {
   }
 
   .feedback {
+    .fa-times {
+      margin: 6px;
+    }
+
     h4 {
       letter-spacing: initial;
       text-align: center;
