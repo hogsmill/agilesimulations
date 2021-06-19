@@ -1,0 +1,19 @@
+Status update 01/03/2021
+
+Welcome to the weekly status update to everyone interested in the progress at Agile Simuations. We've been busy...
+
+No Estimates
+
+New Flow Efficiency graph - the ratio between the time a work item is being worked on, and the total time it is "in play". Waiting could be due to an item is blocked, too much WIP, or something more important has arrived. It is surprisingly low in software development, usually 0.1 to 0.2. This, of course makes estimating even more difficult; if 80% of the elapsed time is - unanticipated - waiting time, how can we accurately estimatine? 
+
+We have added the ability to show multiple teams on the same graph so we can compare them. Currently, multiple graphs are available for Correlation and Flow Efficiency, with WIP and some others to follow (not all graphs lend themselves to this).
+
+Public Sessions
+
+We will be a partner at the upcoming CTO Craft conference - https://ctocraft.com/ - where we will be running a number of public workshops. Numbers will be limited so watch this space and book early. 
+
+As ever, feedback on all apps is welcomed, and get in touch for more info, or to discuss faciltation or using the games as part of your training/work.
+
+https://agilesimulations.co.uk/ 
+
+#kanbanzone #onlineagile #noestimates 

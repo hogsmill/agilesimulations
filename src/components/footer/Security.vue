@@ -2,6 +2,7 @@
   <div class="t-and-cs">
     <h2>
       Security
+      <i class="fas fa-lock" />
     </h2>
     <p>
       This page outlines the security policy for the Agile Simulations's Website,
@@ -63,5 +64,13 @@ export default {
   .t-and-cs {
     padding: 12px;
     color: #888;
+
+    h2 {
+      text-align: center;
+
+      i {
+        color: #f4511e;
+      }
+    }
   }
 </style>

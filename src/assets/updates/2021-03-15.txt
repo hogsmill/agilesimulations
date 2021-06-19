@@ -1,0 +1,19 @@
+Status update 15/03/2021
+
+Welcome to the weekly status update to everyone interested in the progress at Agile Simuations. We've been busy...
+
+No Estimates
+
+No Estimates mobile is now available, so we can run the game face-to-face if groups want to play in the office. Obviously, this opens up the possibility of teams playing face-to-face in seperate offices; great for breaking down barriers between teams in a cost-effective manner.
+
+In technical news, we have implemented a new message bus which will improve stability uder stress.
+
+Public Sessions
+
+We will be running a No Estimates session at this year's Tri Agile conference on 23rd March. See you there. https://triagile.com/
+
+As ever, feedback on all apps is welcomed, and get in touch for more info, or to discuss faciltation or using the games as part of your training/work.
+
+https://agilesimulations.co.uk/ 
+
+#onlinefacilitation #triagile2021 #noestimates 

@@ -15,6 +15,7 @@
       <Resources v-if="tab == 'resources'" />
       <Labs v-if="tab == 'labs'" />
       <Diary v-if="tab == 'diary'" />
+      <About v-if="tab == 'about'" />
       <Suggest v-if="tab == 'suggest'" />
       <TandCs v-if="tab == 'tandcs'" />
       <Security v-if="tab == 'security'" />
@@ -37,7 +38,7 @@ import Games from './components/Games.vue'
 import Pricing from './components/Pricing.vue'
 import Resources from './components/Resources.vue'
 import Labs from './components/Labs.vue'
-import Diary from './components/Diary.vue'
+import About from './components/About.vue'
 import Suggest from './components/labs/Suggest.vue'
 import TandCs from './components/footer/TandCs.vue'
 import Security from './components/footer/Security.vue'
@@ -59,7 +60,7 @@ export default {
     Pricing,
     Resources,
     Labs,
-    Diary,
+    About,
     Suggest,
     TandCs,
     Security,

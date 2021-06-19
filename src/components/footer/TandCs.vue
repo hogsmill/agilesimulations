@@ -2,6 +2,7 @@
   <div class="t-and-cs">
     <h2>
       Terms and Conditions
+      <i class="fas fa-book" />
     </h2>
     <p>
       These terms and conditions outline the rules and regulations for the use
@@ -193,5 +194,13 @@ export default {
   .t-and-cs {
     padding: 12px 24px;
     color: #888;
+
+    h2 {
+      text-align: center;
+
+      i {
+        color: #f4511e;
+      }
+    }
   }
 </style>

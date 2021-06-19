@@ -1,0 +1,13 @@
+Status update 17/05/2021
+
+Welcome to the weekly status update to everyone interested in the progress at Agile Simuations. We've been busy...
+
+Pipeline Game
+
+A first playing of the MVP of this game really gave us some excellent feedback last week. A long way to go, but the concept seems of enough interest to start making this into a full-blown game. 
+
+Look out for future runnings of new iterations!
+
+As ever, feedback on all apps is welcomed, and get in touch for more info, or to discuss faciltation or using the games as part of your training/work.
+
+#pipelinegame #agilesimulations #testinproduction

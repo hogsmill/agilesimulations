@@ -1,0 +1,13 @@
+Status update 07/06/2021
+
+Welcome to the weekly status update to everyone interested in the progress at Agile Simuations. We've been busy...
+
+The past couple of weeks have been spent re-building the web site - https://agilesimulations.co.uk - to make it easier to understand, navigate and use. All comments welcome. It's still very orange, obviously... :-)
+
+We've also re-vamped te Context Switching game - https://agilesimulations.co.uk/context-switching/?walkThrough - to make it more user friendly. Feel free to have a play.
+
+The next public running of No Estimates wil be at Gamify IT on 12/6/21; watch this space for more details.
+
+As ever, feedback on all apps is welcomed, and get in touch for more info, or to discuss faciltation or using the games as part of your training/work.
+
+#pipelinegame #agilesimulations #gamifyit #contextswitching

@@ -1,0 +1,29 @@
+Status update 15/02/2021
+
+Welcome to the first weekly (hopefully) status update to everyone interested in the progress at Agile Simuations. We've been busy...
+
+No Estimates
+
+The No Estimates game was played last week at Agile 20 Reflect with a truly international set of players. Lots of positive feedback and excellent discussion. New graphs have been added; monte carlo simulation, WIP and cumulative flow. As with al graphsm these are based on actual game data; no potted perfect graphs to make the point here!
+
+Coin Game
+
+The Coin Game has had a bit of a revamp, and some bugs with game set up fixed. As with all games, feedback is welcomed and encouraged
+
+Planning Poker
+
+This also has a new look, and a more robust game set up
+
+General
+
+All apps now use socket.io 3.0+which is more secure and reliable across all browsers.
+
+New Stuff
+
+We're currently developing the Interdependent Teams simulaiton into an interactive game. Watch this space!
+
+As ever, feedback on all apps is welcomed, and get in touch for more info, or to discuss faciltation or using thr games as part of your training/work.
+
+https://lnkd.in/dkKxsrN
+
+#noestimates #coingame #planningpoker #remoteagile #agilesimulations #agiletraining #agileonline #interdependentteams

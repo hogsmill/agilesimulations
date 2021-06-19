@@ -1,0 +1,17 @@
+Status update 06/04/2021
+
+Welcome to the weekly status update to everyone interested in the progress at Agile Simuations. We've been busy...
+
+No Estimates
+
+Some of the graphs have been updated to make them easier to read; Cycle Time is now ordered by days taken to make it more obvious what's happening, and the Scatter Plot now has the 75%, 90% and 95% lines superimposed to make reading it easier.
+
+We've also added in the ability to change currency of the reports, etc. to allow some internationalisation.
+
+Sessions
+
+Two No Estimates sessions this week for attendees of the CTO Craft Com conference - https://conference.ctocraft.com/. We're also running two Coin Game workshops for the same conference. A good week for game-based mindset change...
+
+As ever, feedback on all apps is welcomed, and get in touch for more info, or to discuss faciltation or using the games as part of your training/work.
+
+#ctocraft #noestimates #coingame #scetterplot #cycletime
