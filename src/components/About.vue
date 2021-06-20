@@ -13,9 +13,7 @@
     </h2>
     <div v-if="scope == 'info'">
       <h2>More info about Agile Simulations</h2>
-      <p>
-        Watch this space for more info...
-      </p>
+      <AgileInfo />
     </div>
     <div v-if="scope == 'dates'">
       <h2>Where we've played the games in public...</h2>
@@ -77,7 +75,12 @@
 </template>
 
 <script>
+import AgileInfo from './about/AgileInfo.vue'
+
 export default {
+  components: {
+    AgileInfo
+  },
   data() {
     return {
       scope: 'dates'
@@ -123,6 +126,7 @@ export default {
 
         &.selected {
           background-color: #f4511e;
+          border-radius: 12px;
 
           i {
             color: #fff;
