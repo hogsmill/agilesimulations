@@ -84,6 +84,14 @@ export const store = new Vuex.Store({
     ],
     updates: [
       {
+        date: '2021-06-22',
+        text: [
+          'We\'ve developed a new screen in battleships so you can watch a game as it is played. Great for training courses where the rest of the participants can watch 2 victims, sorry, players, playing the game as it develops...',
+          'The next public running of No Estimates wil be tomorrow (22/6) at Chris Stone\'s Agile Arcade. Honoured to be asked to do this by the godfather of onine games and retros.',
+        ],
+        tags: ['agilesimulations', 'agilearcade', 'agilebattleships', 'agiletraining']
+      },
+      {
         date: '2021-06-21',
         text: [
           'We were unable to find time to report last week - we were actually using the games, for the first ever, as part of a training course for a client! Exciting times! They went down really well, and we learned a lot.',
