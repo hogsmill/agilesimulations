@@ -27,7 +27,7 @@ export const store = new Vuex.Store({
         title: 'Dedicated',
         icon: 'fa-server',
         text: [
-          'Have your own, private, secure set of the games with their own databases customised to your organisational needs and branding,' +
+          'Have your own, private, secure set of the games with their own databases customised to your organisational needs and branding, ' +
               'with full training on games and learnings.',
           'Includes data persistence, secure login, phone support, early access to new features, custom games and full configuration ' +
               'with no limits on number of players, etc.'
