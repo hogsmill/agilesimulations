@@ -1,7 +1,7 @@
 <template>
   <div id="pricing" class="container-fluid text-center">
     <div class="row slideanim">
-      <h2>We offer the <a href="/games.html">games</a> in these packages...</h2>
+      <h2>We offer the <a @click="setTab('games')">games</a> in these packages...</h2>
       <div class="pricing-table">
         <Panel :scope="'facilitation'" />
         <Panel :scope="'dedicated'" />
@@ -30,7 +30,13 @@ export default {
   methods: {
     contact() {
       bus.$emit('contact', {})
-    }
+    },
+    setTab(tab) {
+      if (this.mobile) {
+        this.toggleMenu()
+      }
+      this.$store.dispatch('updateTab', tab)
+    },
   }
 }
 </script>
