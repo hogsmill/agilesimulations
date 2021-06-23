@@ -139,6 +139,7 @@ import bus from '../socket.js'
 
 import { v4 as uuidv4 } from 'uuid'
 
+import params from '../lib/params.js'
 import mailFuns from '../lib/mail.js'
 
 export default {
@@ -168,6 +169,10 @@ export default {
   },
   created() {
     const self = this
+
+    if (params.isParam('pricing')) {
+      this.setTab('pricing')
+    }
 
     if (!this.id) {
       this.$store.dispatch('updateId', uuidv4())

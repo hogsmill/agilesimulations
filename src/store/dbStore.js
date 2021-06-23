@@ -99,6 +99,8 @@ module.exports = {
       } else {
         const res = {
           userName: data.userName,
+          noOfUsers: data.noOfUsers,
+          directory: data.directory,
           passCode: passCode.new(),
           enabled: data.enabled,
           logins: []
