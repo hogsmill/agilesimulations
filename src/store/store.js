@@ -5,6 +5,9 @@ Vue.use(Vuex)
 
 export const store = new Vuex.Store({
   state: {
+    id: '',
+    session: '',
+    userName: '',
     mobile: false,
     tab: 'main',
     pricing: {
@@ -260,6 +263,15 @@ export const store = new Vuex.Store({
     ]
   },
   getters: {
+    getId: (state) => {
+      return state.id
+    },
+    getSession: (state) => {
+      return state.session
+    },
+    getUserName: (state) => {
+      return state.userName
+    },
     getMobile: (state) => {
       return state.mobile
     },
@@ -280,6 +292,15 @@ export const store = new Vuex.Store({
     }
   },
   mutations: {
+    updateId: (state, payload) => {
+      state.id = payload
+    },
+    updateSession: (state, payload) => {
+      state.session = payload
+    },
+    updateUserName: (state, payload) => {
+      state.userName = payload
+    },
     updateMobile: (state, payload) => {
       state.mobile = payload
     },
@@ -291,6 +312,15 @@ export const store = new Vuex.Store({
     }
   },
   actions: {
+    updateId: ({ commit }, payload) => {
+      commit('updateId', payload)
+    },
+    updateSession: ({ commit }, payload) => {
+      commit('updateSession', payload)
+    },
+    updateUserName: ({ commit }, payload) => {
+      commit('updateUserName', payload)
+    },
     updateMobile: ({ commit }, payload) => {
       commit('updateMobile', payload)
     },

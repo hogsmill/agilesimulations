@@ -11,8 +11,15 @@ if [ "$FORCE" != "true" -a "$GIT" == "Already up to date." ]; then
   exit 0
 fi
 
-npm install
+npm install --legacy-peer-deps
 npm run build
 rm /var/www/html/css/*
 rm /var/www/html/js/*
 cp -R dist/* /var/www/html/
+
+if [ -f "src/server.js" ]; then
+    SERVER=`ps -ef | grep server.js | grep "agilesimulations" | awk {'print $2'}`
+    if [ "$SERVER" != "" ]; then
+      kill -9 $SERVER
+    fi
+  fi
