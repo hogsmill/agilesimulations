@@ -6,8 +6,9 @@ Vue.use(Vuex)
 export const store = new Vuex.Store({
   state: {
     id: '',
-    session: '',
+    session: null,
     userName: '',
+    admin: false,
     mobile: false,
     tab: 'main',
     pricing: {
@@ -272,6 +273,9 @@ export const store = new Vuex.Store({
     getUserName: (state) => {
       return state.userName
     },
+    getAdmin: (state) => {
+      return state.admin
+    },
     getMobile: (state) => {
       return state.mobile
     },
@@ -301,6 +305,9 @@ export const store = new Vuex.Store({
     updateUserName: (state, payload) => {
       state.userName = payload
     },
+    updateAdmin: (state, payload) => {
+      state.admin = payload
+    },
     updateMobile: (state, payload) => {
       state.mobile = payload
     },
@@ -320,6 +327,9 @@ export const store = new Vuex.Store({
     },
     updateUserName: ({ commit }, payload) => {
       commit('updateUserName', payload)
+    },
+    updateAdmin: ({ commit }, payload) => {
+      commit('updateAdmin', payload)
     },
     updateMobile: ({ commit }, payload) => {
       commit('updateMobile', payload)

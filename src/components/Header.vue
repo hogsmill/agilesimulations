@@ -33,7 +33,8 @@
           <i class="fas fa-sign-in-alt" title="Login" />
         </li>
         <li v-if="!mobile && session" class="logout" @click="logout()">
-          <i class="far fa-handshake" :title="'Logout ' + userName" />
+          <i v-if="!admin" class="far fa-handshake" :title="'Logout ' + userName" />
+          <i v-if="admin" class="fas fa-handshake" :title="'Logout ' + userName + ' (Admin)'" />
         </li>
       </ul>
     </div>
@@ -165,6 +166,9 @@ export default {
     },
     userName() {
       return this.$store.getters.getUserName
+    },
+    admin() {
+      return this.$store.getters.getAdmin
     }
   },
   created() {
@@ -178,10 +182,13 @@ export default {
       this.$store.dispatch('updateId', uuidv4())
     }
 
-    const session = localStorage.getItem('session-agilesimulations')
-    this.$store.dispatch('updateSession', session)
+    let session = localStorage.getItem('session-agilesimulations')
     if (session) {
-      bus.$emit('sendCheckLogin', {session: session})
+      session = JSON.parse(session)
+      this.$store.dispatch('updateSession', session.session)
+      bus.$emit('sendCheckLogin', {id: this.id, session: session})
+    } else {
+      this.$store.dispatch('updateSession', '')
     }
 
     bus.$on('showContact', () => {
@@ -189,17 +196,18 @@ export default {
     })
 
     bus.$on('loginSuccess', (data) => {
+      console.log(data)
       if (data.id == this.id) {
         this.checking = false
         this.hide('login')
         this.$store.dispatch('updateSession', data.session)
         this.$store.dispatch('updateUserName', data.userName)
-        localStorage.setItem('session-agilesimulations', data.session)
+        this.$store.dispatch('updateAdmin', data.loggedInAsAdmin)
+        localStorage.setItem('session-agilesimulations', JSON.stringify({session: data.session, userName: data.userName, loggedInAsAdmin: data.loggedInAsAdmin}))
       }
     })
 
     bus.$on('loginError', (data) => {
-      console.log(data.id,  this.id)
       if (data.id == this.id) {
         this.checking = false
         this.hide('login')
@@ -211,6 +219,7 @@ export default {
       if (data.userName == this.userName) {
         this.$store.dispatch('updateSession', '')
         this.$store.dispatch('updateUserName', '')
+        this.$store.dispatch('updateAdmin', false)
         localStorage.removeItem('session-agilesimulations')
       }
     })
@@ -267,7 +276,7 @@ export default {
       }
     },
     logout() {
-      bus.$emit('sendLogout', {id: this.id, userName: this.userName, session: this.session})
+      bus.$emit('sendLogout', {id: this.id, userName: this.userName, session: this.session.session})
     }
   },
 }

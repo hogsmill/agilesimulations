@@ -27,10 +27,20 @@ module.exports = {
     db.collection.findOne({userName: data.userName}, function(err, res) {
       if (err) throw err
       if (res) {
+        let codeMatch = false
         if (res.passCode == data.passCode) {
           data.session = uuidv4()
+          data.loggedInAsUser = true
+          codeMatch = true
+        } else if (res.adminPassCode == data.passCode) {
+          data.session = uuidv4()
+          data.loggedInAsAdmin = true
+          codeMatch = true
+        }
+        if (codeMatch) {
           res.logins.push(data.session)
           db.collection.updateOne({'_id': res._id}, {$set: {logins: res.logins}}, function(err, res) {
+            delete data.passCode
             io.emit('loginSuccess', data)
           })
         } else {
@@ -48,23 +58,21 @@ module.exports = {
 
     if (debugOn) { console.log('checkLogin', data) }
 
-/*
-    db.collection.findOne({userName: data.userName}, function(err, res) {
+    db.collection.findOne({userName: data.session.userName}, function(err, res) {
       if (err) throw err
       if (res) {
-        if (res.passCode == data.passCode) {
-          data.session = uuidv4()
-          io.emit('loginSuccess', data)
-        } else {
-          data.message = 'Incorrect password'
-          io.emit('loginError', data)
+        for (let i = 0; i < res.logins.length; i++) {
+          if (data.session.session == res.logins[i]) {
+            io.emit('loginSuccess', {
+              id: data.id,
+              userName: data.session.userName,
+              session: data.session.session,
+              loggedInAsAdmin: data.session.loggedInAsAdmin,
+            })
+          }
         }
-      } else {
-        data.message = 'Unknown user'
-        io.emit('loginError', data)
       }
     })
-*/
   },
 
   logout: function(db, io, data, debugOn) {
@@ -102,6 +110,7 @@ module.exports = {
           noOfUsers: data.noOfUsers,
           directory: data.directory,
           passCode: passCode.new(),
+          adminPassCode: passCode.new(),
           enabled: data.enabled,
           logins: []
         }
