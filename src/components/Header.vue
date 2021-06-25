@@ -196,7 +196,6 @@ export default {
     })
 
     bus.$on('loginSuccess', (data) => {
-      console.log(data)
       if (data.id == this.id) {
         this.checking = false
         this.hide('login')

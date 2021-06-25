@@ -107,6 +107,8 @@ MongoClient.connect(url, { useUnifiedTopology: true, maxIdleTimeMS: maxIdleTime 
 
     socket.on('sendLoadAccounts', (data) => { dbStore.loadAccounts(db, io, data, debugOn) })
 
+    socket.on('sendCheckAdminAccounts', (data) => { dbStore.checkAdminAccounts(db, io, data, debugOn) })
+
     socket.on('sendCreateAccount', (data) => { dbStore.createAccount(db, io, data, debugOn) })
 
     socket.on('sendToggleEnableAccount', (data) => { dbStore.toggleEnableAccount(db, io, data, debugOn) })

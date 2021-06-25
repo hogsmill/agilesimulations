@@ -20,6 +20,31 @@ function _loadAccounts(db, io, data, debugOn) {
 
 module.exports = {
 
+  checkAdminAccounts: function(db, io, data, debugOn) {
+
+    if (debugOn) { console.log('checkAdminAccounts', data) }
+
+    db.collection.findOne({userName: 'agile-simulations'}, function(err, res) {
+      if (err) throw err
+      if (!res) {
+        const res = {
+          userName: 'agile-simulations',
+          noOfUsers: 100,
+          directory: '',
+          passCode: 'as_user',
+          adminPassCode: 'as_admin',
+          enabled: true,
+          logins: []
+        }
+        db.collection.insertOne(res, function(err, res) {
+          if (err) throw err
+          io.emit('adminAccountCreated', data)
+          _loadAccounts(db, io, {id: data.id}, debugOn)
+        })
+      }
+    })
+  },
+
   login: function(db, io, data, debugOn) {
 
     if (debugOn) { console.log('login', data) }
