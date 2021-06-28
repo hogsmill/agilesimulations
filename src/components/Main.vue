@@ -41,7 +41,7 @@
     <div class="row slideanim screenshots">
       <h2>The Games In Action...</h2>
       <div class="col-sm-4">
-        <a href="no-estimates?walkThrough">
+        <a :href="href('no-estimates') + '?walkThrough'">
           <div class="pic no-estimates" title="The No Estimates Game">
             <div class="caption">
               The No Estimates Game
@@ -70,7 +70,7 @@
     </div>
     <div class="row slideanim">
       <div class="col-sm-4">
-        <a href="coin-game?walkThrough">
+        <a :href="href('coin-game') + '?walkThrough'">
           <div class="pic coin-game" title="The Coin Game">
             <div class="caption">
               The Coin Game
@@ -79,7 +79,7 @@
         </a>
       </div>
       <div class="col-sm-4">
-        <a href="battleships?walkThrough">
+        <a :href="href('battleships') + '?walkThrough'">
           <div class="pic agile-battleships" title="Agile Battleships!">
             <div class="caption">
               Agile Battleships!
@@ -109,9 +109,20 @@
 import bus from '../socket.js'
 
 export default {
+  computed: {
+    session() {
+      return this.$store.getters.getSession
+    },
+    route() {
+      return this.$store.getters.getRoute
+    }
+  },
   methods: {
     setTab(tab) {
       this.$store.dispatch('updateTab', tab)
+    },
+    href(url) {
+      return this.route ? url + '-' + this.route : url
     },
     contact() {
       bus.$emit('contact', {})
