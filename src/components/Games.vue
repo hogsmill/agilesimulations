@@ -76,8 +76,8 @@
         <div class="col-sm-4">
           <i class="fas section-icon fa-coins" />
           <h4>
-            <a v-if="!session" href="coin-game?walkThrough">The Coin Game</a>
-            <a v-if="session" :href="'coin-game-' + route + '?walkThrough'">The Coin Game</a>
+            <a v-if="!route" href="coin-game?walkThrough">The Coin Game</a>
+            <a v-if="route" :href="'coin-game-' + route + '?walkThrough'">The Coin Game</a>
           </h4>
           <p>
             Explore different delivery strategies and see why delivering highest value
@@ -92,7 +92,8 @@
         <div class="col-sm-4">
           <i class="fas section-icon fa-ship" />
           <h4>
-            <a href="battleships?walkThrough">Agile Battleships</a>
+            <a v-if="!route" href="battleships?walkThrough">Agile Battleships</a>
+            <a v-if="route" :href="href('battleships-' + route + '?walkThrough'">Agile Battleships</a>
           </h4>
           <p>
             Thanks to <a href="https://www.linkedin.com/in/jamesscrimshire/">James Scrimshire</a> for inventing this
@@ -115,8 +116,8 @@
         <div class="col-sm-4">
           <i class="fas section-icon fa-coins" />
           <h4>
-            <a v-if="!session" href="coin-game?walkThrough">The Coin Game</a>
-            <a v-if="session" :href="'coin-game-' + '?walkThrough'">The Coin Game</a>
+            <a v-if="!route" href="coin-game?walkThrough">The Coin Game</a>
+            <a v-if="route" :href="'coin-game-' + route + '?walkThrough'">The Coin Game</a>
           </h4>
           <p>
             Explore different delivery strategies and see why delivering highest value
