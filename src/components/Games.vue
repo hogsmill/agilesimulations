@@ -77,7 +77,7 @@
           <i class="fas section-icon fa-coins" />
           <h4>
             <a v-if="!session" href="coin-game?walkThrough">The Coin Game</a>
-            <a v-if="session" :href="'coin-game-' + '?walkThrough'">The Coin Game</a>
+            <a v-if="session" :href="'coin-game-' + route + '?walkThrough'">The Coin Game</a>
           </h4>
           <p>
             Explore different delivery strategies and see why delivering highest value
