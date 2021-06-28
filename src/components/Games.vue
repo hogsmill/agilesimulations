@@ -6,8 +6,8 @@
         <div class="col-sm-4">
           <i class="fas section-icon fa-dice" />
           <h4 id="no-estimates">
-            <a v-if="session" href="no-estimates?walkThrough">No Estimates</a>
-            <a v-if="!session" :href="'no-estimates-' + route + '?walkThrough'">No Estimates</a>
+            <a v-if="!session || !route" href="no-estimates?walkThrough">No Estimates</a>
+            <a v-if="session" :href="'no-estimates-' + route + '?walkThrough'">No Estimates</a>
           </h4>
           <p>
             Thanks to <a href="https://www.linkedin.com/in/matthewphilip/">Matt Phillip</a> for inventing this
@@ -38,7 +38,7 @@
         <div class="col-sm-4">
           <i class="fas section-icon fa-solar-panel" />
           <h4 id="survival">
-            <a v-if="!session" href="kanban?walkThrough">Kanban Explorer</a>
+            <a v-if="!session || !route" href="kanban?walkThrough">Kanban Explorer</a>
             <a v-if="session" :href="'kanban-' + route + '?walkThrough'">Kanban Explorer</a>
           </h4>
           <p>
@@ -63,7 +63,7 @@
         <div class="col-sm-4">
           <i class="fas section-icon fa-heart" />
           <h4>
-            <a v-if="!session" href="planning-poker?walkThrough">Planning Poker</a>
+            <a v-if="!session || !route" href="planning-poker?walkThrough">Planning Poker</a>
             <a v-if="session" :href="'planning-poker-' + route + '?walkThrough'">Planning Poker</a>
           </h4>
           <p>
