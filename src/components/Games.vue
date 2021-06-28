@@ -1,12 +1,13 @@
 <template>
   <div>
     <div id="workshops" class="container-fluid text-center">
-      <h2>Workshops {{ session }}</h2>
+      <h2>Workshops</h2>
       <div class="row slideanim">
         <div class="col-sm-4">
           <i class="fas section-icon fa-dice" />
           <h4 id="no-estimates">
-            <a href="no-estimates?walkThrough">No Estimates</a>
+            <a v-if="session" href="no-estimates?walkThrough">No Estimates</a>
+            <a v-if="!session" :href="'no-estimates-' + route + '?walkThrough'">No Estimates</a>
           </h4>
           <p>
             Thanks to <a href="https://www.linkedin.com/in/matthewphilip/">Matt Phillip</a> for inventing this
@@ -37,7 +38,8 @@
         <div class="col-sm-4">
           <i class="fas section-icon fa-solar-panel" />
           <h4 id="survival">
-            <a href="kanban?walkThrough">Kanban Explorer</a>
+            <a v-if="!session" href="kanban?walkThrough">Kanban Explorer</a>
+            <a v-if="session" :href="'kanban-' + route + '?walkThrough'">Kanban Explorer</a>
           </h4>
           <p>
             If you've played No Estimates, you'll know it's based around a Kanban board,
@@ -73,7 +75,10 @@
         </div>
         <div class="col-sm-4">
           <i class="fas section-icon fa-coins" />
-          <h4><a href="coin-game?walkThrough">The Coin Game</a></h4>
+          <h4>
+            <a v-if="!session" href="coin-game?walkThrough">The Coin Game</a>
+            <a v-if="session" :href="'coin-game-' + '?walkThrough'">The Coin Game</a>
+          </h4>
           <p>
             Explore different delivery strategies and see why delivering highest value
             first is the best risk-reduction strategy. See this
@@ -86,7 +91,9 @@
         </div>
         <div class="col-sm-4">
           <i class="fas section-icon fa-ship" />
-          <h4><a href="battleships?walkThrough">Agile Battleships</a></h4>
+          <h4>
+            <a href="battleships?walkThrough">Agile Battleships</a>
+          </h4>
           <p>
             Thanks to <a href="https://www.linkedin.com/in/jamesscrimshire/">James Scrimshire</a> for inventing this
             one and letting us build the online version.
@@ -107,7 +114,10 @@
       <div class="row slideanim">
         <div class="col-sm-4">
           <i class="fas section-icon fa-coins" />
-          <h4><a href="coin-game?walkThrough">The Coin Game</a></h4>
+          <h4>
+            <a v-if="!session" href="coin-game?walkThrough">The Coin Game</a>
+            <a v-if="session" :href="'coin-game-' + '?walkThrough'">The Coin Game</a>
+          </h4>
           <p>
             Explore different delivery strategies and see why delivering highest value
             first is the best risk-reduction strategy. See this
@@ -120,7 +130,9 @@
         </div>
         <div class="col-sm-4">
           <i class="fas section-icon fa-random" />
-          <h4><a href="context-switching?walkThrough">Context Switching</a></h4>
+          <h4>
+            <a href="context-switching?walkThrough">Context Switching</a>
+          </h4>
           <p>
             It is estimated that a 30 second interruption can cost an hour of
             lost time, particularly for people working in high-knowledge areas
@@ -158,7 +170,9 @@
       <div class="row slideanim">
         <div class="col-sm-4">
           <i class="fas section-icon fa-people-carry" />
-          <h4><a href="do-others-work-first-js?walkThrough">Interdependent Teams</a></h4>
+          <h4>
+            <a href="do-others-work-first-js?walkThrough">Interdependent Teams</a>
+          </h4>
           <p>
             In any reasonably sized organisation, there
             will be dependencies between teams. So what is the best way to prioritise
@@ -170,7 +184,9 @@
         </div>
         <div class="col-sm-4">
           <i class="fas section-icon fa-hands-helping" />
-          <h4><a href="pairing-simulation">Pairing</a></h4>
+          <h4>
+            <a href="pairing-simulation">Pairing</a>
+          </h4>
           <p>
             Pairing is usually touted in XP terms as a way to improve code quality through practices like
             TDD. However, it is a great way to increase knowledge sharing, and therefor reducing risk
