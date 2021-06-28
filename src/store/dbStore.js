@@ -30,7 +30,7 @@ module.exports = {
         const res = {
           userName: 'agile-simulations',
           noOfUsers: 100,
-          directory: '',
+          route: '',
           passCode: 'as_user',
           adminPassCode: 'as_admin',
           enabled: true,
@@ -55,10 +55,12 @@ module.exports = {
         let codeMatch = false
         if (res.passCode == data.passCode) {
           data.session = uuidv4()
+          data.route = res.route
           data.loggedInAsUser = true
           codeMatch = true
         } else if (res.adminPassCode == data.passCode) {
           data.session = uuidv4()
+          data.route = res.route
           data.loggedInAsAdmin = true
           codeMatch = true
         }
@@ -90,6 +92,7 @@ module.exports = {
           if (data.session.session == res.logins[i]) {
             io.emit('loginSuccess', {
               id: data.id,
+              route: res.route,
               userName: data.session.userName,
               session: data.session.session,
               loggedInAsAdmin: data.session.loggedInAsAdmin,
@@ -133,7 +136,7 @@ module.exports = {
         const res = {
           userName: data.userName,
           noOfUsers: data.noOfUsers,
-          directory: data.directory,
+          route: data.route,
           passCode: passCode.new(),
           adminPassCode: passCode.new(),
           enabled: data.enabled,
@@ -153,6 +156,16 @@ module.exports = {
     if (debugOn) { console.log('toggleEnableAccount', data) }
 
     db.collection.updateOne({userName: data.userName}, {$set: {enabled: data.enabled}}, function(err, res) {
+      if (err) throw err
+      _loadAccounts(db, io, {id: data.id}, debugOn)
+    })
+  },
+
+  updateRoute: function(db, io, data, debugOn) {
+
+    if (debugOn) { console.log('updateRoute', data) }
+
+    db.collection.updateOne({userName: data.userName}, {$set: {route: data.route}}, function(err, res) {
       if (err) throw err
       _loadAccounts(db, io, {id: data.id}, debugOn)
     })

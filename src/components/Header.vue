@@ -185,10 +185,9 @@ export default {
     let session = localStorage.getItem('session-agilesimulations')
     if (session) {
       session = JSON.parse(session)
-      this.$store.dispatch('updateSession', session.session)
       bus.$emit('sendCheckLogin', {id: this.id, session: session})
     } else {
-      this.$store.dispatch('updateSession', '')
+      this.clearLogin()
     }
 
     bus.$on('showContact', () => {
@@ -197,12 +196,17 @@ export default {
 
     bus.$on('loginSuccess', (data) => {
       if (data.id == this.id) {
+        console.log(data)
         this.checking = false
         this.hide('login')
-        this.$store.dispatch('updateSession', data.session)
-        this.$store.dispatch('updateUserName', data.userName)
-        this.$store.dispatch('updateAdmin', data.loggedInAsAdmin)
-        localStorage.setItem('session-agilesimulations', JSON.stringify({session: data.session, userName: data.userName, loggedInAsAdmin: data.loggedInAsAdmin}))
+        this.$store.dispatch('updateLogin', data)
+        const session = {
+          session: data.session,
+          route: data.route,
+          userName: data.userName,
+          loggedInAsAdmin: data.loggedInAsAdmin
+        }
+        localStorage.setItem('session-agilesimulations', JSON.stringify(session))
       }
     })
 
@@ -216,14 +220,20 @@ export default {
 
     bus.$on('logout', (data) => {
       if (data.userName == this.userName) {
-        this.$store.dispatch('updateSession', '')
-        this.$store.dispatch('updateUserName', '')
-        this.$store.dispatch('updateAdmin', false)
+        this.clearLogin()
         localStorage.removeItem('session-agilesimulations')
       }
     })
+
+    bus.$on('logout', () => {
+      this.clearLogin()
+    })
   },
   methods: {
+    clearLogin() {
+      const data = {session: '', userName: '', route: '', loggedInAsAdmin: false}
+      this.$store.dispatch('updateLogin', data)
+    },
     toggleMenu() {
       this.hideMenu = !this.hideMenu
       this.hide()

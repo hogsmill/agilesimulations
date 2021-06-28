@@ -7,6 +7,7 @@ export const store = new Vuex.Store({
   state: {
     id: '',
     session: null,
+    route: '',
     userName: '',
     admin: false,
     mobile: false,
@@ -270,6 +271,9 @@ export const store = new Vuex.Store({
     getSession: (state) => {
       return state.session
     },
+    getRoute: (state) => {
+      return state.route
+    },
     getUserName: (state) => {
       return state.userName
     },
@@ -299,14 +303,11 @@ export const store = new Vuex.Store({
     updateId: (state, payload) => {
       state.id = payload
     },
-    updateSession: (state, payload) => {
-      state.session = payload
-    },
-    updateUserName: (state, payload) => {
-      state.userName = payload
-    },
-    updateAdmin: (state, payload) => {
-      state.admin = payload
+    updateLogin: (state, payload) => {
+      state.session = payload.session
+      state.route = payload.route
+      state.userName = payload.userName
+      state.admin = payload.loggedInAsAdmin
     },
     updateMobile: (state, payload) => {
       state.mobile = payload
@@ -322,14 +323,8 @@ export const store = new Vuex.Store({
     updateId: ({ commit }, payload) => {
       commit('updateId', payload)
     },
-    updateSession: ({ commit }, payload) => {
-      commit('updateSession', payload)
-    },
-    updateUserName: ({ commit }, payload) => {
-      commit('updateUserName', payload)
-    },
-    updateAdmin: ({ commit }, payload) => {
-      commit('updateAdmin', payload)
+    updateLogin: ({ commit }, payload) => {
+      commit('updateLogin', payload)
     },
     updateMobile: ({ commit }, payload) => {
       commit('updateMobile', payload)

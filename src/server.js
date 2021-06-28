@@ -113,6 +113,8 @@ MongoClient.connect(url, { useUnifiedTopology: true, maxIdleTimeMS: maxIdleTime 
 
     socket.on('sendToggleEnableAccount', (data) => { dbStore.toggleEnableAccount(db, io, data, debugOn) })
 
+    socket.on('sendUpdateRoute', (data) => { dbStore.updateRoute(db, io, data, debugOn) })
+
     socket.on('sendNewPassCode', (data) => { dbStore.newPassCode(db, io, data, debugOn) })
 
     socket.on('sendDeleteAccount', (data) => { dbStore.deleteAccount(db, io, data, debugOn) })

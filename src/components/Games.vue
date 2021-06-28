@@ -1,7 +1,7 @@
 <template>
   <div>
     <div id="workshops" class="container-fluid text-center">
-      <h2>Workshops</h2>
+      <h2>Workshops {{ session }}</h2>
       <div class="row slideanim">
         <div class="col-sm-4">
           <i class="fas section-icon fa-dice" />
@@ -60,7 +60,10 @@
       <div class="row slideanim">
         <div class="col-sm-4">
           <i class="fas section-icon fa-heart" />
-          <h4><a href="planning-poker?walkThrough">Planning Poker</a></h4>
+          <h4>
+            <a v-if="!session" href="planning-poker?walkThrough">Planning Poker</a>
+            <a v-if="session" :href="'planning-poker-' + route + '?walkThrough'">Planning Poker</a>
+          </h4>
           <p>
             The classic estimation game, but in an intuitive, fully featured format. Includes standard and custom
             estimation types (e.g. fibonacci, t-shirt, fruit, etc.), backlog import and export, multiple teams, and
@@ -200,6 +203,14 @@
 
 <script>
 export default {
+  computed: {
+    session() {
+      return this.$store.getters.getSession
+    },
+    route() {
+      return this.$store.getters.getRoute
+    }
+  },
   methods: {
     setTab(tab) {
       this.$store.dispatch('updateTab', tab)

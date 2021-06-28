@@ -9,11 +9,15 @@ if (location.hostname == 'localhost') {
   connStr = 'https://agilesimulations.co.uk:3099'
   labsConnStr = 'https://agilesimulations.co.uk:3013'
 }
+
+const connectToLabs = location.hostname != 'localhost'
 console.log('Connecting to: ' + connStr)
 const socket = io(connStr)
-console.log('Connecting to: ' + labsConnStr)
-const labsSocket = io(labsConnStr)
-
+let labsSocket
+if (connectToLabs) {
+  console.log('Connecting to: ' + labsConnStr)
+  labsSocket = io(labsConnStr)
+}
 // Send
 
 // Contact
@@ -40,12 +44,12 @@ socket.on('logout', (data) => { bus.$emit('logout', data) })
 // --------------------------------------------------------------
 // Labs
 
-bus.$on('sendLoadGames', () => { labsSocket.emit('sendLoadGames') })
+if (connectToLabs) {
+  bus.$on('sendLoadGames', () => { labsSocket.emit('sendLoadGames') })
 
-bus.$on('sendVoteFor', (data) => { labsSocket.emit('sendVoteFor', data) })
+  bus.$on('sendVoteFor', (data) => { labsSocket.emit('sendVoteFor', data) })
 
-// Receive
-
-labsSocket.on('loadGames', (data) => { bus.$emit('loadGames', data) })
+  labsSocket.on('loadGames', (data) => { bus.$emit('loadGames', data) })
+}
 
 export default bus
