@@ -93,7 +93,7 @@
           <i class="fas section-icon fa-ship" />
           <h4>
             <a v-if="!route" href="battleships?walkThrough">Agile Battleships</a>
-            <a v-if="route" :href="href('battleships-' + route + '?walkThrough'">Agile Battleships</a>
+            <a v-if="route" :href="'battleships-' + route + '?walkThrough'">Agile Battleships</a>
           </h4>
           <p>
             Thanks to <a href="https://www.linkedin.com/in/jamesscrimshire/">James Scrimshire</a> for inventing this
