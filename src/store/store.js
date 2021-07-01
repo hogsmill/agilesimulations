@@ -89,6 +89,14 @@ export const store = new Vuex.Store({
     ],
     updates: [
       {
+        date: '2021-06-28',
+        text: [
+          'A few people have had trouble joining No Estimates games recenty, so we\'ve had a big re-factor and hopefully removed some pesky race conditions (<i>no one wants race conditions at my age</i><i class="far fa-smile-beam"/>). We\'re going to put out a URL this Friday (2/7/21) so that for anyone who\'s had issues previously can give it a go.',
+          'The next public running of No Estimates will be at Funconf on the 11th July - <a href="https://www.townscript.com/e/funconf2021">Funconf</a> - India\'s First Gamification focused Unconference.'
+        ],
+        tags: ['agilesimulations', 'funconf', 'noestimates']
+      },
+      {
         date: '2021-06-22',
         text: [
           'We\'ve developed a new screen in battleships so you can watch a game as it is played. Great for training courses where the rest of the participants can watch 2 victims, sorry, players, playing the game as it develops...',
