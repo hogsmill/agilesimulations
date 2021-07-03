@@ -71,6 +71,14 @@
         on Medium
       </div>
     </div>
+    <div class="resources">
+      <h3>Because we can...</h3>
+      <div class="resource" :class="{'mobile': mobile }">
+        <a href="/mandelbrot.html" target="_blank">
+          The Mandelbrot set in JavaScript. I mean - why not?
+        </a>
+      </div>
+    </div>
   </div>
 </template>
 

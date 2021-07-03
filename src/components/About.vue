@@ -2,13 +2,13 @@
   <div class="about">
     <h2 class="menu">
       <div :class="{ 'selected': scope == 'info' }">
-        <i class="fas fa-info" title="Info about Agile Simulations" @click="setScope('info')" />
+        <i class="fas fa-info" :title="scopeDescriptions['info']" @click="setScope('info')" />
       </div>
       <div :class="{ 'selected': scope == 'dates' }">
-        <i class="fas fa-dice" title="Where we've played games" @click="setScope('dates')" />
+        <i class="fas fa-dice" :title="scopeDescriptions['dates']" @click="setScope('dates')" />
       </div>
       <div :class="{ 'selected': scope == 'updates' }">
-        <i class="fas fa-book" title="Updates" @click="setScope('updates')" />
+        <i class="fas fa-book" :title="scopeDescriptions['updates']" @click="setScope('updates')" />
       </div>
     </h2>
     <div v-if="scope == 'info'">
@@ -83,7 +83,13 @@ export default {
   },
   data() {
     return {
-      scope: 'dates'
+      scope: 'dates',
+      scopeDescription: 'Where we\'ve played games',
+      scopeDescriptions: {
+        info: 'Info about Agile Simulations',
+        dates: 'Where we\'ve played games',
+        updates: 'Weekly updates'
+      }
     }
   },
   computed: {
