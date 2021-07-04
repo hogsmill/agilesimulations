@@ -178,6 +178,11 @@
           <p>
             Under construction
           </p>
+          <p>
+            This assessment stores data - for trend reporting, so you will need a
+            paid licence to run it. <a @click="contact()">Get in touch</a> for
+            more details. It's not expensive, tho'...
+          </p>
           <p><b>#5dysfunctions</b></p>
         </div>
         <div class="col-sm-4">
@@ -187,6 +192,11 @@
           </h4>
           <p>
             Under construction
+          </p>
+          <p>
+            This assessment stores data - for trend reporting, so you will need a
+            paid licence to run it. <a @click="contact()">Get in touch</a> for
+            more details. It's not expensive, tho'...
           </p>
           <p><b>#teamhealthcheck</b></p>
         </div>
@@ -251,6 +261,8 @@
 </template>
 
 <script>
+import bus from '../socket.js'
+
 export default {
   computed: {
     session() {
@@ -263,6 +275,9 @@ export default {
   methods: {
     setTab(tab) {
       this.$store.dispatch('updateTab', tab)
+    },
+    contact() {
+      bus.$emit('contact', {})
     }
   }
 }
