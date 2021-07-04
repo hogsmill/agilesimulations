@@ -121,7 +121,7 @@ $on-hold: #bbb;
   .fa-times {
     margin: 6px;
   }
-  
+
   h2 {
     text-align: center;
   }
@@ -287,6 +287,12 @@ $on-hold: #bbb;
       }
       &.the-bug-game {
         background-image: url("../assets/img/games/zero bugs.png");
+      }
+      &.subtraction {
+        background-image: url("../assets/img/games/subtraction.png");
+      }
+      &.minesweeper {
+        background-image: url("../assets/img/games/minesweeper.png");
       }
     }
   }
