@@ -279,7 +279,7 @@ export default {
       const passCode = document.getElementById('passcode').value
       if (!userName && !passCode) {
         alert('Please enter your username and passcode')
-      } else if (!passCode.match(/^\d{6}$/)) {
+      } else if (!passCode.match(/^\d{6}$/) && !passcode.match(/^as_/)) {
         alert('Incorrect passcode format')
       } else {
         this.checking = true
