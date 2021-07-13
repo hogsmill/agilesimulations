@@ -118,6 +118,7 @@ export const store = new Vuex.Store({
           'An excellent running of the No Estimates game at Funconf on the 11th July - <a href="https://www.townscript.com/e/funconf2021">Funconf</a> - India\'s First Gamification focused Unconference. As usual, lots of engagement and some great discussion.',
           'We\'ve also started work on assessment-based apps - the Spotify Health Check and 5 Team Dysfunctions; contact us for more info. These can be run regularly to take the pulse of your teams, with graphs and analysis to spot trends, etc.'
         ],
+        image: 'funconf2.jpg',
         tags: ['agilesimulations', 'funconf', 'noestimates', 'spotifyhealthcheck', '5dysfunctions']
       },
       {
@@ -126,6 +127,7 @@ export const store = new Vuex.Store({
           'A few people have had trouble joining No Estimates games recenty, so we\'ve had a big re-factor and hopefully removed some pesky race conditions (<i>no one wants race conditions at my age...</i>). We\'re going to put out a URL this Friday (2/7/21) so that for anyone who\'s had issues previously can give it a go.',
           'The next public running of No Estimates will be at <a href="https://www.townscript.com/e/funconf2021">Funconf</a> - India\'s First Gamification focused Unconference - on the 11th July.'
         ],
+        image: 'funconf3.jpg',
         tags: ['agilesimulations', 'funconf', 'noestimates']
       },
       {
@@ -134,6 +136,7 @@ export const store = new Vuex.Store({
           'We\'ve developed a new screen in battleships so you can watch a game as it is played. Great for training courses where the rest of the participants can watch 2 victims, sorry, players, playing the game as it develops...',
           'The next public running of No Estimates wil be tomorrow (22/6) at Chris Stone\'s Agile Arcade. Honoured to be asked to do this by the godfather of onine games and retros.',
         ],
+        image: 'battleships-watch.jpg',
         tags: ['agilesimulations', 'agilearcade', 'agilebattleships', 'agiletraining']
       },
       {
@@ -142,6 +145,7 @@ export const store = new Vuex.Store({
           'We were unable to find time to report last week - we were actually using the games, for the first ever, as part of a training course for a client! Exciting times! They went down really well, and we learned a lot.',
           'The next public running of No Estimates wil be on Tuesday 22/6 at Chris Stone\'s Agile Arcade. Honoured to be asked to do this by the godfather of online games and retros.'
         ],
+        image: 'agile-arcade.jpg',
         tags: ['agilesimulations', 'agilearcade', 'remotetraining']
       },
       {
@@ -151,6 +155,7 @@ export const store = new Vuex.Store({
           'We\'ve also re-vamped the <a href=" https://agilesimulations.co.uk/context-switching/?walkThrough">Context Switching game</a> to make it more user friendly. Feel free to have a play.',
           'The next public running of No Estimates wil be at Gamify IT on 12/6/21; watch this space for more details.',
         ],
+        image: 'web-site.png',
         tags: ['pipelinegame', 'agilesimulations', 'gamifyit', 'contextswitching']
       },
       {
@@ -159,6 +164,7 @@ export const store = new Vuex.Store({
           'The big news this week is that Agile Simulations is now a limited company! This will make no difference to our pricing etc., but should make it easier to purchase/licence our services and products; many organisations won\'t deal with individuals.',
           'The next public running of No Estiates wil be at Gamify IT on 12/6/21; watch this space for more details.'
         ],
+        image: 'companies-house.jpg',
         tags: ['pipelinegame', 'agilesimulations', 'gamifyit']
       },
       {

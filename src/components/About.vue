@@ -57,7 +57,8 @@
         <h3>
           Status Update {{ update.date }}
         </h3>
-        <p>
+        <div v-if="update.image" class="update-image" :class="updateImageClass(update.image)" />
+        <p v-if="!mobile">
           <b>Welcome to the weekly status update to everyone interested in the progress at Agile Simuations. We've been busy...</b>
         </p>
         <p v-for="(para, pindex) in update.text" :key="pindex" v-html="para" />
@@ -93,6 +94,9 @@ export default {
     }
   },
   computed: {
+    mobile() {
+      return this.$store.getters.getMobile
+    },
     dates() {
       return this.$store.getters.getDates
     },
@@ -101,6 +105,9 @@ export default {
     }
   },
   methods: {
+    updateImageClass(image) {
+      return image.split('.')[0]
+    },
     setScope(scope) {
       this.scope = scope
     },
@@ -168,6 +175,35 @@ export default {
 
   .update {
 
+    .update-image {
+      float: right;
+      border: 1px solid;
+      width: 300px;
+      height: 200px;
+      background-size: cover;
+
+      &.funconf2 {
+        background-image: url("../assets/img/updates/funconf2.jpg");
+      }
+      &.funconf3 {
+        background-image: url("../assets/img/updates/funconf3.jpg");
+      }
+      &.agile-arcade {
+        background-image: url("../assets/img/updates/agile-arcade.jpg");
+      }
+      &.battleships-watch {
+        background-image: url("../assets/img/updates/battleships-watch.jpg");
+      }
+      &.web-site {
+        background-image: url("../assets/img/updates/web-site.png");
+      }
+      &.kanban-pub {
+        background-image: url("../assets/img/updates/kanban-pub.jpg");
+      }
+      &.companies-house {
+        background-image: url("../assets/img/updates/companies-house.jpg");
+      }
+    }
     padding: 12px 24px;
     .tags {
       text-align: right;
