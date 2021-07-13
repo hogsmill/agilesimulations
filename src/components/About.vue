@@ -184,6 +184,7 @@ export default {
       width: 300px;
       height: 200px;
       background-size: cover;
+      margin: 0 0 4px 4px;
 
       &.funconf2 {
         background-image: url("../assets/img/updates/funconf2.jpg");
