@@ -92,6 +92,9 @@
 
 <style lang="scss">
   .about-info {
+    max-width: 850px;
+    margin: 0 auto;
+
     padding: 2px 12px;
 
     .intro {
