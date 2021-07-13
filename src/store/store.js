@@ -63,6 +63,24 @@ export const store = new Vuex.Store({
         description: 'Chris Stones Agile Arcade'
       },
       {
+        date: '14th June, 2021',
+        game: 'Coin Game',
+        link: '',
+        description: 'Part of a Training Course'
+      },
+      {
+        date: '14th June, 2021',
+        game: 'Context Switching',
+        link: '',
+        description: 'Part of a Training Course'
+      },
+      {
+        date: '14th June, 2021',
+        game: 'Planning Poker',
+        link: '',
+        description: 'Part of a Training Course'
+      },
+      {
         date: '12th June, 2021',
         game: 'No Estimates',
         link: '',
