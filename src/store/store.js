@@ -51,6 +51,12 @@ export const store = new Vuex.Store({
     games: [],
     dates: [
       {
+        date: '10th July, 2021',
+        game: 'Funconf',
+        link: 'https://www.townscript.com/e/funconf2021',
+        description: 'Funconf Gamification Conference'
+      },
+      {
         date: '22nd June, 2021',
         game: 'No Estimates',
         link: '',
