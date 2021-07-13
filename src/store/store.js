@@ -174,6 +174,7 @@ export const store = new Vuex.Store({
           'A first playing of the MVP of this game really gave us some excellent feedback last week. A long way to go, but the concept seems of enough interest to start making this into a full-blown game.',
           'Look out for future runnings of new iterations!'
         ],
+        image: 'pipeline-game.jpg',
         tags: ['pipelinegame', 'agilesimulations', 'testinproduction']
       },
       {

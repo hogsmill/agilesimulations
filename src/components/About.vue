@@ -207,6 +207,9 @@ export default {
       &.companies-house {
         background-image: url("../assets/img/updates/companies-house.jpg");
       }
+      &.pipeline-game {
+        background-image: url("../assets/img/updates/pipeline-game.jpg");
+      }
     }
     padding: 12px 24px;
     .tags {
