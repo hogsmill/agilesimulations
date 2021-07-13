@@ -59,7 +59,7 @@ export const store = new Vuex.Store({
       {
         date: '22nd June, 2021',
         game: 'No Estimates',
-        link: '',
+        link: 'https://www.meetup.com/the-agile-arcade-serious-gaming-group/',
         description: 'Chris Stones Agile Arcade'
       },
       {
