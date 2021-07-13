@@ -175,6 +175,9 @@ export default {
 
   .update {
 
+    max-width: 850px;
+    margin: 0 auto;
+
     .update-image {
       float: right;
       border: 1px solid;
