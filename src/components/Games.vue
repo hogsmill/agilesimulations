@@ -173,7 +173,7 @@
         <div class="col-sm-4">
           <i class="fas section-icon fa-toilet-paper" />
           <h4>
-            5 Dysfunctions
+            5 Dysfunctions <New />
           </h4>
           <p>
             Under construction
@@ -188,7 +188,7 @@
         <div class="col-sm-4">
           <i class="fas section-icon fa-ambulance" />
           <h4>
-            Spotify Health Check
+            Spotify Health Check <New />
           </h4>
           <p>
             Under construction
@@ -263,7 +263,12 @@
 <script>
 import bus from '../socket.js'
 
+import New from './New.vue'
+
 export default {
+  components: {
+    New
+  },
   computed: {
     session() {
       return this.$store.getters.getSession
