@@ -119,7 +119,7 @@ export const store = new Vuex.Store({
           'We\'ve also started work on the online version a highly secret game. Suffice it to say, it involves Emperors and galactic domination...'
         ],
         image: 'ludogogy.jpg',
-        tags: ['agilesimulations', 'gamification' 'ludogogy', 'onlineagilegames']
+        tags: ['agilesimulations', 'gamification', 'ludogogy', 'onlineagilegames']
       },
       {
         date: '2021-07-12',
