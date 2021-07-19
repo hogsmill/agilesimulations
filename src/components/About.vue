@@ -186,6 +186,9 @@ export default {
       background-size: cover;
       margin: 0 0 4px 8px;
 
+      &.ludogogy {
+        background-image: url("../assets/img/updates/ludogogy.jpg");
+      }
       &.funconf2 {
         background-image: url("../assets/img/updates/funconf2.jpg");
       }
