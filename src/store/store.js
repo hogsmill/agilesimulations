@@ -113,6 +113,15 @@ export const store = new Vuex.Store({
     ],
     updates: [
       {
+        date: '2021-07-19',
+        text: [
+          'Very honoured to have an article pubished in the online gamification journal Ludogogy this month - <a href="https://www.ludogogy.co.uk/article/making-feedback-engaging-and-relevant-by-taking-agile-workshops-online/">Making feedback engaging and relevant by taking agile workshops online</a> - an exploration of how we can make feedback more relevant and convincing when we run workshops online.',
+          'We\'ve also started work on the online version a highly secret game. Suffice it to say, it involves Emperors and galactic domination...'
+        ],
+        image: 'ludogogy.jpg',
+        tags: ['agilesimulations', 'gamification' 'ludogogy', 'onlineagilegames']
+      },
+      {
         date: '2021-07-12',
         text: [
           'An excellent running of the No Estimates game at Funconf on the 11th July - <a href="https://www.townscript.com/e/funconf2021">Funconf</a> - India\'s First Gamification focused Unconference. As usual, lots of engagement and some great discussion.',
