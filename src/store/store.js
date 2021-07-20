@@ -29,9 +29,9 @@ export const store = new Vuex.Store({
         title: 'Dedicated',
         icon: 'fa-server',
         text: [
-          'Have your own, private, secure set of the games with their own databases customised to your organisational needs and branding, ' +
-              'with full training on games and learnings. Early access to new games and custom feature if required',
-          'Includes data persistence, secure login, phone support, early access to new features, custom games and full configuration ' +
+          'Have your own, private, secure set of the games customised to your organisational needs and branding, ' +
+              'with full training on games and learnings. Early access to new games and custom features if required',
+          'Includes data persistence, secure login, phone support, custom games and full configuration ' +
               'with no limits on number of players, etc.'
         ],
         price: 24.99,
@@ -41,7 +41,7 @@ export const store = new Vuex.Store({
         title: 'Regular Use',
         icon: 'fa-calendar-alt',
         text: [
-          'All the "single use" games, plus games and activities that can be run regularly such as Team Health Checks, ' +
+          'All the "single use" games, plus all the games and activities that can be run regularly such as Team Health Checks, ' +
             '5 Team Dysfunctions, Planning Poker and more. All with trend graphs and consolodation across teams and the whole ' +
             'organisation.',
           'All on a dedicated server where your data is stored securely and persistently.'
