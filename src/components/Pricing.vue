@@ -5,6 +5,7 @@
       <div class="pricing-table">
         <Panel :scope="'facilitation'" />
         <Panel :scope="'dedicated'" />
+        <Panel :scope="'regularUse'" />
         <Panel :scope="'using'" />
       </div>
     </div>

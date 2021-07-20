@@ -131,7 +131,7 @@ export default {
 <style lang="scss">
   .price-tab {
     display: table-cell;
-    width: 33%;
+    width: 25%;
     padding:0 24px 96px 24px;
     position: relative;
     border-radius: 12px;
@@ -143,6 +143,10 @@ export default {
 
     &.selected {
       border: 4px solid #f4511e;
+
+      p {
+        font-weight: 600;
+      }
     }
 
     .section-icon {

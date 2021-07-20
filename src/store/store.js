@@ -30,11 +30,23 @@ export const store = new Vuex.Store({
         icon: 'fa-server',
         text: [
           'Have your own, private, secure set of the games with their own databases customised to your organisational needs and branding, ' +
-              'with full training on games and learnings.',
+              'with full training on games and learnings. Early access to new games and custom feature if required',
           'Includes data persistence, secure login, phone support, early access to new features, custom games and full configuration ' +
               'with no limits on number of players, etc.'
         ],
         price: 24.99,
+        timing: 'month'
+      },
+      regularUse: {
+        title: 'Regular Use',
+        icon: 'fa-calendar-alt',
+        text: [
+          'All the "single use" games, plus games and activities that can be run regularly such as Team Health Checks, ' +
+            '5 Team Dysfunctions, Planning Poker and more. All with trend graphs and consolodation across teams and the whole ' +
+            'organisation.',
+          'All on a dedicated server where your data is stored securely and persistently.'
+        ],
+        price: 12.99,
         selected: true,
         timing: 'month'
       },
@@ -42,7 +54,8 @@ export const store = new Vuex.Store({
         title: 'Using',
         icon: 'fa-tv',
         text: [
-          'Just use all the games, whenever you want, with some configuration to allow them to be more applicable to your organisation/team/circumstances.'
+          'Just use all the "single-use" games, whenever you want, with configuration to allow you to make them as relevant and applicable ' +
+              'to your organisation/team/circumstances.'
         ],
         price: 5.99,
         timing: 'month'
@@ -115,7 +128,7 @@ export const store = new Vuex.Store({
       {
         date: '2021-07-19',
         text: [
-          'Very honoured to have an article pubished in the online gamification journal Ludogogy this month - <a href="https://www.ludogogy.co.uk/article/making-feedback-engaging-and-relevant-by-taking-agile-workshops-online/">Making feedback engaging and relevant by taking agile workshops online</a> - an exploration of how we can make feedback more relevant and convincing when we run workshops online.',
+          'Very honoured to have an article published in the online gamification journal Ludogogy this month - <a href="https://www.ludogogy.co.uk/article/making-feedback-engaging-and-relevant-by-taking-agile-workshops-online/">Making feedback engaging and relevant by taking agile workshops online</a> - an exploration of how we can make feedback more relevant and convincing when we run workshops online.',
           'We\'ve also started work on the online version a highly secret game. Suffice it to say, it involves Emperors and galactic domination...'
         ],
         image: 'ludogogy.jpg',
