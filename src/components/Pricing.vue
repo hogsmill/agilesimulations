@@ -1,5 +1,5 @@
 <template>
-  <div id="pricing" class="container-fluid text-center">
+  <div class="pricing container-fluid text-center">
     <div class="row slideanim">
       <h2>We offer the <a @click="setTab('games')">games</a> in these packages...</h2>
       <div class="pricing-table">
@@ -43,15 +43,15 @@ export default {
 </script>
 
 <style lang="scss">
-  .pricing-table {
-    width: 100%;
-    display: table;
-  }
-
-  #pricing {
+  .pricing {
     p, li {
       text-align: center;
       margin: 12px 0;
+    }
+
+    .pricing-table {
+      width: 100%;
+      display: table;
     }
   }
 

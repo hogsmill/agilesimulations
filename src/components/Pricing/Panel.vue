@@ -90,6 +90,9 @@ export default {
         case 'facilitation':
           str = str + ' Facilitation'
           break
+        case 'regularUse':
+          str = str + ' Regular Use'
+          break
         case 'using':
           str = str + ' Using'
           break
