@@ -2,11 +2,17 @@
   <div class="pricing container-fluid text-center">
     <div class="row slideanim">
       <h2>We offer the <a @click="setTab('games')">games</a> in these packages...</h2>
-      <div class="pricing-table">
+      <div class="pricing-table" v-if="!mobile">
         <Panel :scope="'facilitation'" />
         <Panel :scope="'dedicated'" />
         <Panel :scope="'regularUse'" />
         <Panel :scope="'using'" />
+      </div>
+      <div class="pricing-table" v-if="mobile">
+        <Panel :scope="'regularUse'" />
+        <Panel :scope="'using'" />
+        <Panel :scope="'dedicated'" />
+        <Panel :scope="'facilitation'" />
       </div>
     </div>
     <p class="contact">
@@ -27,6 +33,11 @@ import Panel from './pricing/Panel.vue'
 export default {
   components: {
     Panel
+  },
+  computed: {
+    mobile() {
+      return this.$store.getters.getMobile
+    }
   },
   methods: {
     contact() {
