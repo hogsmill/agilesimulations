@@ -145,7 +145,7 @@ export default {
       border: 4px solid #f4511e;
 
       p {
-        font-weight: 600;
+        font-weight: 600 !important;
       }
     }
 
@@ -160,10 +160,8 @@ export default {
       color: #444;
     }
 
-    .price-tab {
-      button a {
-        color: #fff;
-      }
+    button a {
+      color: #fff;
     }
 
     .price-tab-footer {
