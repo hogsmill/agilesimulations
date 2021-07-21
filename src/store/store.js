@@ -42,7 +42,7 @@ export const store = new Vuex.Store({
         icon: 'fa-calendar-alt',
         text: [
           'All the "single use" games, plus all the games and activities that can be run regularly such as Team Health Checks, ' +
-            '5 Team Dysfunctions, Planning Poker and more. All with trend graphs and consolodation across teams and the whole ' +
+            '5 Team Dysfunctions, Planning Poker and more. All with trend graphs and consolidation across teams and the whole ' +
             'organisation.',
           'All on a dedicated server where your data is stored securely and persistently.'
         ],
