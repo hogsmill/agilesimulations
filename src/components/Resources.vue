@@ -8,10 +8,19 @@
       presentations, and elsewhere. Links to these are provided in a handy list below,
       along with some other relevant resources...
     </p>
+
+    <!-- Agile Simulations -->
+
     <div class="resources">
       <h3>
         Agile Simulations Resources
       </h3>
+      <div class="resource" :class="{'mobile': mobile }">
+        <a href="https://youtu.be/AnOqq5Yygbk" target="_blank">
+          Many of the games
+        </a>
+        presented at Example Lean Agile
+      </div>
       <div class="resource" :class="{'mobile': mobile }">
         What we learned from running
         <a href="https://kanbanzone.com/2021/what-we-learned-from-taking-agile-workshops-online/" target="_blank">
@@ -47,9 +56,25 @@
         </a>
         of the Coin Game and No Estimates
       </div>
+      <div class="resource" :class="{'mobile': mobile }">
+        <a href="https://youtu.be/seOBNlpEO3Y" target="_blank">
+          No Estimates
+        </a>
+        at Funconf 2021, India's first ever gamification conference
+      </div>
     </div>
+
+    <!-- Other -->
+
     <div class="resources">
       <h3>Other Relevant Resources</h3>
+      <div class="resource" :class="{'mobile': mobile }">
+        Other interesting
+        <a href="https://agilesimulations.medium.com/" target="_blank">
+          blog posts
+        </a>
+        on Medium
+      </div>
       <div class="resource" :class="{'mobile': mobile }">
         An
         <a href="https://www.linkedin.com/pulse/agile-reading-list-steve-wells/" target="_blank">
@@ -63,20 +88,17 @@
         </a>
         on LinkedIn
       </div>
-      <div class="resource" :class="{'mobile': mobile }">
-        Other interesting
-        <a href="https://agilesimulations.medium.com/" target="_blank">
-          blog posts
-        </a>
-        on Medium
-      </div>
     </div>
+
+    <!-- Because we can -->
+
     <div class="resources">
       <h3>Because we can...</h3>
       <div class="resource" :class="{'mobile': mobile }">
         <a href="/mandelbrot.html" target="_blank">
-          The Mandelbrot set in JavaScript. I mean - why not?
+          The Mandelbrot Set
         </a>
+        in JavaScript. I mean - why not?
       </div>
     </div>
   </div>
@@ -119,6 +141,7 @@ export default {
     display: inline-block;
     vertical-align: top;
     background-color: #f4511e;
+    box-shadow: 2px 2px 3px #aaa;
 
     &.mobile {
       width: 80%;
