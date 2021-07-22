@@ -28,7 +28,7 @@
       <div class="mt-4 quote-form">
         <h4>{{ headingStr() }}</h4>
         <p>
-          Thanks for visiting Agile Simulations; please let us know anything further
+          Thanks for your interest Agile Simulations; please let us know any further
           information on your requirements in the comments box below.
         </p>
         <div v-if="scope == 'facilitation'">
@@ -60,6 +60,44 @@
         </div>
       </div>
     </modal>
+
+    <div :name="'quote-mobile-' + scope" class="quote-mobile" v-if="mobileQuote">
+      <div class="float-right mr-2 mt-1">
+        <button type="button" class="close" @click="hide" aria-label="Close">
+          <i class="fas fa-times" />
+        </button>
+      </div>
+      <div class="mt-4 quote-form">
+        <h4>{{ headingStr() }}</h4>
+        <p>
+          Thanks for your interest; please let us know any further
+          information on your requirements in the comments box below.
+        </p>
+        <div v-if="scope == 'facilitation'">
+          I am interested in facilitation of
+          <select id="game-select">
+            <option>-- Select --</option>
+            <option>No Estimates</option>
+            <option>Pipeline Game</option>
+            <option>Coin Game</option>
+            <option>Kanban Playground</option>
+            <option>Agile Battleships</option>
+            <option>Simulations</option>
+            <option>All Games</option>
+          </select>
+        </div>
+        <div>
+          <input type="text" :id="'name-' + scope" class="form-control" placeholder="Name">
+          <input type="text" :id="'email-' + scope" class="form-control" placeholder="Email">
+          <input type="text" :id="'company-' + scope" class="form-control" placeholder="Company (Optional)">
+          <input type="text" :id="'mobile-' + scope" class="form-control" placeholder="Mobile (optional)">
+          <textarea :id="'comments-' + scope" rows="3" class="form-control" placeholder="Other information" />
+          <button class="btn btn-primary" @click="send()">
+            Send
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -72,10 +110,14 @@ export default {
   ],
   data() {
     return {
-      quote: true
+      quote: true,
+      mobileQuote: false
     }
   },
   computed: {
+    mobile() {
+      return this.$store.getters.getMobile
+    },
     pricing() {
       return this.$store.getters.getPricing
     }
@@ -99,16 +141,34 @@ export default {
       }
       return str
     },
-    showMoreInfo() {
+    showMoreInfo(modal) {
       this.quote = false
+      if (this.mobile) {
+        this.mobileQuote = !this.mobileQuote
+        window.scrollTo(0, 0)
+      } else {
       this.$modal.show('quote-' + this.scope)
+      }
     },
     hide() {
-      this.$modal.hide('quote-' + this.scope)
+      if (this.mobile) {
+        this.mobileQuote = false
+      } else {
+        this.$modal.hide('quote-' + this.scope)
+      }
     },
+    //showQuote() {
+    //  this.quote = true
+    //  this.$modal.show('quote-' + this.scope)
+    //},
     showQuote() {
-      this.quote = true
+      this.quote = false
+      if (this.mobile) {
+        this.mobileQuote = !this.mobileQuote
+        window.scrollTo(0, 0)
+      } else {
       this.$modal.show('quote-' + this.scope)
+      }
     },
     send() {
       const success = mailFuns.post({
@@ -148,7 +208,7 @@ export default {
       border: 4px solid #f4511e;
 
       p {
-        font-weight: 600 !important;
+        font-weight: 600;
       }
     }
 
@@ -194,6 +254,7 @@ export default {
       margin-bottom: 12px;
       line-height: 1.5;
       color: #444;
+      font-weight: initial;
     }
 
     .quote-form {
@@ -211,6 +272,25 @@ export default {
     display: block;
     width: 100%;
     margin-bottom: 56px;
+  }
+
+  .quote-mobile {
+    position: fixed;
+    top: 40px;
+    left: 0;
+    background-color: #fff;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    padding: 4px;
+
+    p {
+      font-weight: 500 !important;
+    }
+
+    input, button {
+      margin: 4px 0;
+    }
   }
 }
 
