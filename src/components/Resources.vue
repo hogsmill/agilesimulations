@@ -35,6 +35,16 @@
         blog post on Medium
       </div>
       <div class="resource" :class="{'mobile': mobile }">
+        Why
+        <a href="https://www.ludogogy.co.uk/article/making-feedback-engaging-and-relevant-by-taking-agile-workshops-online/" target="_blank">
+          feedback is more effective online
+        </a>
+        from the online gamification journal
+        <a href="https://www.ludogogy.co.uk/" target="_blank">
+          Ludogogy
+        </a>
+      </div>
+      <div class="resource" :class="{'mobile': mobile }">
         The
         <a href="https://www.youtube.com/watch?v=k0hvgZBfmuw" target="_blank">
           Coin Game</a>
