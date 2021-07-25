@@ -117,7 +117,7 @@ MongoClient.connect(url, { useUnifiedTopology: true, maxIdleTimeMS: maxIdleTime 
 
     socket.on('sendUpdateLevel', (data) => { dbStore.updateLevel(db, io, data, debugOn) })
 
-    socket.on('sendUpdateRenewal', (data) => { dbStore.sendUpdateRenewal(db, io, data, debugOn) })
+    socket.on('sendUpdateRenewal', (data) => { dbStore.updateRenewal(db, io, data, debugOn) })
 
     socket.on('sendNewPassCode', (data) => { dbStore.newPassCode(db, io, data, debugOn) })
 
