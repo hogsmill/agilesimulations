@@ -138,6 +138,7 @@ module.exports = {
           noOfUsers: data.noOfUsers,
           route: data.route,
           level: data.level,
+          renewal: data.renewal,
           passCode: passCode.new(),
           adminPassCode: passCode.new(),
           enabled: data.enabled,
@@ -177,6 +178,16 @@ module.exports = {
     if (debugOn) { console.log('updateLevel', data) }
 
     db.collection.updateOne({userName: data.userName}, {$set: {level: data.level}}, function(err, res) {
+      if (err) throw err
+      _loadAccounts(db, io, {id: data.id}, debugOn)
+    })
+  },
+
+  updateRenewal: function(db, io, data, debugOn) {
+
+    if (debugOn) { console.log('updateRenewal', data) }
+
+    db.collection.updateOne({userName: data.userName}, {$set: {renewal: data.renewal}}, function(err, res) {
       if (err) throw err
       _loadAccounts(db, io, {id: data.id}, debugOn)
     })
