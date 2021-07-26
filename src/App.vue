@@ -12,6 +12,7 @@
       <Epiphanising v-if="tab == 'epiphanising'" />
       <Relevant v-if="tab == 'relevant'" />
       <Pricing v-if="tab == 'pricing'" />
+      <FAQs v-if="tab == 'faqs'" />
       <Resources v-if="tab == 'resources'" />
       <Labs v-if="tab == 'labs'" />
       <Diary v-if="tab == 'diary'" />
@@ -36,6 +37,7 @@ import Epiphanising from './components/main/Epiphanising.vue'
 import Relevant from './components/main/Relevant.vue'
 import Games from './components/Games.vue'
 import Pricing from './components/Pricing.vue'
+import FAQs from './components/FAQs.vue'
 import Resources from './components/Resources.vue'
 import Labs from './components/Labs.vue'
 import About from './components/About.vue'
@@ -59,6 +61,7 @@ export default {
     Games,
     Pricing,
     Resources,
+    FAQs,
     Labs,
     About,
     Suggest,

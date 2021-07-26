@@ -11,6 +11,9 @@
         <li :class="{'active': tab == 'pricing'}" @click="setTab('pricing')">
           PRICING
         </li>
+        <li :class="{'active': tab == 'faqs'}" @click="setTab('faqs')">
+          FAQs
+        </li>
         <li :class="{'active': tab == 'resources'}" @click="setTab('resources')">
           RESOURCES
         </li>
