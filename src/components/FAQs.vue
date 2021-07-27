@@ -35,6 +35,10 @@ export default {
         {
           question: 'I\'ve been using the Coin Game for a while now, but I can no longer see the Facilitator tab where I can set up my teams and team members. Why is this?',
           answer: 'Unfortunately, for a variety of cost and technical reasons, we can no longer provide these features for free, and will have to charge a nominal - hopefully easily manageable - monthly fee. Please check the Pricing tab for details'
+        },
+        {
+          question: 'I\'d like to run No Estimates with some people face-to-face in the office in a conference room, but others remote? Is this possible?',
+          answer: 'Absolutely. Those in the room can show the board on a central display, and use the No Estimates Mobile app to make their moves. Those remotely play as normal. This gives all the benefits of playing online (real-time data, etc.), but also a face-to-face experience'
         }
       ]
     }
