@@ -36,6 +36,7 @@ export default {
   .footer {
     padding: 30px;
     background-color: #f4511e;
+    margin-top: 36px;
 
     h4 {
       text-align: center;
