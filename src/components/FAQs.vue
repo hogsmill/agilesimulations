@@ -18,9 +18,7 @@
           <div class="icon">
             <i class="fas fa-info-circle" />
           </div>
-          <div class="text">
-            {{ faq.answer }}
-          </div>
+          <div class="text" v-html="faq.answer" />
         </div>
       </div>
     </div>
@@ -31,10 +29,11 @@
 export default {
   data() {
     return {
+      answer: '',
       faqs: [
         {
           question: 'I\'ve been using the Coin Game for a while now, but I can no longer see the Facilitator tab where I can set up my teams and team members. Why is this?',
-          answer: 'Unfortunately, for a variety of cost and technical reasons, we can no longer provide these features for free, and will have to charge a nominal - hopefully easily manageable - monthly fee. Please check the Pricing tab for details'
+          answer: 'Unfortunately, for a variety of cost and technical reasons, we can no longer provide these features for free, and will have to charge a nominal - hopefully easily manageable - monthly fee. Please check the <a href="https://agilesimulations.co.uk?pricing">Pricing</a> tab for details'
         },
         {
           question: 'I\'d like to run No Estimates with some people face-to-face in the office in a conference room, but others remote? Is this possible?',
@@ -66,6 +65,10 @@ export default {
 
       .answer {
         margin-bottom: 24px;
+
+        a {
+          font-weight: bold;
+        }
       }
 
       div div {
