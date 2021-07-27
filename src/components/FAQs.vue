@@ -60,6 +60,10 @@ export default {
 
     .questions {
 
+      .question {
+        margin-top: 24px;
+      }
+
       .answer {
         margin-bottom: 24px;
       }
