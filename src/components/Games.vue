@@ -173,7 +173,7 @@
         <div class="col-sm-4">
           <i class="fas section-icon fa-toilet-paper" />
           <h4>
-            5 Dysfunctions <New />
+            <a href="five-dysfunctions">5 Dysfunctions</a> <New />
           </h4>
           <p>
             Under construction
@@ -188,7 +188,7 @@
         <div class="col-sm-4">
           <i class="fas section-icon fa-ambulance" />
           <h4>
-            Spotify Health Check <New />
+            <a href="team-health-check">Spotify Health Check</a> <New />
           </h4>
           <p>
             Under construction
