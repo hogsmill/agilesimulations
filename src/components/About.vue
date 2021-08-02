@@ -186,6 +186,9 @@ export default {
       background-size: cover;
       margin: 0 0 4px 8px;
 
+      &.healthCheck {
+        background-image: url("../assets/img/updates/healthCheck.jpg");
+      }
       &.ludogogy {
         background-image: url("../assets/img/updates/ludogogy.jpg");
       }
