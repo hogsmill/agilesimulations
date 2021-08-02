@@ -126,6 +126,19 @@ export const store = new Vuex.Store({
     ],
     updates: [
       {
+        date: '2021-08-02',
+        text: [
+          'This week we\'ve been working on an assessment platform to allow you to assess teams, both individually, and across an organisation, with full reporting, trending, graphing, etc. to make it as easy and effective to use as possible. So far, you can run:',
+          '  - Spotify Health Check',
+          '  - 5 Dysfunctions of a Team',
+          '...with more planned (all suggestions welcome)',
+          'You can get full access to all configuration and reporting features of these with an agile simulations subscription (see <a href="https://agilesimulations.co.uk/?pricing"), which will, for a (hopefully reasonable) fee, give you full admin/facilitator access to all games and tools we provide.'
+
+        ],
+        image: 'healthCheck.jpg',
+        tags: ['agilesimulations', 'spotifyhealthcheck', '5dysfunctions', 'agileteamassessment']
+      },
+      {
         date: '2021-07-19',
         text: [
           'Very honoured to have an article published in the online gamification journal Ludogogy this month - <a href="https://www.ludogogy.co.uk/article/making-feedback-engaging-and-relevant-by-taking-agile-workshops-online/">Making feedback engaging and relevant by taking agile workshops online</a> - an exploration of how we can make feedback more relevant and convincing when we run workshops online.',
