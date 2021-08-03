@@ -39,7 +39,9 @@
       The reason we chose a subscription model was to allow you to pay once, and then have access to <em>all</em>
       the games and workshops whenever the need arises; we don't want anyone not using a game when a situation
       calls for it because they haven't purchased that particular game, and won't be able to get access in time.
-      Also, we want you all to try all the games as much, and as often, as possible.
+      Also, we want you all to try all the games as much, and as often, as possible. We have also tried to make it as
+      easy as possible for Scrum Masters and Agile Coach who are perm employees to be able to justify purchasing a
+      subscription by adding useful activities that can be run (e.g.) monthly; this should make it an easier sell.
     </p>
     <p>
       There are two types of games. Some are one-off "as and when the need arises" games, which can be used as stand-alone
