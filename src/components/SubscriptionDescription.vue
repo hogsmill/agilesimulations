@@ -15,19 +15,22 @@
     <ul>
       <li>
         To be as engaging, and as close to the "face-to-face" experience as possible. In some ways, they are even
-        better than the "real thing" (<i>see, for instance</i> -
-        <a href="https://kanbanzone.com/2021/what-we-learned-from-taking-agile-workshops-online/">
-          What We Learned from Taking Agile Workshops Online
-        </a> <i>and</i>
-        <a href="https://www.ludogogy.co.uk/article/making-feedback-engaging-and-relevant-by-taking-agile-workshops-online/">
-          Making feedback engaging and relevant by taking agile workshops online
-        </a>)
+        better than the "real thing".
       </li>
       <li>
         To demonstrate aspects of an agile mindset so we can allow players to uncover new and interesting ways of
         thinking.
       </li>
     </ul>
+    <p>
+      (<i>for example of games being "better than the real thing", see, for instance</i> -
+      <a href="https://kanbanzone.com/2021/what-we-learned-from-taking-agile-workshops-online/">
+        What We Learned from Taking Agile Workshops Online
+      </a> <i>and</i>
+      <a href="https://www.ludogogy.co.uk/article/making-feedback-engaging-and-relevant-by-taking-agile-workshops-online/">
+        Making feedback engaging and relevant by taking agile workshops online
+      </a>)
+    </p>
     <p>
       However, running software versions of games comes with various costs, so we do need to charge a small - but
       albeit hopefully manageable - subscription to allow you to use all the features of all the games.
@@ -36,12 +39,14 @@
       The reason we chose a subscription model was to allow you to pay once, and then have access to <em>all</em>
       the games and workshops whenever the need arises; we don't want anyone not using a game when a situation
       calls for it because they haven't purchased that particular game, and won't be able to get access in time.
-      Also, we want you all to try all the games as much as possible.
+      Also, we want you all to try all the games as much, and as often, as possible.
     </p>
     <p>
       There are two types of games. Some are one-off "as and when the need arises" games, which can be used as stand-alone
-      workshops/meetings, or as part of retros, training courses, etc. We have found the games particularly useful to break
-      things up and increase engagement during online training or meetings, and these seem to be more and more common in
+      workshops/meetings, or as part of retros, training courses, etc. They are usually used to really hammer home an agile
+      mindset concept through gamification; getting players to come to a realisation without realising it because they were
+      concentrating on playing the game and having fun... We have found the games particularly useful to break
+      things up and increase engagement during online training courses or meetings, and these seem to be more and more common in
       these days of increased remote/WFH/WFO working. Examples are:
     </p>
     <ul>
