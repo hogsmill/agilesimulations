@@ -177,9 +177,7 @@ export default {
   created() {
     const self = this
 
-    if (params.isParam('pricing')) {
-      this.setTab('pricing')
-    }
+    this.setTabFromParams()
 
     if (!this.id) {
       this.$store.dispatch('updateId', uuidv4())
@@ -233,6 +231,17 @@ export default {
     })
   },
   methods: {
+    setTabFromParams() {
+      const tabs = [
+        'pricing',
+        'subscriptiondescription'
+      ]
+      for (let i = 0; i < tabs.length; i++) {
+        if (params.isParam(tabs[i])) {
+          this.setTab(tabs[i])
+        }
+      }
+    },
     clearLogin() {
       const data = {session: '', userName: '', route: '', loggedInAsAdmin: false}
       this.$store.dispatch('updateLogin', data)

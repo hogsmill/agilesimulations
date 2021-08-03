@@ -17,6 +17,7 @@
       <Labs v-if="tab == 'labs'" />
       <Diary v-if="tab == 'diary'" />
       <About v-if="tab == 'about'" />
+      <SubscriptionDescription v-if="tab == 'subscriptiondescription'" />
       <Suggest v-if="tab == 'suggest'" />
       <TandCs v-if="tab == 'tandcs'" />
       <Security v-if="tab == 'security'" />
@@ -41,6 +42,7 @@ import FAQs from './components/FAQs.vue'
 import Resources from './components/Resources.vue'
 import Labs from './components/Labs.vue'
 import About from './components/About.vue'
+import SubscriptionDescription from './components/SubscriptionDescription.vue'
 import Suggest from './components/labs/Suggest.vue'
 import TandCs from './components/footer/TandCs.vue'
 import Security from './components/footer/Security.vue'
@@ -64,6 +66,7 @@ export default {
     FAQs,
     Labs,
     About,
+    SubscriptionDescription,
     Suggest,
     TandCs,
     Security,
