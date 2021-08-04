@@ -129,4 +129,7 @@ b, strong {
   color: #f4511e;
   margin: 10px auto;
 }
+.fa-rss-square {
+  color: red !important;
+}
 </style>

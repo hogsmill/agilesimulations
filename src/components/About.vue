@@ -52,6 +52,9 @@
     <div v-if="scope == 'updates'">
       <h2>
         Company Updates
+        <a href="/rss">
+          <i class="fas fa-rss-square" />
+        </a>
       </h2>
       <div v-for="(update, index) in updates" :key="index" class="update">
         <h3>
