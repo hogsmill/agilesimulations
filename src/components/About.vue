@@ -52,7 +52,7 @@
     <div v-if="scope == 'updates'">
       <h2>
         Company Updates
-        <a href="/rss">
+        <a href="/rss.php">
           <i class="fas fa-rss-square" />
         </a>
       </h2>
