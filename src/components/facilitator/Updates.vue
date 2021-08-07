@@ -127,6 +127,10 @@ export default {
         border: 1px solid;
         padding: 6px;
       }
+
+      th {
+        text-align: center;
+      }
     }
   }
 }
