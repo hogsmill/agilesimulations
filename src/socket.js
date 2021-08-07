@@ -47,6 +47,8 @@ bus.$on('sendLoadUpdates', (data) => { socket.emit('sendLoadUpdates', data) })
 
 bus.$on('sendAddUpdate', (data) => { socket.emit('sendAddUpdate', data) })
 
+bus.$on('sendUpdateUpdate', (data) => { socket.emit('sendUpdateUpdate', data) })
+
 bus.$on('sendDeleteUpdate', (data) => { socket.emit('sendDeleteUpdate', data) })
 
 socket.on('loadUpdates', (data) => { bus.$emit('loadUpdates', data) })

@@ -41,7 +41,22 @@ module.exports = {
     if (debugOn) { console.log('addUpdate', data) }
 
     data.id = uuidv4()
+    data.text = []
+    data.tags = []
     db.updatesCollection.insertOne(data, function(err, res) {
+      if (err) throw err
+      _loadUpdates(db, io, debugOn)
+    })
+  },
+
+  updateUpdate: function(db, io, data, debugOn) {
+
+    if (debugOn) { console.log('updateUpdate', data) }
+
+    const id = data.id
+    delete data.id
+    delete data._id
+    db.updatesCollection.updateOne({id: id}, {$set: data}, function(err, res) {
       if (err) throw err
       _loadUpdates(db, io, debugOn)
     })
