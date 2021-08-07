@@ -28,6 +28,8 @@
 </template>
 
 <script>
+import params from './lib/params.js'
+
 import Header from './components/Header.vue'
 import Jumbotron from './components/Jumbotron.vue'
 import Main from './components/Main.vue'
@@ -91,6 +93,17 @@ export default {
   },
   created() {
     this.$store.dispatch('updateMobile', window.outerWidth < 768)
+
+    const gameDate = params.getParam('gameDate')
+    const update = params.getParam('update')
+    if (gameDate) {
+      this.$store.dispatch('updateTab', 'about')
+      this.$store.dispatch('setRss', {scope: 'gameDate', id: gameDate})
+    }
+    if (update) {
+      this.$store.dispatch('updateTab', 'about')
+      this.$store.dispatch('setRss', {scope: 'update', id: update})
+    }
   }
 }
 </script>

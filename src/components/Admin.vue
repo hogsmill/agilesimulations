@@ -34,9 +34,7 @@ export default {
   },
   methods: {
     setScope(scope) {
-      console.log(scope)
       this.scope = scope
-      console.log(this.scope)
     }
   }
 }

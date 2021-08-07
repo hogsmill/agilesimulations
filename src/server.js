@@ -54,6 +54,7 @@ if (!prod) {
   })
 }
 
+const rss = require('./store/rss.js')
 const dbStore = require('./store/dbStore.js')
 const adminStore = require('./store/adminStore.js')
 
@@ -85,6 +86,8 @@ MongoClient.connect(url, { useUnifiedTopology: true, maxIdleTimeMS: maxIdleTime 
   db.updatesCollection = db.collection(updatesCollection)
   db.gameDatesCollection = db.collection(gameDatesCollection)
   db.collection = db.collection(collection)
+
+  rss.createGameDates(db, debugOn)
 
   io.on('connection', (socket) => {
     const connection = socket.handshake.headers.host

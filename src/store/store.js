@@ -62,6 +62,10 @@ export const store = new Vuex.Store({
       }
     },
     games: [],
+    rss: {
+      scope: '',
+      id: ''
+    },
     updates: [
       {
         date: '2021-08-02',
@@ -314,6 +318,9 @@ export const store = new Vuex.Store({
     },
     getUpdates: (state) => {
       return state.updates
+    },
+    getRss: (state) => {
+      return state.rss
     }
   },
   mutations: {
@@ -334,6 +341,12 @@ export const store = new Vuex.Store({
     },
     loadGames: (state, payload) => {
       state.games = payload
+    },
+    setRss: (state, payload) => {
+      state.rss = {
+        scope: payload.scope,
+        id: payload.id
+      }
     }
   },
   actions: {
@@ -351,6 +364,9 @@ export const store = new Vuex.Store({
     },
     loadGames: ({ commit }, payload) => {
       commit('loadGames', payload)
+    },
+    setRss: ({ commit }, payload) => {
+      commit('setRss', payload)
     }
   }
 })

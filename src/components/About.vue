@@ -103,6 +103,9 @@ export default {
     mobile() {
       return this.$store.getters.getMobile
     },
+    rss() {
+      return this.$store.getters.getRss
+    },
     updates() {
       return this.$store.getters.getUpdates
     }
@@ -113,6 +116,17 @@ export default {
     bus.$on('loadGameDates', (data) => {
       this.dates = data
     })
+
+    if (this.rss.id) {
+      switch(this.rss.scope) {
+        case 'gameDate':
+          this.scope = 'dates'
+          break
+        case 'update':
+          this.scope = 'updates'
+          break
+      }
+    }
   },
   methods: {
     updateImageClass(image) {
