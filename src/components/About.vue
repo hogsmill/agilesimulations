@@ -34,7 +34,7 @@
         <tbody>
           <tr v-for="(date, index) in dates" :key="index">
             <td>
-              {{ date.date }}
+              {{ gameDate(date) }}
             </td>
             <td>
               {{ date.game }}
@@ -79,6 +79,8 @@
 </template>
 
 <script>
+import bus from '../socket.js'
+
 import AgileInfo from './about/AgileInfo.vue'
 
 export default {
@@ -87,6 +89,7 @@ export default {
   },
   data() {
     return {
+      dates: [],
       scope: 'dates',
       scopeDescription: 'Where we\'ve played games',
       scopeDescriptions: {
@@ -100,12 +103,16 @@ export default {
     mobile() {
       return this.$store.getters.getMobile
     },
-    dates() {
-      return this.$store.getters.getDates
-    },
     updates() {
       return this.$store.getters.getUpdates
     }
+  },
+  created() {
+    bus.$emit('sendLoadGameDates')
+
+    bus.$on('loadGameDates', (data) => {
+      this.dates = data
+    })
   },
   methods: {
     updateImageClass(image) {
@@ -120,6 +127,11 @@ export default {
         str = 'header'
       }
       return str
+    },
+    gameDate(date) {
+      const month = date.month < 10 ? '0' + date.month : date.month
+      const day = date.day < 10 ? '0' + date.day : date.day
+      return date.year + '-' + month + '-' + day
     }
   }
 }

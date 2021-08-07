@@ -9,6 +9,8 @@ const prod = os.hostname() == 'agilesimulations' ? true : false
 const port = 3099
 const logFile = prod ? process.argv[4] : 'server.log'
 const collection = 'agileSimulations'
+const updatesCollection = 'agileSimulationsUpdates'
+const gameDatesCollection = 'agileSimulationsGameDates'
 
 ON_DEATH(function(signal, err) {
   let logStr = new Date()
@@ -53,6 +55,7 @@ if (!prod) {
 }
 
 const dbStore = require('./store/dbStore.js')
+const adminStore = require('./store/adminStore.js')
 
 const MongoClient = require('mongodb').MongoClient
 
@@ -76,7 +79,11 @@ MongoClient.connect(url, { useUnifiedTopology: true, maxIdleTimeMS: maxIdleTime 
   const db = client.db('db')
 
   db.createCollection(collection, function(error, collection) {})
+  db.createCollection(updatesCollection, function(error, updatesCollection) {})
+  db.createCollection(gameDatesCollection, function(error, gameDatesCollection) {})
 
+  db.updatesCollection = db.collection(updatesCollection)
+  db.gameDatesCollection = db.collection(gameDatesCollection)
   db.collection = db.collection(collection)
 
   io.on('connection', (socket) => {
@@ -102,6 +109,20 @@ MongoClient.connect(url, { useUnifiedTopology: true, maxIdleTimeMS: maxIdleTime 
     socket.on('sendCheckLogin', (data) => { dbStore.checkLogin(db, io, data, debugOn) })
 
     socket.on('sendLogout', (data) => { dbStore.logout(db, io, data, debugOn) })
+
+    // Admin
+
+    socket.on('sendLoadGameDates', (data) => { adminStore.loadGameDates(db, io, data, debugOn) })
+
+    socket.on('sendAddGameDate', (data) => { adminStore.addGameDate(db, io, data, debugOn) })
+
+    socket.on('sendDeleteGameDate', (data) => { adminStore.deleteGameDate(db, io, data, debugOn) })
+
+    socket.on('sendLoadUpdates', (data) => { adminStore.loadUpdates(db, io, data, debugOn) })
+
+    socket.on('sendAddUpdate', (data) => { adminStore.addUpdate(db, io, data, debugOn) })
+
+    socket.on('sendDeleteUpdate', (data) => { adminStore.deleteUpdate(db, io, data, debugOn) })
 
     // From accounts
 

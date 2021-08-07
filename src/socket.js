@@ -41,6 +41,23 @@ socket.on('loginError', (data) => { bus.$emit('loginError', data) })
 
 socket.on('logout', (data) => { bus.$emit('logout', data) })
 
+// Admin
+
+bus.$on('sendLoadUpdates', (data) => { socket.emit('sendLoadUpdates', data) })
+
+bus.$on('sendAddUpdate', (data) => { socket.emit('sendAddUpdate', data) })
+
+bus.$on('sendDeleteUpdate', (data) => { socket.emit('sendDeleteUpdate', data) })
+
+socket.on('loadUpdates', (data) => { bus.$emit('loadUpdates', data) })
+
+bus.$on('sendLoadGameDates', (data) => { socket.emit('sendLoadGameDates', data) })
+
+bus.$on('sendAddGameDate', (data) => { socket.emit('sendAddGameDate', data) })
+
+bus.$on('sendDeleteGameDate', (data) => { socket.emit('sendDeleteGameDate', data) })
+
+socket.on('loadGameDates', (data) => { bus.$emit('loadGameDates', data) })
 // --------------------------------------------------------------
 // Labs
 

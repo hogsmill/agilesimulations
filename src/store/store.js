@@ -62,68 +62,6 @@ export const store = new Vuex.Store({
       }
     },
     games: [],
-    dates: [
-      {
-        date: '10th July, 2021',
-        game: 'Funconf',
-        link: 'https://www.townscript.com/e/funconf2021',
-        description: 'Funconf Gamification Conference'
-      },
-      {
-        date: '22nd June, 2021',
-        game: 'No Estimates',
-        link: 'https://www.meetup.com/the-agile-arcade-serious-gaming-group/',
-        description: 'Chris Stones Agile Arcade'
-      },
-      {
-        date: '14th June, 2021',
-        game: 'Coin Game',
-        link: '',
-        description: 'Part of a Training Course'
-      },
-      {
-        date: '14th June, 2021',
-        game: 'Context Switching',
-        link: '',
-        description: 'Part of a Training Course'
-      },
-      {
-        date: '14th June, 2021',
-        game: 'Planning Poker',
-        link: '',
-        description: 'Part of a Training Course'
-      },
-      {
-        date: '12th June, 2021',
-        game: 'No Estimates',
-        link: '',
-        description: 'Gamify IT (Women in Tech India), 2021'
-      },
-      {
-        date: '14th May, 2021',
-        game: 'The Pipeline Game',
-        link: '',
-        description: 'First public test of the game'
-      },
-      {
-        date: '23rd March, 2021',
-        game: 'No Estimates',
-        link: 'https://vimeopro.com/user111580551/triagile-2021/video/533113766',
-        description: 'Tri Agile, 2021'
-      },
-      {
-        date: '2nd February, 2021',
-        game: 'No Estimates',
-        link: '',
-        description: 'Reflect Agile 20'
-      },
-      {
-        date: '23rd September, 2020',
-        game: 'No Estimates',
-        link: 'https://community-z.com/events/agile-z-day/talks/5120',
-        description: 'Agile Z-Day, 2020'
-      }
-    ],
     updates: [
       {
         date: '2021-08-02',
@@ -373,9 +311,6 @@ export const store = new Vuex.Store({
     },
     getGames: (state) => {
       return state.games
-    },
-    getDates: (state) => {
-      return state.dates
     },
     getUpdates: (state) => {
       return state.updates
