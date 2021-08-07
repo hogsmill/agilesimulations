@@ -27,7 +27,7 @@ function footer() {
 
 function writeItem(url, date) {
   writeXML('    <url>')
-  writeXML('      <loc>http://agilesimulations.co.uk/' + url + '</loc>')
+  writeXML('      <loc>https://agilesimulations.co.uk/' + url + '</loc>')
 	writeXML('      <lastmod>' + date + '</lastmod>')
   writeXML('    </url>')
 }
