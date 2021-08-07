@@ -1,6 +1,6 @@
 <template>
   <div class="about">
-    <h2 class="menu">
+    <h2 v-if="!rss.id" class="menu">
       <div :class="{ 'selected': scope == 'info' }">
         <i class="fas fa-info" :title="scopeDescriptions['info']" @click="setScope('info')" />
       </div>
@@ -32,7 +32,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(date, index) in dates" :key="index">
+          <tr v-for="(date, index) in dates" :class="{ 'selected': rss.id == date.id }" :key="index">
             <td>
               {{ gameDate(date) }}
             </td>
@@ -190,6 +190,13 @@ export default {
 
   table {
     margin: 0 auto;
+
+    tr.selected {
+      border: 3px solid #f4511e;
+      td {
+        font-weight: bold;
+      }
+    }
 
     th, td {
       padding: 6px 12px;
