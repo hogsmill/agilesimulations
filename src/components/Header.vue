@@ -240,7 +240,8 @@ export default {
     setTabFromParams() {
       const tabs = [
         'pricing',
-        'subscriptiondescription'
+        'subscriptiondescription',
+        'games'
       ]
       for (let i = 0; i < tabs.length; i++) {
         if (params.isParam(tabs[i])) {

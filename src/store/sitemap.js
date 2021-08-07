@@ -46,7 +46,8 @@ module.exports = {
 
     const tabs = [
       'pricing',
-      'subscriptiondescription'
+      'subscriptiondescription',
+      'games'
     ]
     date = timeFuns.w3cDate()
     header()
