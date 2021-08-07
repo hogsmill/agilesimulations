@@ -36,7 +36,7 @@ function writeItem(file, item) {
   writeXML(file, '    </title>')
   writeXML(file, '    <link>')
   writeXML(file, '      https://agilesimulations.co.uk?gameDate=' + item.id)
-  writeXML(file, '    <link>')
+  writeXML(file, '    </link>')
   writeXML(file, '    <description>')
   writeXML(file, '      ' + item.description)
   writeXML(file, '    </description>')
