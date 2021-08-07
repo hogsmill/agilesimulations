@@ -1,5 +1,5 @@
 <template>
-  <select id="select-day">
+  <select :id="id ? 'select-day-' + id : 'select-day'" :value="day">
     <option value="">
       DD
     </option>
@@ -8,3 +8,12 @@
     </option>
   </select>
 </template>
+
+<script>
+export default {
+  props: [
+    'id',
+    'day'
+  ]
+}
+</script>

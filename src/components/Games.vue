@@ -4,7 +4,7 @@
       <h2>Workshops</h2>
       <div class="row slideanim">
         <div class="col-sm-4">
-          <i class="fas section-icon fa-dice" />
+          <i class="fas section-icon fa-dice" name="no-estimates" />
           <h4 id="no-estimates">
             <a v-if="!route" href="no-estimates?walkThrough">No Estimates</a>
             <a v-if="route" :href="'no-estimates-' + route + '?walkThrough'">No Estimates</a>
@@ -24,7 +24,7 @@
           <p><b>#noestimates</b></p>
         </div>
         <div class="col-sm-4">
-          <i class="fas section-icon fa-life-ring" />
+          <i class="fas section-icon fa-life-ring" name="survival" />
           <h4 id="survival">
             <a href="survival">Survival At Sea</a>
           </h4>
@@ -36,8 +36,8 @@
           <p><b>#survivalatsea</b></p>
         </div>
         <div class="col-sm-4">
-          <i class="fas section-icon fa-solar-panel" />
-          <h4 id="survival">
+          <i class="fas section-icon fa-solar-panel" name="kanban-explorer" />
+          <h4 id="kanban-explorer">
             <a v-if="!route" href="kanban?walkThrough">Kanban Explorer</a>
             <a v-if="route" :href="'kanban-' + route + '?walkThrough'">Kanban Explorer</a>
           </h4>
@@ -61,7 +61,7 @@
       </h4>
       <div class="row slideanim">
         <div class="col-sm-4">
-          <i class="fas section-icon fa-heart" />
+          <i class="fas section-icon fa-heart" name="planning-poker" />
           <h4>
             <a v-if="!route" href="planning-poker?walkThrough">Planning Poker</a>
             <a v-if="route" :href="'planning-poker-' + route + '?walkThrough'">Planning Poker</a>
@@ -74,7 +74,7 @@
           <p><b>#planningpoker</b></p>
         </div>
         <div class="col-sm-4">
-          <i class="fas section-icon fa-coins" />
+          <i class="fas section-icon fa-coins" name="coin-game" />
           <h4>
             <a v-if="!route" href="coin-game?walkThrough">The Coin Game</a>
             <a v-if="route" :href="'coin-game-' + route + '?walkThrough'">The Coin Game</a>
@@ -90,7 +90,7 @@
           <p><b>#coingame</b> <b>#valuefirstdelivery</b></p>
         </div>
         <div class="col-sm-4">
-          <i class="fas section-icon fa-ship" />
+          <i class="fas section-icon fa-ship" name="battleships" />
           <h4>
             <a v-if="!route" href="battleships?walkThrough">Agile Battleships</a>
             <a v-if="route" :href="'battleships-' + route + '?walkThrough'">Agile Battleships</a>
@@ -114,7 +114,7 @@
       <h2>Ice Breakers and Agile Activities</h2>
       <div class="row slideanim">
         <div class="col-sm-4">
-          <i class="fas section-icon fa-coins" />
+          <i class="fas section-icon fa-coins" name="coin-game" />
           <h4>
             <a v-if="!route" href="coin-game?walkThrough">The Coin Game</a>
             <a v-if="route" :href="'coin-game-' + route + '?walkThrough'">The Coin Game</a>
@@ -130,7 +130,7 @@
           <p><b>#coingame</b></p>
         </div>
         <div class="col-sm-4">
-          <i class="fas section-icon fa-random" />
+          <i class="fas section-icon fa-random" name="context-switching" />
           <h4>
             <a href="context-switching?walkThrough">Context Switching</a>
           </h4>
@@ -171,7 +171,7 @@
       </h4>
       <div class="row slideanim">
         <div class="col-sm-4">
-          <i class="fas section-icon fa-toilet-paper" />
+          <i class="fas section-icon fa-toilet-paper" name="five-dysfunctions" />
           <h4>
             <a href="five-dysfunctions">5 Dysfunctions</a> <New />
           </h4>
@@ -186,7 +186,7 @@
           <p><b>#5dysfunctions</b></p>
         </div>
         <div class="col-sm-4">
-          <i class="fas section-icon fa-ambulance" />
+          <i class="fas section-icon fa-ambulance" name="team-health-check" />
           <h4>
             <a href="team-health-check">Spotify Health Check</a> <New />
           </h4>

@@ -1,26 +1,26 @@
 <template>
   <div class="admin">
     <h2 class="menu">
-      <div :class="{ 'selected': scope == 'dates' }">
-        <i class="fas fa-dice" title="Edit Game Dates" @click="setScope('dates')" />
+      <div :class="{ 'selected': scope == 'gameDates' }">
+        <i class="fas fa-dice" title="Edit Game Dates" @click="setScope('gameDates')" />
       </div>
       <div :class="{ 'selected': scope == 'updates' }">
         <i class="fas fa-book" title="Edit Updates" @click="setScope('updates')" />
       </div>
     </h2>
     <Updates v-if="scope == 'updates'" />
-    <Dates v-if="scope == 'dates'" />
+    <GameDates v-if="scope == 'gameDates'" />
   </div>
 </template>
 
 <script>
-import Updates from './facilitator/Updates.vue'
-import Dates from './facilitator/Dates.vue'
+import Updates from './admin/Updates.vue'
+import GameDates from './admin/GameDates.vue'
 
 export default {
   components: {
     Updates,
-    Dates
+    GameDates
   },
   data() {
     return {

@@ -55,6 +55,8 @@ bus.$on('sendLoadGameDates', (data) => { socket.emit('sendLoadGameDates', data) 
 
 bus.$on('sendAddGameDate', (data) => { socket.emit('sendAddGameDate', data) })
 
+bus.$on('sendUpdateGameDate', (data) => { socket.emit('sendUpdateGameDate', data) })
+
 bus.$on('sendDeleteGameDate', (data) => { socket.emit('sendDeleteGameDate', data) })
 
 socket.on('loadGameDates', (data) => { bus.$emit('loadGameDates', data) })

@@ -63,16 +63,46 @@
       <tbody>
         <tr v-for="(date, index) in dates" :key="index">
           <td>
-            {{ date.year }}-{{ date.month }}-{{ date.day }}
+            <div v-if="editingDate != date.id">
+              {{ date.year }}-{{ date.month }}-{{ date.day }}
+              <i class="far fa-edit" @click="editDate(date.id)" />
+            </div>
+            <div v-if="editingDate == date.id">
+              <Day :id="date.id" :day="date.day" /> /
+              <Month :id="date.id" :month="date.month" /> /
+              <Year :id="date.id" :year="date.year" />
+              <i class="far fa-save" @click="saveDate(date.id)" />
+            </div>
           </td>
           <td>
-            {{ date.game }}
+            <div v-if="editingGame != date.id">
+              {{ date.game }}
+              <i class="far fa-edit" @click="editGame(date.id)" />
+            </div>
+            <div v-if="editingGame == date.id">
+              <Games :id="date.id" :game="date.game" />
+              <i class="far fa-save" @click="saveGame(date.id)" />
+            </div>
           </td>
           <td>
-            {{ date.link }}
+            <div v-if="editingLink != date.id">
+              {{ date.link }}
+              <i class="far fa-edit" @click="editLink(date.id)" />
+            </div>
+            <div v-if="editingLink == date.id">
+              <input :id="'editing-link-' + date.id" :value="date.link">
+              <i class="far fa-save" @click="saveLink(date.id)" />
+            </div>
           </td>
           <td>
-            {{ date.description }}
+            <div v-if="editingDescription != date.id">
+              {{ date.description }}
+              <i class="far fa-edit" @click="editDescription(date.id)" />
+            </div>
+            <div v-if="editingDescription == date.id">
+              <input :id="'editing-description-' + date.id" :value="date.description">
+              <i class="far fa-save" @click="saveDescription(date.id)" />
+            </div>
           </td>
           <td>
             <button class="btn btn-primary smaller-font" @click="deleteGameDate(date.id)">
@@ -102,7 +132,11 @@ export default {
   },
   data() {
     return {
-      dates: []
+      dates: [],
+      editingDate: '',
+      editingGame: '',
+      editingLink: '',
+      editingDescription: ''
     }
   },
   created() {
@@ -138,6 +172,52 @@ export default {
     },
     deleteGameDate(id) {
       bus.$emit('sendDeleteGameDate', {id: id})
+    },
+    editDate(id) {
+      this.editingDate = id
+    },
+    saveDate(id) {
+      const date = this.dates.find((d) => {
+        return d.id == id
+      })
+      date.day = document.getElementById('select-day-' + id).value
+      date.month = document.getElementById('select-month-' + id).value
+      date.year = document.getElementById('select-year-' + id).value
+      bus.$emit('sendUpdateGameDate', date)
+      this.editingDate = ''
+    },
+    editGame(id) {
+      this.editingGame = id
+    },
+    saveGame(id) {
+      const date = this.dates.find((d) => {
+        return d.id == id
+      })
+      date.game = document.getElementById('select-game-' + id).value
+      bus.$emit('sendUpdateGameDate', date)
+      this.editingGame = ''
+    },
+    editLink(id) {
+      this.editingLink = id
+    },
+    saveLink(id) {
+      const date = this.dates.find((d) => {
+        return d.id == id
+      })
+      date.link = document.getElementById('editing-link-' + id).value
+      bus.$emit('sendUpdateGameDate', date)
+      this.editingLink = ''
+    },
+    editDescription(id) {
+      this.editingDescription = id
+    },
+    saveDescription(id) {
+      const date = this.dates.find((d) => {
+        return d.id == id
+      })
+      date.description = document.getElementById('editing-description-' + id).value
+      bus.$emit('sendUpdateGameDate', date)
+      this.editingDescription = ''
     }
   }
 }

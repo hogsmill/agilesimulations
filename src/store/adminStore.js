@@ -75,6 +75,19 @@ module.exports = {
     })
   },
 
+  updateGameDate: function(db, io, data, debugOn) {
+
+    if (debugOn) { console.log('updateGameDate', data) }
+
+    const id = data.id
+    delete data.id
+    delete data._id
+    db.gameDatesCollection.updateOne({id: id}, {$set: data}, function(err, res) {
+      if (err) throw err
+      _loadGameDates(db, io, debugOn)
+    })
+  },
+
   deleteGameDate: function(db, io, data, debugOn) {
 
     if (debugOn) { console.log('deleteGameDate', data) }

@@ -1,5 +1,5 @@
 <template>
-  <select id="select-month">
+  <select :id="id ? 'select-month-' + id : 'select-month'" :value="month">
     <option value="">
       MM
     </option>
@@ -8,3 +8,12 @@
     </option>
   </select>
 </template>
+
+<script>
+export default {
+  props: [
+    'id',
+    'month'
+  ]
+}
+</script>

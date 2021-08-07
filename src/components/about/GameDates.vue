@@ -1,6 +1,11 @@
 <template>
   <div>
-    <h2>Where we've played the games in public...</h2>
+    <h2>
+      Where we've played the games in public...
+      <a href="/gameDates.xml">
+        <i class="fas fa-rss-square" />
+      </a>
+    </h2>
     <table>
       <thead>
         <tr>
@@ -38,8 +43,18 @@
 <script>
 export default {
   computed: {
+    rss() {
+      return this.$store.getters.getRss
+    },
     gameDates() {
       return this.$store.getters.getGameDates
+    }
+  },
+  methods: {
+    gameDate(date) {
+      const month = date.month < 10 ? '0' + date.month : date.month
+      const day = date.day < 10 ? '0' + date.day : date.day
+      return date.year + '-' + month + '-' + day
     }
   }
 }

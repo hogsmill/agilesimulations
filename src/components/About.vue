@@ -4,44 +4,16 @@
       <div :class="{ 'selected': scope == 'info' }">
         <i class="fas fa-info" :title="scopeDescriptions['info']" @click="setScope('info')" />
       </div>
-      <div :class="{ 'selected': scope == 'dates' }">
-        <i class="fas fa-dice" :title="scopeDescriptions['dates']" @click="setScope('dates')" />
+      <div :class="{ 'selected': scope == 'gameDates' }">
+        <i class="fas fa-dice" :title="scopeDescriptions['dates']" @click="setScope('gameDates')" />
       </div>
       <div :class="{ 'selected': scope == 'updates' }">
         <i class="fas fa-book" :title="scopeDescriptions['updates']" @click="setScope('updates')" />
       </div>
     </h2>
-    <div v-if="scope == 'info'">
-      <h2>More info about Agile Simulations</h2>
-      <AgileInfo />
-    </div>
-    <GameDates v-if="scope == 'dates'" />
-    <div v-if="scope == 'updates'">
-      <h2>
-        Company Updates
-        <a href="/rss.php">
-          <i class="fas fa-rss-square" />
-        </a>
-      </h2>
-      <div v-for="(update, index) in updates" :key="index" class="update">
-        <h3>
-          Status Update {{ update.date }}
-        </h3>
-        <div v-if="update.image" class="update-image" :class="updateImageClass(update.image)" />
-        <p v-if="!mobile">
-          <b>Welcome to the weekly status update to everyone interested in the progress at Agile Simuations. We've been busy...</b>
-        </p>
-        <p v-for="(para, pindex) in update.text" :key="pindex" v-html="para" />
-        <p>
-          As ever, feedback on all apps is welcomed, and get in touch for more info, or to discuss faciltation or using the games as part of your training/work.
-        </p>
-        <p class="tags">
-          <span v-for="(tag, tindex) in update.tags" :key="tindex">
-            #{{ tag }}
-          </span>
-        </p>
-      </div>
-    </div>
+    <AgileInfo v-if="scope == 'info'" />
+    <GameDates v-if="scope == 'gameDates'" />
+    <Updates v-if="scope == 'updates'" />
   </div>
 </template>
 
@@ -50,16 +22,18 @@ import bus from '../socket.js'
 
 import AgileInfo from './about/AgileInfo.vue'
 import GameDates from './about/GameDates.vue'
+import Updates from './about/Updates.vue'
 
 export default {
   components: {
     AgileInfo,
-    GameDates
+    GameDates,
+    Updates
   },
   data() {
     return {
       dates: [],
-      scope: 'dates',
+      scope: 'gameDates',
       scopeDescription: 'Where we\'ve played games',
       scopeDescriptions: {
         info: 'Info about Agile Simulations',
@@ -111,11 +85,6 @@ export default {
         str = 'header'
       }
       return str
-    },
-    gameDate(date) {
-      const month = date.month < 10 ? '0' + date.month : date.month
-      const day = date.day < 10 ? '0' + date.day : date.day
-      return date.year + '-' + month + '-' + day
     }
   }
 }

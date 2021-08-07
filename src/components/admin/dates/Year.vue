@@ -1,5 +1,5 @@
 <template>
-  <select id="select-year">
+  <select :id="id ? 'select-year-' + id : 'select-year'" :value="year">
     <option value="">
       YY
     </option>
@@ -8,3 +8,12 @@
     </option>
   </select>
 </template>
+
+<script>
+export default {
+  props: [
+    'id',
+    'year'
+  ]
+}
+</script>

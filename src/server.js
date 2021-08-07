@@ -121,6 +121,8 @@ MongoClient.connect(url, { useUnifiedTopology: true, maxIdleTimeMS: maxIdleTime 
     socket.on('sendLoadGameDates', (data) => { adminStore.loadGameDates(db, io, data, debugOn) })
 
     socket.on('sendAddGameDate', (data) => { adminStore.addGameDate(db, io, data, debugOn) })
+    
+    socket.on('sendUpdateGameDate', (data) => { adminStore.updateGameDate(db, io, data, debugOn) })
 
     socket.on('sendDeleteGameDate', (data) => { adminStore.deleteGameDate(db, io, data, debugOn) })
 

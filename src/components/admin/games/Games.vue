@@ -1,16 +1,20 @@
 <template>
-  <select id="select-game">
+  <select :id="id ? 'select-game-' + id : 'select-game'" :value="game">
     <option>
       -- Select --
     </option>
-    <option v-for="(game, index) in games" :key="index">
-      {{ game }}
+    <option v-for="(g, index) in games" :key="index">
+      {{ g }}
     </option>
   </select>
 </template>
 
 <script>
 export default {
+  props: [
+    'id',
+    'game'
+  ],
   data() {
     return {
       games: [

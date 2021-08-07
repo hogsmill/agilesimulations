@@ -11,7 +11,7 @@ const sortQuery = {
 
 const rssDir = prod ? '/var/www/html/' : __dirname + '/'
 
-function header(file) {
+function header(file, description) {
   if (fs.existsSync(file)) {
     fs.unlinkSync(file)
   }
@@ -20,7 +20,7 @@ function header(file) {
   writeXML(file, '<channel>')
   writeXML(file, '  <title>Agile Simulations</title>')
   writeXML(file, '  <link>https://agilesimulations.co.uk</link>')
-  writeXML(file, '  <description>Agile Smulations Public Game Dates</description>')
+  writeXML(file, '  <description>' + description + '</description>')
 }
 
 function footer() {
@@ -28,7 +28,7 @@ function footer() {
   writeXML(file, '</rss>')
 }
 
-function writeItem(file, item) {
+function writeGameDateItem(file, item) {
   const date = item.day + '/' + item.month + '/' + item.year
   writeXML(file, '  <item>')
   writeXML(file, '    <title>')
@@ -56,11 +56,11 @@ module.exports = {
     if (debugOn) { console.log('createGameDates') }
 
     file = rssDir + 'gameDates.xml'
-    header(file)
+    header(file, 'Agile Smulations Public Game Dates')
     db.gameDatesCollection.find().sort(sortQuery).toArray(function(err, res) {
       if (err) throw err
       for (let i = 0; i < res.length; i++) {
-        writeItem(file, res[i])
+        writeGameDateItem(file, res[i])
       }
       footer(file)
     })
