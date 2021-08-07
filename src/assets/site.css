@@ -11,6 +11,8 @@ font-face { font-family: Lato; src: url('./fonts/lato/Lato-Regular.ttf'); }
 
 button { margin: 2px; }
 
+a { font-weight: bold; }
+
 .rounded {
   border-radius: 3px;
 }

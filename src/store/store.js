@@ -349,6 +349,9 @@ export const store = new Vuex.Store({
     updateGameDates: (state, payload) => {
       state.gameDates = payload
     },
+    updateUpdates: (state, payload) => {
+      state.updates = payload
+    },
     setRss: (state, payload) => {
       state.rss = {
         scope: payload.scope,
@@ -374,6 +377,9 @@ export const store = new Vuex.Store({
     },
     updateGameDates: ({ commit }, payload) => {
       commit('updateGameDates', payload)
+    },
+    updateUpdates: ({ commit }, payload) => {
+      commit('updateUpdates', payload)
     },
     setRss: ({ commit }, payload) => {
       commit('setRss', payload)

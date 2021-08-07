@@ -8,7 +8,7 @@
     </h2>
     <div v-for="(update, index) in updates" :key="index" class="update">
       <h3 :name="update.id">
-        Status Update {{ update.date }}
+        Status Update {{ updateDate(update) }}
       </h3>
       <div v-if="update.image" class="update-image" :class="updateImageClass(update.image)" />
       <p v-if="!mobile">
@@ -43,6 +43,11 @@ export default {
   methods: {
     updateImageClass(image) {
       return image.split('.')[0]
+    },
+    updateDate(update) {
+      const month = update.month < 10 ? '0' + update.month : update.month
+      const day = update.day < 10 ? '0' + update.day : update.day
+      return update.year + '-' + month + '-' + day
     }
   }
 }

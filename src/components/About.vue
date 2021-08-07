@@ -32,7 +32,6 @@ export default {
   },
   data() {
     return {
-      dates: [],
       scope: 'gameDates',
       scopeDescription: 'Where we\'ve played games',
       scopeDescriptions: {
@@ -55,16 +54,21 @@ export default {
   },
   created() {
     bus.$emit('sendLoadGameDates')
+    
+    // bus.$emit('sendLoadUpdates')
 
     bus.$on('loadGameDates', (data) => {
       this.$store.dispatch('updateGameDates', data)
-      this.dates = data
+    })
+
+    bus.$on('loadUpdates', (data) => {
+      this.$store.dispatch('updateUpdates', data)
     })
 
     if (this.rss.id) {
       switch(this.rss.scope) {
         case 'gameDate':
-          this.scope = 'dates'
+          this.scope = 'gameDates'
           break
         case 'update':
           this.scope = 'updates'
@@ -73,9 +77,6 @@ export default {
     }
   },
   methods: {
-    updateImageClass(image) {
-      return image.split('.')[0]
-    },
     setScope(scope) {
       this.scope = scope
     },
