@@ -294,7 +294,7 @@ $on-hold: #bbb;
       &.minesweeper {
         background-image: url("../assets/img/games/minesweeper.png");
       }
-      &.values.map {
+      &.values-map {
         background-image: url("../assets/img/games/values radar.jpg");
       }
     }
