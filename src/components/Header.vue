@@ -8,6 +8,9 @@
         <li :class="{'active': tab == 'main'}" @click="setTab('main')">
           HOME
         </li>
+        <li v-if="isAdmin()" :class="{'active': tab == 'admin'}" @click="setTab('admin')">
+          ADMIN
+        </li>
         <li :class="{'active': tab == 'pricing'}" @click="setTab('pricing')">
           PRICING
         </li>
@@ -231,6 +234,9 @@ export default {
     })
   },
   methods: {
+    isAdmin() {
+      return this.admin && this.userName == 'agile-simulations'
+    },
     setTabFromParams() {
       const tabs = [
         'pricing',

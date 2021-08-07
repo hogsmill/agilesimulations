@@ -4,6 +4,7 @@
     <Jumbotron />
     <div class="content">
       <Main v-if="tab == 'main'" />
+      <Admin v-if="tab == 'admin'" />
       <MonteCarlo v-if="tab == 'monte-carlo'" />
       <Pipeline v-if="tab == 'pipeline'" />
       <NoEstimatesMobile v-if="tab == 'no-estimates-mobile'" />
@@ -30,6 +31,7 @@
 import Header from './components/Header.vue'
 import Jumbotron from './components/Jumbotron.vue'
 import Main from './components/Main.vue'
+import Admin from './components/Admin.vue'
 import MonteCarlo from './components/games/MonteCarlo.vue'
 import Pipeline from './components/games/Pipeline.vue'
 import NoEstimatesMobile from './components/games/NoEstimatesMobile.vue'
@@ -54,6 +56,7 @@ export default {
     Header,
     Jumbotron,
     Main,
+    Admin,
     MonteCarlo,
     Pipeline,
     NoEstimatesMobile,
