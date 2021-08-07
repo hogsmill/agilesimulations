@@ -56,19 +56,28 @@
               <i class="far fa-save" @click="saveDate(update.id)" />
             </div>
           </td>
-          <td />
           <td>
-          <div v-if="editingImage != update.id">
-            {{ update.image }}
-            <i class="far fa-edit" @click="editImage(update.id)" />
-          </div>
-          <div v-if="editingImage == update.id">
-            <input :id="'editing-image-' + update.id" type="text">
-            <i class="far fa-save" @click="saveImage(update.id)" />
-          </div>
+            <div v-for="(p, pindex) in update.text" :key="pindex">
+              <i class="far fa-trash-alt" @click="deletePara(update.id, p)" />
+              {{ p }}
+            </div>
+            <div>
+              <i class="far fa-plus-square" @click="addPara(update.id)" />
+              <input :id="'new-para-' + update.id" type="text">
+            </div>
           </td>
           <td>
-            <div v-for="(tag, index) in update.tags" :key="index">
+            <div v-if="editingImage != update.id">
+              {{ update.image }}
+              <i class="far fa-edit" @click="editImage(update.id)" />
+            </div>
+            <div v-if="editingImage == update.id">
+              <input :id="'editing-image-' + update.id" type="text">
+              <i class="far fa-save" @click="saveImage(update.id)" />
+            </div>
+          </td>
+          <td>
+            <div v-for="(tag, tindex) in update.tags" :key="tindex">
               <i class="far fa-trash-alt" @click="deleteTag(update.id, tag)" />
               {{ tag }}
             </div>
@@ -104,8 +113,7 @@ export default {
     return {
       updates: [],
       editingDate: '',
-      editingImage: '',
-      editingTags: ''
+      editingImage: ''
     }
   },
   created() {
@@ -142,6 +150,17 @@ export default {
       update.year = document.getElementById('select-year-' + id).value
       bus.$emit('sendUpdateUpdate', update)
       this.editingDate = ''
+    },
+    addPara(id) {
+      const update = this.updates.find((d) => {
+        return d.id == id
+      })
+      const text = update.text
+      const para = document.getElementById('new-para-' + id).value
+      text.push(para)
+      update.text = text
+      bus.$emit('sendUpdateUpdate', update)
+      document.getElementById('new-para-' + id).value = ''
     },
     editImage(id) {
       this.editingImage = id
