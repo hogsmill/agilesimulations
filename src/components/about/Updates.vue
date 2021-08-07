@@ -45,9 +45,10 @@ export default {
       return image.split('.')[0]
     },
     updateDate(update) {
-      const month = update.month < 10 ? '0' + update.month : update.month
-      const day = update.day < 10 ? '0' + update.day : update.day
-      return update.year + '-' + month + '-' + day
+      return update.date
+      //const month = update.month < 10 ? '0' + update.month : update.month
+      //const day = update.day < 10 ? '0' + update.day : update.day
+      //return update.year + '-' + month + '-' + day
     }
   }
 }
