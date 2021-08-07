@@ -15,40 +15,7 @@
       <h2>More info about Agile Simulations</h2>
       <AgileInfo />
     </div>
-    <div v-if="scope == 'dates'">
-      <h2>Where we've played the games in public...</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>
-              Date
-            </th>
-            <th>
-              Game
-            </th>
-            <th>
-              Description
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="(date, index) in dates" :class="{ 'selected': rss.id == date.id }" :key="index">
-            <td>
-              {{ gameDate(date) }}
-            </td>
-            <td>
-              {{ date.game }}
-              <a v-if="date.link" :href="date.link" target="blank" title="Link to video">
-                <i class="fas fa-external-link-alt" />
-              </a>
-            </td>
-            <td>
-              {{ date.description }}
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <GameDates v-if="scope == 'dates'" />
     <div v-if="scope == 'updates'">
       <h2>
         Company Updates
@@ -82,10 +49,12 @@
 import bus from '../socket.js'
 
 import AgileInfo from './about/AgileInfo.vue'
+import GameDates from './about/GameDates.vue'
 
 export default {
   components: {
-    AgileInfo
+    AgileInfo,
+    GameDates
   },
   data() {
     return {
@@ -114,6 +83,7 @@ export default {
     bus.$emit('sendLoadGameDates')
 
     bus.$on('loadGameDates', (data) => {
+      this.$store.dispatch('updateGameDates', data)
       this.dates = data
     })
 
