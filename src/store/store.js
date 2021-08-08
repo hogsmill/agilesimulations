@@ -68,6 +68,7 @@ export const store = new Vuex.Store({
     },
     gameDates: [],
     updates: [
+      /*
       {
         date: '2021-08-02',
         text: [
@@ -136,6 +137,7 @@ export const store = new Vuex.Store({
         image: 'web-site.png',
         tags: ['pipelinegame', 'agilesimulations', 'gamifyit', 'contextswitching']
       },
+      */
       {
         date: '2021-05-24',
         text: [

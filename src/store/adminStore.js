@@ -1,18 +1,24 @@
 
 const { v4: uuidv4 } = require('uuid')
 
-const sortQuery = {
-  year: -1,
-  month: -1,
-  day: -1
+function _date(r) {
+  const d = new Date(r.year, r.month, r.day)
+  return d.getTime()
+}
+
+function _sort(res) {
+  return res.sort((a, b) => {
+    return _date(b) - _date(a)
+  })
 }
 
 function _loadUpdates(db, io, debugOn) {
 
   if (debugOn) { console.log('loadUpdates') }
 
-  db.updatesCollection.find().sort(sortQuery).toArray(function(err, res) {
+  db.updatesCollection.find().toArray(function(err, res) {
     if (err) throw err
+    res = _sort(res)
     io.emit('loadUpdates', res)
   })
 }
@@ -21,8 +27,9 @@ function _loadGameDates(db, io, debugOn) {
 
   if (debugOn) { console.log('loadGameDates') }
 
-  db.gameDatesCollection.find().sort(sortQuery).toArray(function(err, res) {
+  db.gameDatesCollection.find().toArray(function(err, res) {
     if (err) throw err
+    res = _sort(res)
     io.emit('loadGameDates', res)
   })
 }
