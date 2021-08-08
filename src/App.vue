@@ -146,6 +146,6 @@ b, strong {
   margin: 10px auto;
 }
 .fa-rss-square {
-  color: red !important;
+  color: #ee802f !important;
 }
 </style>
