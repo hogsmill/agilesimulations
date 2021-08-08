@@ -91,6 +91,7 @@ MongoClient.connect(url, { useUnifiedTopology: true, maxIdleTimeMS: maxIdleTime 
   sitemap.createSiteMap(db, debugOn)
 
   rss.createGameDates(db, debugOn)
+  rss.createUpdates(db, debugOn)
 
   io.on('connection', (socket) => {
     const connection = socket.handshake.headers.host
@@ -129,7 +130,7 @@ MongoClient.connect(url, { useUnifiedTopology: true, maxIdleTimeMS: maxIdleTime 
     socket.on('sendLoadUpdates', (data) => { adminStore.loadUpdates(db, io, data, debugOn) })
 
     socket.on('sendAddUpdate', (data) => { adminStore.addUpdate(db, io, data, debugOn) })
-    
+
     socket.on('sendUpdateUpdate', (data) => { adminStore.updateUpdate(db, io, data, debugOn) })
 
     socket.on('sendDeleteUpdate', (data) => { adminStore.deleteUpdate(db, io, data, debugOn) })
