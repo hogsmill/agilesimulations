@@ -25,7 +25,9 @@ function footer(file) {
 }
 
 function writeGameDateItem(file, item) {
-  const date = item.day + '/' + item.month + '/' + item.year
+  const month = item.month < 10 ? '0' + item.month : item.month
+  const day = item.day < 10 ? '0' + item.day : item.day
+  const date = day + '/' + month + '/' + item.year
   writeXML(file, '  <item>')
   writeXML(file, '    <title>')
   writeXML(file, '      Public playing of ' + item.game + ' on ' + date)
@@ -40,7 +42,9 @@ function writeGameDateItem(file, item) {
 }
 
 function writeUpdateItem(file, item) {
-  const date = item.year + '-' + item.month + '-' + item.day
+  const month = item.month < 10 ? '0' + item.month : item.month
+  const day = item.day < 10 ? '0' + item.day : item.day
+  const date = item.year + '-' + month + '-' + day
   writeXML(file, '  <item>')
   writeXML(file, '    <title>')
   writeXML(file, '      Status Update ' + date)

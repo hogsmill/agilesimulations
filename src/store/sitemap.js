@@ -51,6 +51,7 @@ module.exports = {
       writeItem('?' + tabs[i], date)
     }
     writeItem('gameDates.xml', date)
+    writeItem('updates.xml', date)
     db.gameDatesCollection.find().toArray(function(err, res) {
       if (err) throw err
       res = sortFuns.sortByDate(res)
