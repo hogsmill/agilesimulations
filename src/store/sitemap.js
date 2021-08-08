@@ -4,12 +4,7 @@ const os = require('os')
 const prod = os.hostname() == 'agilesimulations' ? true : false
 
 const timeFuns = require('./lib/timeFuns.js')
-
-const sortQuery = {
-  year: -1,
-  month: -1,
-  day: -1
-}
+const sortFuns = require('./lib/sort.js')
 
 const sitemap = prod ? '/var/www/html/sitemap.xml' : 'sitemap.xml'
 
@@ -47,7 +42,8 @@ module.exports = {
     const tabs = [
       'pricing',
       'subscriptiondescription',
-      'games'
+      'games',
+      'about'
     ]
     date = timeFuns.w3cDate()
     header()
@@ -55,12 +51,20 @@ module.exports = {
       writeItem('?' + tabs[i], date)
     }
     writeItem('gameDates.xml', date)
-    db.gameDatesCollection.find().sort(sortQuery).toArray(function(err, res) {
+    db.gameDatesCollection.find().toArray(function(err, res) {
       if (err) throw err
+      res = sortFuns.sortByDate(res)
       for (let i = 0; i < res.length; i++) {
         writeItem('?gameDate=' + res[i].id, date)
       }
-      footer()
+      db.updatesCollection.find().toArray(function(err, res) {
+        if (err) throw err
+        res = sortFuns.sortByDate(res)
+        for (let i = 0; i < res.length; i++) {
+          writeItem('?update=' + res[i].id, date)
+        }
+        footer()
+      })
     })
   }
 }

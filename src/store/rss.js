@@ -3,16 +3,7 @@ const fs = require('fs')
 const os = require('os')
 const prod = os.hostname() == 'agilesimulations' ? true : false
 
-function _date(r) {
-  const d = new Date(r.year, r.month, r.day)
-  return d.getTime()
-}
-
-function _sort(res) {
-  return res.sort((a, b) => {
-    return _date(b) - _date(a)
-  })
-}
+const sortFuns = require('./lib/sort.js')
 
 const rssDir = prod ? '/var/www/html/' : __dirname + '/'
 
@@ -79,7 +70,7 @@ module.exports = {
     header(file, 'Agile Smulations Public Game Dates')
     db.gameDatesCollection.find().toArray(function(err, res) {
       if (err) throw err
-      res = _sort(res)
+      res = sortFuns.sortByDate(res)
       for (let i = 0; i < res.length; i++) {
         writeGameDateItem(file, res[i], )
       }
@@ -95,7 +86,7 @@ module.exports = {
     header(file, 'Agile Smulations Weekly Updates')
     db.updatesCollection.find().toArray(function(err, res) {
       if (err) throw err
-      res = _sort(res)
+      res = sortFuns.sortByDate(res)
       for (let i = 0; i < res.length; i++) {
         writeUpdateItem(file, res[i])
       }
