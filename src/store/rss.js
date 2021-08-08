@@ -53,7 +53,7 @@ function writeUpdateItem(file, item) {
   writeXML(file, '      https://agilesimulations.co.uk?update=' + item.id)
   writeXML(file, '    </link>')
   writeXML(file, '    <description>')
-  const text = item.text.join('\n\n').replace(/<^>*>/g, '')
+  const text = item.text.join('\n\n')
   writeXML(file, '     ' + text)
   writeXML(file, '    </description>')
   writeXML(file, '  </item>')
