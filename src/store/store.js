@@ -137,7 +137,6 @@ export const store = new Vuex.Store({
         image: 'web-site.png',
         tags: ['pipelinegame', 'agilesimulations', 'gamifyit', 'contextswitching']
       },
-      */
       {
         date: '2021-05-24',
         text: [
@@ -289,6 +288,7 @@ export const store = new Vuex.Store({
         ],
         tags: ['noestimates', 'coingame', 'planningpoker', 'remoteagile', 'agilesimulations', 'agiletraining', 'agileonline', 'interdependentteams']
       }
+      */
     ]
   },
   getters: {

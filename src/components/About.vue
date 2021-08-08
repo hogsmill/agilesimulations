@@ -54,8 +54,7 @@ export default {
   },
   created() {
     bus.$emit('sendLoadGameDates')
-    
-    // bus.$emit('sendLoadUpdates')
+    bus.$emit('sendLoadUpdates')
 
     bus.$on('loadGameDates', (data) => {
       this.$store.dispatch('updateGameDates', data)
