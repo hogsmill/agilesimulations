@@ -107,6 +107,10 @@ export default {
       text-align: center;
     }
 
+    td {
+      text-align: top;
+    }
+
     th, td {
       border: 1px solid;
       padding: 6px;
