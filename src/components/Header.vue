@@ -11,7 +11,7 @@
         <li v-if="isAdmin()" :class="{'active': tab == 'admin'}" @click="setTab('admin')">
           ADMIN
         </li>
-        <li :class="{'active': tab == 'pricing'}" @click="setTab('pricing')">
+        <li :class="{'active': tab == 'pricing'}" @click="setUrl('pricing')">
           PRICING
         </li>
         <li :class="{'active': tab == 'faqs'}" @click="setTab('faqs')">
@@ -23,7 +23,7 @@
         <li :class="{'active': tab == 'labs'}" @click="setTab('labs')">
           LABS
         </li>
-        <li :class="{'active': tab == 'about'}" @click="setTab('about')">
+        <li :class="{'active': tab == 'about'}" @click="setUrl('about')">
           ABOUT
         </li>
         <li :class="{'active': tab == 'contact'}" @click="show('feedback')">
@@ -200,7 +200,6 @@ export default {
 
     bus.$on('loginSuccess', (data) => {
       if (data.id == this.id) {
-        console.log(data)
         this.checking = false
         this.hide('login')
         this.$store.dispatch('updateLogin', data)
@@ -241,7 +240,8 @@ export default {
       const tabs = [
         'pricing',
         'subscriptiondescription',
-        'games'
+        'games',
+        'about'
       ]
       for (let i = 0; i < tabs.length; i++) {
         if (params.isParam(tabs[i])) {
@@ -282,6 +282,13 @@ export default {
         this.toggleMenu()
       }
       this.$store.dispatch('updateTab', tab)
+    },
+    setUrl(tab) {
+      if (window.location.href.match(/\?.*=/)) {
+        window.location.href = window.location.origin + '?' + tab
+      } else {
+        this.$store.dispatch('updateTab', tab)
+      }
     },
     sendContact() {
       mailFuns.post({
