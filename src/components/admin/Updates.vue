@@ -124,6 +124,11 @@ export default {
     })
   },
   methods: {
+    update(id) {
+      return this.updates.find((d) => {
+        return d.id == id
+      })
+    },
     addUpdate() {
       const day = document.getElementById('select-day').value
       const month = document.getElementById('select-month').value
@@ -142,9 +147,7 @@ export default {
       this.editingDate = id
     },
     saveDate(id) {
-      const update = this.updates.find((d) => {
-        return d.id == id
-      })
+      const update = this.update(id)
       update.day = document.getElementById('select-day-' + id).value
       update.month = document.getElementById('select-month-' + id).value
       update.year = document.getElementById('select-year-' + id).value
@@ -152,9 +155,7 @@ export default {
       this.editingDate = ''
     },
     addPara(id) {
-      const update = this.updates.find((d) => {
-        return d.id == id
-      })
+      const update = this.update(id)
       const text = update.text
       const para = document.getElementById('new-para-' + id).value
       text.push(para)
@@ -162,27 +163,46 @@ export default {
       bus.$emit('sendUpdateUpdate', update)
       document.getElementById('new-para-' + id).value = ''
     },
+    deletePara(id, para) {
+      const update = this.update(id)
+      const text = []
+      for (let i = 0; i < update.text.length; i++) {
+        if (update.text[i] != para) {
+          text.push(update.text[i])
+        }
+        console.log(text)
+      }
+      update.text = text
+      bus.$emit('sendUpdateUpdate', update)
+    },
     editImage(id) {
       this.editingImage = id
     },
     saveImage(id) {
-      const update = this.updates.find((d) => {
-        return d.id == id
-      })
+      const update = this.update(id)
       update.image = document.getElementById('editing-image-' + id).value
       bus.$emit('sendUpdateUpdate', update)
       this.editingImage = ''
     },
     addTag(id) {
-      const update = this.updates.find((d) => {
-        return d.id == id
-      })
+      const update = this.update(id)
       const tags = update.tags
       const tag = document.getElementById('new-tag-' + id).value
       tags.push(tag)
       update.tags = tags
       bus.$emit('sendUpdateUpdate', update)
       document.getElementById('new-tag-' + id).value = ''
+    },
+    deleteTag(id, tag) {
+      const update = this.update(id)
+      const tags = []
+      for (let i = 0; i < update.tags.length; i++) {
+        if (update.tags[i] != tag) {
+          tags.push(update.tags[i])
+        }
+      }
+      update.tags = tags
+      bus.$emit('sendUpdateUpdate', update)
     }
   }
 }
