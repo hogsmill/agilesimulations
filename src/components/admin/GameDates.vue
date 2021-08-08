@@ -1,5 +1,5 @@
 <template>
-  <div class="game-dates">
+  <div class="admin-game-dates">
     <table>
       <thead>
         <tr>
@@ -224,7 +224,7 @@ export default {
 </script>
 
 <style lang="scss">
-.game-dates {
+.admin-game-dates {
   table {
     margin: 12px auto;
     max-width: 90%;

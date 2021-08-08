@@ -62,6 +62,18 @@ bus.$on('sendUpdateGameDate', (data) => { socket.emit('sendUpdateGameDate', data
 bus.$on('sendDeleteGameDate', (data) => { socket.emit('sendDeleteGameDate', data) })
 
 socket.on('loadGameDates', (data) => { bus.$emit('loadGameDates', data) })
+
+bus.$on('sendLoadFaqs', (data) => { socket.emit('sendLoadFaqs', data) })
+
+bus.$on('sendAddFaq', (data) => { socket.emit('sendAddFaq', data) })
+
+bus.$on('sendUpdateFaq', (data) => { socket.emit('sendUpdateFaq', data) })
+
+bus.$on('sendDeleteFaq', (data) => { socket.emit('sendDeleteFaq', data) })
+
+socket.on('loadFaqs', (data) => { bus.$emit('loadFaqs', data) })
+
+
 // --------------------------------------------------------------
 // Labs
 

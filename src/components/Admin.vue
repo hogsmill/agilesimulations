@@ -7,20 +7,26 @@
       <div :class="{ 'selected': scope == 'updates' }">
         <i class="fas fa-book" title="Edit Updates" @click="setScope('updates')" />
       </div>
+      <div :class="{ 'selected': scope == 'faqs' }">
+        <i class="fas fa-question-circle" title="Edit FAQs" @click="setScope('faqs')" />
+      </div>
     </h2>
     <Updates v-if="scope == 'updates'" />
     <GameDates v-if="scope == 'gameDates'" />
+    <FAQs v-if="scope == 'faqs'" />
   </div>
 </template>
 
 <script>
 import Updates from './admin/Updates.vue'
 import GameDates from './admin/GameDates.vue'
+import FAQs from './admin/FAQs.vue'
 
 export default {
   components: {
     Updates,
-    GameDates
+    GameDates,
+    FAQs
   },
   data() {
     return {

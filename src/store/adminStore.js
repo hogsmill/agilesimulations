@@ -28,6 +28,16 @@ function _loadGameDates(db, io, debugOn) {
   })
 }
 
+function _loadFaqs(db, io, debugOn) {
+
+  if (debugOn) { console.log('loadFaqs') }
+
+  db.faqsCollection.find().toArray(function(err, res) {
+    if (err) throw err
+    io.emit('loadFaqs', res)
+  })
+}
+
 module.exports = {
 
   // Updates
@@ -111,6 +121,47 @@ module.exports = {
     db.gameDatesCollection.deleteOne({id: data.id}, function(err, res) {
       if (err) throw err
       _loadGameDates(db, io, debugOn)
+    })
+  },
+
+  // FAQs
+
+  loadFaqs: function(db, io, debugOn) {
+
+    _loadFaqs(db, io, debugOn)
+  },
+
+  addFaq: function(db, io, data, debugOn) {
+
+    if (debugOn) { console.log('addFaq', data) }
+
+    data.id = uuidv4()
+    db.faqsCollection.insertOne(data, function(err, res) {
+      if (err) throw err
+      _loadFaqs(db, io, debugOn)
+    })
+  },
+
+  updateFaq: function(db, io, data, debugOn) {
+
+    if (debugOn) { console.log('updateFaq', data) }
+
+    const id = data.id
+    delete data.id
+    delete data._id
+    db.faqsCollection.updateOne({id: id}, {$set: data}, function(err, res) {
+      if (err) throw err
+      _loadFaqs(db, io, debugOn)
+    })
+  },
+
+  deleteFaq: function(db, io, data, debugOn) {
+
+    if (debugOn) { console.log('deleteFaq', data) }
+
+    db.faqsCollection.deleteOne({id: data.id}, function(err, res) {
+      if (err) throw err
+      _loadFaqs(db, io, debugOn)
     })
   }
 }

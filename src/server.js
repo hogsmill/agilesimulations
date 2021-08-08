@@ -11,6 +11,7 @@ const logFile = prod ? process.argv[4] : 'server.log'
 const collection = 'agileSimulations'
 const updatesCollection = 'agileSimulationsUpdates'
 const gameDatesCollection = 'agileSimulationsGameDates'
+const faqsCollection = 'agileSimulationsFaqs'
 
 ON_DEATH(function(signal, err) {
   let logStr = new Date()
@@ -83,9 +84,11 @@ MongoClient.connect(url, { useUnifiedTopology: true, maxIdleTimeMS: maxIdleTime 
   db.createCollection(collection, function(error, collection) {})
   db.createCollection(updatesCollection, function(error, updatesCollection) {})
   db.createCollection(gameDatesCollection, function(error, gameDatesCollection) {})
+  db.createCollection(faqsCollection, function(error, faqsCollection) {})
 
   db.updatesCollection = db.collection(updatesCollection)
   db.gameDatesCollection = db.collection(gameDatesCollection)
+  db.faqsCollection = db.collection(faqsCollection)
   db.collection = db.collection(collection)
 
   sitemap.createSiteMap(db, debugOn)
@@ -134,6 +137,14 @@ MongoClient.connect(url, { useUnifiedTopology: true, maxIdleTimeMS: maxIdleTime 
     socket.on('sendUpdateUpdate', (data) => { adminStore.updateUpdate(db, io, data, debugOn) })
 
     socket.on('sendDeleteUpdate', (data) => { adminStore.deleteUpdate(db, io, data, debugOn) })
+
+    socket.on('sendLoadFaqs', (data) => { adminStore.loadFaqs(db, io, data, debugOn) })
+
+    socket.on('sendAddFaq', (data) => { adminStore.addFaq(db, io, data, debugOn) })
+
+    socket.on('sendUpdateFaq', (data) => { adminStore.updateFaq(db, io, data, debugOn) })
+
+    socket.on('sendDeleteFaq', (data) => { adminStore.deleteFaq(db, io, data, debugOn) })
 
     // From accounts
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="updates">
+  <div class="admin-updates">
     <table>
       <thead>
         <tr>
@@ -43,50 +43,51 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(update, index) in updates" :key="index">
+        <tr v-for="(u, index) in updates" :key="index">
           <td>
-            <div v-if="editingDate != update.id">
-              {{ update.year }}-{{ update.month }}-{{ update.day }}
-              <i class="far fa-edit" @click="editDate(update.id)" />
+            <div v-if="editingDate != u.id">
+              {{ u.year }}-{{ u.month }}-{{ u.day }}
+              <i class="far fa-edit" @click="editDate(u.id)" />
             </div>
-            <div v-if="editingDate == update.id">
-              <Day :id="update.id" :day="update.day" /> /
-              <Month :id="update.id" :month="update.month" /> /
-              <Year :id="update.id" :year="update.year" />
-              <i class="far fa-save" @click="saveDate(update.id)" />
+            <div v-if="editingDate == u.id">
+              <Day :id="u.id" :day="u.day" /> /
+              <Month :id="u.id" :month="u.month" /> /
+              <Year :id="u.id" :year="u.year" />
+              <i class="far fa-save" @click="saveDate(u.id)" />
             </div>
           </td>
           <td>
-            <div v-for="(p, pindex) in update.text" :key="pindex">
-              <i class="far fa-trash-alt" @click="deletePara(update.id, p)" />
+            <div v-for="(p, pindex) in u.text" :key="pindex">
+              <i class="far fa-trash-alt" @click="deletePara(u.id, p)" />
               {{ p }}
             </div>
             <div>
-              <i class="far fa-plus-square" @click="addPara(update.id)" />
-              <input :id="'new-para-' + update.id" type="text">
+              <i class="far fa-plus-square" @click="addPara(u.id)" />
+              <input :id="'new-para-' + u.id" type="text">
             </div>
           </td>
           <td>
-            <div v-if="editingImage != update.id">
-              {{ update.image }}
-              <i class="far fa-edit" @click="editImage(update.id)" />
+            <div v-if="editingImage != u.id">
+              {{ u.image }}
+              <i class="far fa-edit" @click="editImage(u.id)" />
             </div>
-            <div v-if="editingImage == update.id">
-              <input :id="'editing-image-' + update.id" type="text">
-              <i class="far fa-save" @click="saveImage(update.id)" />
+            <div v-if="editingImage == u.id">
+              <input :id="'editing-image-' + u.id" type="text">
+              <i class="far fa-save" @click="saveImage(u.id)" />
             </div>
           </td>
           <td>
-            <div v-for="(tag, tindex) in update.tags" :key="tindex">
-              <i class="far fa-trash-alt" @click="deleteTag(update.id, tag)" />
+            <div v-for="(tag, tindex) in u.tags" :key="tindex">
+              <i class="far fa-trash-alt" @click="deleteTag(u.id, tag)" />
               {{ tag }}
             </div>
             <div>
-              <i class="far fa-plus-square" @click="addTag(update.id)" />
-              <input :id="'new-tag-' + update.id" type="text">
+              <i class="far fa-plus-square" @click="addTag(u.id)" />
+              <input :id="'new-tag-' + u.id" type="text">
             </div>
+          </td>
           <td>
-            <button class="btn btn-primary smaller-font" @click="deleteUpdate(update.id)">
+            <button class="btn btn-primary smaller-font" @click="deleteUpdate(u.id)">
               Delete
             </button>
           </td>
@@ -147,7 +148,7 @@ export default {
       this.editingDate = id
     },
     saveDate(id) {
-      const update = this.update(id)
+      const update = this._update(id)
       update.day = document.getElementById('select-day-' + id).value
       update.month = document.getElementById('select-month-' + id).value
       update.year = document.getElementById('select-year-' + id).value
@@ -209,7 +210,7 @@ export default {
 </script>
 
 <style lang="scss">
-.updates {
+.admin-updates {
   table {
     margin: 12px auto;
 
