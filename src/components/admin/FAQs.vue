@@ -101,6 +101,7 @@ export default {
 .admin-faqs {
   table {
     margin: 12px auto;
+    max-width: 90%;
 
     th {
       text-align: center;
