@@ -154,7 +154,7 @@ export default {
     return {
       mobileContact: false,
       hideMenu: true,
-      checking: false,
+      checking: false
     }
   },
   computed: {
@@ -195,7 +195,7 @@ export default {
     }
 
     bus.$on('showContact', () => {
-      self.show()
+      self.show('feedback')
     })
 
     bus.$on('loginSuccess', (data) => {
