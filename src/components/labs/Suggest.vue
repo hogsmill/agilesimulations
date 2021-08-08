@@ -1,6 +1,6 @@
 <template>
-  <div class="suggest" :class="{ 'not-mobile': !mobile }">
-    <div class="suggest-row">
+  <div class="suggest container-fluid text-center" :class="{ 'not-mobile': !mobile }">
+    <div class="row">
       <div class="col-sm-5 center">
         <p v-if="!mobile" class="icon">
           <i class="far fa-lightbulb" />
