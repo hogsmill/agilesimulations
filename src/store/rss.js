@@ -28,7 +28,7 @@ function header(file, description) {
   writeXML(file, '  <description>' + description + '</description>')
 }
 
-function footer() {
+function footer(file) {
   writeXML(file, '</channel>')
   writeXML(file, '</rss>')
 }
