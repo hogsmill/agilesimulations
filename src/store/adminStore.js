@@ -2,7 +2,7 @@
 const { v4: uuidv4 } = require('uuid')
 
 const sortFuns = require('./lib/sort.js')
-const rss = require('./lib/rss.js')
+const rss = require('./rss.js')
 
 function _loadUpdates(db, io, debugOn) {
 
