@@ -60,7 +60,7 @@ module.exports = {
 
     if (debugOn) { console.log('createGameDates') }
 
-    file = rssDir + 'gameDates.xml'
+    const file = rssDir + 'gameDates.xml'
     header(file, 'Agile Smulations Public Game Dates')
     db.gameDatesCollection.find().toArray(function(err, res) {
       if (err) throw err
@@ -76,7 +76,7 @@ module.exports = {
 
     if (debugOn) { console.log('createUpdates') }
 
-    file = rssDir + 'updates.xml'
+    const file = rssDir + 'updates.xml'
     header(file, 'Agile Smulations Weekly Updates')
     db.updatesCollection.find().toArray(function(err, res) {
       if (err) throw err
