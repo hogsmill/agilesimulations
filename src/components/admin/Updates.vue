@@ -213,6 +213,7 @@ export default {
 .admin-updates {
   table {
     margin: 12px auto;
+    max-width: 90%;
 
     tr {
       th, td {
