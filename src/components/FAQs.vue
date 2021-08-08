@@ -42,7 +42,7 @@ export default {
           answer: 'Absolutely. Those in the room can show the board on a central display, and use the No Estimates Mobile app to make their moves. Those remotely play as normal. This gives all the benefits of playing online (real-time data, etc.), but also a face-to-face experience'
         },
         {
-          question: 'I like the <b>Spotify Health Check</b>, but I\'d like to use slightly different wording n the questions, and add a couple of my own. Is this possible?',
+          question: 'I like the <b>Spotify Health Check</b>, but I\'d like to use slightly different wording in the questions, and add a couple of my own. Is this possible?',
           answer: 'Like all the "assessment" apps, you can easily add, delete and customise the questions to your needs. All trending and aggregation functions will simply just work, whatever your questions.'
         }
       ]

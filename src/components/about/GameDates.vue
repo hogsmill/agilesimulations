@@ -6,7 +6,7 @@
         <i class="fas fa-rss-square" />
       </a>
     </h2>
-    <table>
+    <table class="game-dates">
       <thead>
         <tr>
           <th>
@@ -59,3 +59,11 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+  .game-dates {
+    td {
+      text-align: left;
+    }
+  }
+</style>
