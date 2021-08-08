@@ -48,6 +48,21 @@ function writeGameDateItem(file, item) {
   writeXML(file, '  </item>')
 }
 
+function writeUpdateItem(file, item) {
+  const date = item.year + '-' + item.month + '-' + item.day
+  writeXML(file, '  <item>')
+  writeXML(file, '    <title>')
+  writeXML(file, '      Status Update ' + date)
+  writeXML(file, '    </title>')
+  writeXML(file, '    <link>')
+  writeXML(file, '      https://agilesimulations.co.uk?update=' + item.id)
+  writeXML(file, '    </link>')
+  writeXML(file, '    <description>')
+  writeXML(file, '      Welcome to the weekly status update to everyone interested in the progress at Agile Simulations. We\'ve been busy...')
+  writeXML(file, '    </description>')
+  writeXML(file, '  </item>')
+}
+
 function writeXML(file, str) {
   fs.appendFileSync(file, str + '\n', function (err) {
     if (err) console.log(err)
@@ -66,7 +81,7 @@ module.exports = {
       if (err) throw err
       res = _sort(res)
       for (let i = 0; i < res.length; i++) {
-        writeGameDateItem(file, res[i])
+        writeGameDateItem(file, res[i], )
       }
       footer(file)
     })
@@ -82,7 +97,7 @@ module.exports = {
       if (err) throw err
       res = _sort(res)
       for (let i = 0; i < res.length; i++) {
-        writeGameDateItem(file, res[i])
+        writeUpdateItem(file, res[i])
       }
       footer(file)
     })
