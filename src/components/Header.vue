@@ -281,7 +281,6 @@ export default {
       if (this.mobile) {
         this.toggleMenu()
       }
-      window.location.href = window.location.href.replace(/\?.*$/, '')
       this.$store.dispatch('updateTab', tab)
     },
     sendContact() {
