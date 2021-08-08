@@ -28,6 +28,34 @@
         </tr>
       </tbody>
     </table>
+    <table>
+      <thead>
+        <tr>
+          <th>
+            Question
+          </th>
+          <th>
+            Answer
+          </th>
+          <th />
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(faq, index) in faqs" :key="index">
+          <td>
+            {{ faq.question }}
+          </td>
+          <td>
+            {{ faq.answer }}
+          </td>
+          <td>
+            <button class="btn btn-primary smaller-font" @click="deleteFaq(faq.id)">
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 
@@ -43,16 +71,28 @@ export default {
     }
   },
   created() {
-    bus.$emit('sendFaqs')
+    bus.$emit('sendLoadFaqs')
 
     bus.$on('loadFaqs', (data) => {
+      console.log(data)
       this.faqs = data
     })
   },
   methods: {
     addFaq() {
-
-    }
+       const question = document.getElementById('new-question').value
+       const answer = document.getElementById('new-answer').value
+       const data = {
+         question: question,
+         answer: answer
+       }
+       bus.$emit('sendAddFaq', data)
+       document.getElementById('new-question').value = ''
+       document.getElementById('new-answer').value = ''
+    },
+    deleteFaq(id) {
+      bus.$emit('sendDeleteFaq', {id: id})
+    },
   }
 }
 </script>
