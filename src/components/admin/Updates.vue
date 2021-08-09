@@ -171,7 +171,6 @@ export default {
         if (update.text[i] != para) {
           text.push(update.text[i])
         }
-        console.log(text)
       }
       update.text = text
       bus.$emit('sendUpdateUpdate', update)

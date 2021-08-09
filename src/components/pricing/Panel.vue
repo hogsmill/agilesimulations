@@ -1,13 +1,13 @@
 <template>
-  <div class="price-tab" :class="{ 'selected': pricing[scope].selected }">
-    <i class="fas section-icon" :class="pricing[scope].icon" />
-    <h4>{{ pricing[scope].title }}</h4>
-    <p v-for="(text, index) in pricing[scope].text" :key="index">
+  <div class="price-tab" :class="{ 'selected': pricing.selected }">
+    <i class="fas section-icon" :class="pricing.icon" />
+    <h4>{{ pricing.title }}</h4>
+    <p v-for="(text, index) in pricing.text" :key="index">
       {{ text }}
     </p>
     <div class="price-tab-footer">
       <p class="price">
-        <span v-if="pricing[scope].from">From</span> £{{ pricing[scope].price }}/{{ pricing[scope].timing }}
+        <span v-if="pricing.from">From</span> £{{ pricing.price }}/{{ pricing.timing }}
       </p>
       <div>
         <button class="btn btn-info" @click="showMoreInfo()">
@@ -19,7 +19,7 @@
       </div>
     </div>
 
-    <modal :name="'quote-' + scope" :height="560" :classes="['rounded', 'quote']">
+    <modal :name="'quote-' + pricing.id" :height="560" :classes="['rounded', 'quote']">
       <div class="float-right mr-2 mt-1">
         <button type="button" class="close" @click="hide" aria-label="Close">
           <i class="fas fa-times" />
@@ -31,7 +31,7 @@
           Thanks for your interest Agile Simulations; please let us know any further
           information on your requirements in the comments box below.
         </p>
-        <div v-if="scope == 'facilitation'">
+        <div v-if="pricing.title == 'Facilitation'">
           I am interested in facilitation of
           <select id="game-select">
             <option>-- Select --</option>
@@ -45,15 +45,15 @@
           </select>
         </div>
         <div>
-          <input type="text" :id="'name-' + scope" class="form-control" placeholder="Name">
+          <input type="text" :id="'name-' + pricing.id" class="form-control" placeholder="Name">
           <br>
-          <input type="text" :id="'email-' + scope" class="form-control" placeholder="Email">
+          <input type="text" :id="'email-' + pricing.id" class="form-control" placeholder="Email">
           <br>
-          <input type="text" :id="'company-' + scope" class="form-control" placeholder="Company (Optional)">
+          <input type="text" :id="'company-' + pricing.id" class="form-control" placeholder="Company (Optional)">
           <br>
-          <input type="text" :id="'mobile-' + scope" class="form-control" placeholder="Mobile (optional)">
+          <input type="text" :id="'mobile-' + pricing.id" class="form-control" placeholder="Mobile (optional)">
           <br>
-          <textarea :id="'comments-' + scope" rows="3" class="form-control" placeholder="Other information" />
+          <textarea :id="'comments-' + pricing.id" rows="3" class="form-control" placeholder="Other information" />
           <button class="btn btn-primary" @click="send()">
             Send
           </button>
@@ -61,7 +61,7 @@
       </div>
     </modal>
 
-    <div :name="'quote-mobile-' + scope" class="quote-mobile" v-if="mobileQuote">
+    <div :name="'quote-mobile-' + pricing.id" class="quote-mobile" v-if="mobileQuote">
       <div class="float-right mr-2 mt-1">
         <button type="button" class="close" @click="hide" aria-label="Close">
           <i class="fas fa-times" />
@@ -73,7 +73,7 @@
           Thanks for your interest; please let us know any further
           information on your requirements in the comments box below.
         </p>
-        <div v-if="scope == 'facilitation'">
+        <div v-if="pricing.title == 'Facilitation'">
           I am interested in facilitation of
           <select id="game-select">
             <option>-- Select --</option>
@@ -87,11 +87,11 @@
           </select>
         </div>
         <div>
-          <input type="text" :id="'name-' + scope" class="form-control" placeholder="Name">
-          <input type="text" :id="'email-' + scope" class="form-control" placeholder="Email">
-          <input type="text" :id="'company-' + scope" class="form-control" placeholder="Company (Optional)">
-          <input type="text" :id="'mobile-' + scope" class="form-control" placeholder="Mobile (optional)">
-          <textarea :id="'comments-' + scope" rows="3" class="form-control" placeholder="Other information" />
+          <input type="text" :id="'name-' + pricing.id" class="form-control" placeholder="Name">
+          <input type="text" :id="'email-' + pricing.id" class="form-control" placeholder="Email">
+          <input type="text" :id="'company-' + pricing.id" class="form-control" placeholder="Company (Optional)">
+          <input type="text" :id="'mobile-' + pricing.id" class="form-control" placeholder="Mobile (optional)">
+          <textarea :id="'comments-' + pricing.id" rows="3" class="form-control" placeholder="Other information" />
           <button class="btn btn-primary" @click="send()">
             Send
           </button>
@@ -106,7 +106,7 @@ import mailFuns from '../../lib/mail.js'
 
 export default {
   props: [
-    'scope'
+    'pricing'
   ],
   data() {
     return {
@@ -117,28 +117,12 @@ export default {
   computed: {
     mobile() {
       return this.$store.getters.getMobile
-    },
-    pricing() {
-      return this.$store.getters.getPricing
     }
   },
   methods: {
     headingStr() {
-      let str = this.quote ? 'Request Quote for' : 'Request More Info on'
-      switch(this.scope) {
-        case 'dedicated':
-          str = str + ' Dedicated'
-          break
-        case 'facilitation':
-          str = str + ' Facilitation'
-          break
-        case 'regularUse':
-          str = str + ' Regular Use'
-          break
-        case 'using':
-          str = str + ' Using'
-          break
-      }
+      let str = this.quote ? 'Request Quote for ' : 'Request More Info on '
+      str = str + this.pricing.title
       return str
     },
     showMoreInfo(modal) {
@@ -147,39 +131,35 @@ export default {
         this.mobileQuote = !this.mobileQuote
         window.scrollTo(0, 0)
       } else {
-      this.$modal.show('quote-' + this.scope)
+      this.$modal.show('quote-' + this.pricing.id)
       }
     },
     hide() {
       if (this.mobile) {
         this.mobileQuote = false
       } else {
-        this.$modal.hide('quote-' + this.scope)
+        this.$modal.hide('quote-' + this.pricing.id)
       }
     },
-    //showQuote() {
-    //  this.quote = true
-    //  this.$modal.show('quote-' + this.scope)
-    //},
     showQuote() {
       this.quote = false
       if (this.mobile) {
         this.mobileQuote = !this.mobileQuote
         window.scrollTo(0, 0)
       } else {
-      this.$modal.show('quote-' + this.scope)
+      this.$modal.show('quote-' + this.pricing.id)
       }
     },
     send() {
       const success = mailFuns.post({
-        action: 'Request from Agile Simulations (' + this.scope + ')',
+        action: 'Request from Agile Simulations (' + this.pricing.title + ')',
         type: this.quote ? 'Quote' : 'More Info',
-        game: this.scope == 'facilitation' ? document.getElementById('game-select').value : '',
-        name: encodeURIComponent(document.getElementById('name-' + this.scope).value),
-        company: encodeURIComponent(document.getElementById('company-' + this.scope).value),
-        email: encodeURIComponent(document.getElementById('email-' + this.scope).value),
-        mobile: encodeURIComponent(document.getElementById('mobile-' + this.scope).value),
-        comments: encodeURIComponent(document.getElementById('comments-' + this.scope).value)
+        game: this.pricing.title == 'Facilitation' ? document.getElementById('game-select').value : '',
+        name: encodeURIComponent(document.getElementById('name-' + this.pricing.id).value),
+        company: encodeURIComponent(document.getElementById('company-' + this.pricing.id).value),
+        email: encodeURIComponent(document.getElementById('email-' + this.pricing.id).value),
+        mobile: encodeURIComponent(document.getElementById('mobile-' + this.pricing.id).value),
+        comments: encodeURIComponent(document.getElementById('comments-' + this.pricing.id).value)
         },
         'Thanks for your request - we\'ll get back to you soon!'
       )

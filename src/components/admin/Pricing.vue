@@ -26,6 +26,9 @@
       <thead>
         <tr>
           <th>
+            Order
+          </th>
+          <th>
             Title
           </th>
           <th>
@@ -51,6 +54,16 @@
       </thead>
       <tbody>
         <tr v-for="(p, index) in pricings" :key="index">
+          <td>
+            <select :id="'order-' + p.id" :value="p.order" @change="updateOrder(p.id)">
+              <option value="">
+                --
+              </option>
+              <option v-for="(n, nindex) in pricings.length" :key="nindex">
+                {{ n }}
+              </option>
+            </select>
+          </td>
           <td>
             <input :id="'title-' + p.id" type="text" class="title" :value="p.title">
             <i class="far fa-save" @click="updateTitle(p.id)" />
@@ -113,9 +126,9 @@ export default {
     }
   },
   created() {
-    bus.$emit('sendLoadPricing')
+    bus.$emit('sendLoadPricings')
 
-    bus.$on('loadPricing', (data) => {
+    bus.$on('loadPricings', (data) => {
       this.pricings = data
     })
   },
@@ -134,6 +147,11 @@ export default {
     },
     deletePricing(id) {
       bus.$emit('sendDeletePricing', {id: id})
+    },
+    updateOrder(id) {
+      const pricing = this.pricing(id)
+      pricing.order = document.getElementById('order-' + id).value
+      bus.$emit('sendUpdatePricing', pricing)
     },
     updateTitle(id) {
       const pricing = this.pricing(id)

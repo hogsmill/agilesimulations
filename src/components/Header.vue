@@ -275,7 +275,6 @@ export default {
     forgotten() {
       this.hide('login')
       this.show('forgotten')
-      console.log('here')
     },
     setTab(tab) {
       if (this.mobile) {

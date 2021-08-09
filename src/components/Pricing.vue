@@ -3,16 +3,15 @@
     <div class="row slideanim">
       <h2>We offer the <a @click="setTab('games')">games</a> in these packages...</h2>
       <div class="pricing-table" v-if="!mobile">
-        <Panel :scope="'facilitation'" />
-        <Panel :scope="'dedicated'" />
-        <Panel :scope="'regularUse'" />
-        <Panel :scope="'using'" />
+        <Panel v-for="(pricing, index) in pricings" :key="index" :pricing="pricing" />
       </div>
       <div class="pricing-table" v-if="mobile">
-        <Panel :scope="'regularUse'" />
-        <Panel :scope="'using'" />
-        <Panel :scope="'dedicated'" />
-        <Panel :scope="'facilitation'" />
+        <div v-for="(pricing, sindex) in pricings" :key="'s=' + sindex">
+          <Panel v-if="pricing.selected" :pricing="pricing" />
+        </div>
+        <div v-for="(pricing, nindex) in pricings" :key="'n-' + nindex">
+          <Panel v-if="!pricing.selected" :pricing="pricing" />
+        </div>
       </div>
     </div>
     <p class="contact">
@@ -37,7 +36,17 @@ export default {
   computed: {
     mobile() {
       return this.$store.getters.getMobile
+    },
+    pricings() {
+      return this.$store.getters.getPricings
     }
+  },
+  created() {
+    bus.$emit('sendLoadPricings')
+
+    bus.$on('loadPricings', (data) => {
+      this.$store.dispatch('updatePricings', data)
+    })
   },
   methods: {
     contact() {

@@ -41,7 +41,6 @@ export default {
     bus.$emit('sendLoadFaqs')
 
     bus.$on('loadFaqs', (data) => {
-      console.log(data)
       this.$store.dispatch('updateFaqs', data)
     })
   },

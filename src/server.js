@@ -148,12 +148,12 @@ MongoClient.connect(url, { useUnifiedTopology: true, maxIdleTimeMS: maxIdleTime 
 
     socket.on('sendDeleteFaq', (data) => { adminStore.deleteFaq(db, io, data, debugOn) })
 
-    socket.on('sendLoadPricing', (data) => { adminStore.loadPricing(db, io, data, debugOn) })
+    socket.on('sendLoadPricings', (data) => { adminStore.loadPricings(db, io, data, debugOn) })
 
     socket.on('sendAddPricing', (data) => { adminStore.addPricing(db, io, data, debugOn) })
 
     socket.on('sendUpdatePricing', (data) => { adminStore.updatePricing(db, io, data, debugOn) })
-    
+
     socket.on('sendSelectPricing', (data) => { adminStore.selectPricing(db, io, data, debugOn) })
 
     socket.on('sendDeletePricing', (data) => { adminStore.deletePricing(db, io, data, debugOn) })

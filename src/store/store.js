@@ -12,6 +12,7 @@ export const store = new Vuex.Store({
     admin: false,
     mobile: false,
     tab: 'main',
+    /*
     pricing: {
       facilitation: {
         title: 'Facilitation',
@@ -61,6 +62,8 @@ export const store = new Vuex.Store({
         timing: 'month'
       }
     },
+    */
+    pricings: [],
     games: [],
     rss: {
       scope: '',
@@ -92,9 +95,6 @@ export const store = new Vuex.Store({
     getTab: (state) => {
       return state.tab
     },
-    getPricing: (state) => {
-      return state.pricing
-    },
     getGames: (state) => {
       return state.games
     },
@@ -106,6 +106,9 @@ export const store = new Vuex.Store({
     },
     getFaqs: (state) => {
       return state.faqs
+    },
+    getPricings: (state) => {
+      return state.pricings
     },
     getRss: (state) => {
       return state.rss
@@ -139,6 +142,9 @@ export const store = new Vuex.Store({
     updateFaqs: (state, payload) => {
       state.faqs = payload
     },
+    updatePricings: (state, payload) => {
+      state.pricings = payload
+    },
     setRss: (state, payload) => {
       state.rss = {
         scope: payload.scope,
@@ -170,6 +176,9 @@ export const store = new Vuex.Store({
     },
     updateFaqs: ({ commit }, payload) => {
       commit('updateFaqs', payload)
+    },
+    updatePricings: ({ commit }, payload) => {
+      commit('updatePricings', payload)
     },
     setRss: ({ commit }, payload) => {
       commit('setRss', payload)

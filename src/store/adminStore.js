@@ -28,17 +28,6 @@ function _loadGameDates(db, io, debugOn) {
   })
 }
 
-function _loadPricing(db, io, debugOn) {
-
-  if (debugOn) { console.log('loadPricing') }
-
-  db.pricingCollection.find().toArray(function(err, res) {
-    if (err) throw err
-    rss.createGameDates(db, debugOn)
-    io.emit('loadPricing', res)
-  })
-}
-
 function _loadFaqs(db, io, debugOn) {
 
   if (debugOn) { console.log('loadFaqs') }
@@ -46,6 +35,16 @@ function _loadFaqs(db, io, debugOn) {
   db.faqsCollection.find().toArray(function(err, res) {
     if (err) throw err
     io.emit('loadFaqs', res)
+  })
+}
+
+function _loadPricings(db, io, debugOn) {
+
+  if (debugOn) { console.log('loadPricings') }
+
+  db.pricingCollection.find().sort({order: 1}).toArray(function(err, res) {
+    if (err) throw err
+    io.emit('loadPricings', res)
   })
 }
 
@@ -178,9 +177,9 @@ module.exports = {
 
   // Pricing
 
-  loadPricing: function(db, io, debugOn) {
+  loadPricings: function(db, io, debugOn) {
 
-    _loadPricing(db, io, debugOn)
+    _loadPricings(db, io, debugOn)
   },
 
   addPricing: function(db, io, data, debugOn) {
@@ -191,7 +190,7 @@ module.exports = {
     data.text = []
     db.pricingCollection.insertOne(data, function(err, res) {
       if (err) throw err
-      _loadPricing(db, io, debugOn)
+      _loadPricings(db, io, debugOn)
     })
   },
 
@@ -204,7 +203,7 @@ module.exports = {
     delete data._id
     db.pricingCollection.updateOne({id: id}, {$set: data}, function(err, res) {
       if (err) throw err
-      _loadPricing(db, io, debugOn)
+      _loadPricings(db, io, debugOn)
     })
   },
 
@@ -220,7 +219,7 @@ module.exports = {
           if (err) throw err
         })
       }
-      _loadPricing(db, io, debugOn)
+      _loadPricings(db, io, debugOn)
     })
   },
 
@@ -230,7 +229,7 @@ module.exports = {
 
     db.pricingCollection.deleteOne({id: data.id}, function(err, res) {
       if (err) throw err
-      _loadPricing(db, io, debugOn)
+      _loadPricings(db, io, debugOn)
     })
   }
 }
