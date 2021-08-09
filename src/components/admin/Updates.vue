@@ -148,7 +148,7 @@ export default {
       this.editingDate = id
     },
     saveDate(id) {
-      const update = this._update(id)
+      const update = this.update(id)
       update.day = document.getElementById('select-day-' + id).value
       update.month = document.getElementById('select-month-' + id).value
       update.year = document.getElementById('select-year-' + id).value

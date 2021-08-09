@@ -28,6 +28,17 @@ function _loadGameDates(db, io, debugOn) {
   })
 }
 
+function _loadPricing(db, io, debugOn) {
+
+  if (debugOn) { console.log('loadPricing') }
+
+  db.pricingCollection.find().toArray(function(err, res) {
+    if (err) throw err
+    rss.createGameDates(db, debugOn)
+    io.emit('loadPricing', res)
+  })
+}
+
 function _loadFaqs(db, io, debugOn) {
 
   if (debugOn) { console.log('loadFaqs') }
@@ -162,6 +173,64 @@ module.exports = {
     db.faqsCollection.deleteOne({id: data.id}, function(err, res) {
       if (err) throw err
       _loadFaqs(db, io, debugOn)
+    })
+  },
+
+  // Pricing
+
+  loadPricing: function(db, io, debugOn) {
+
+    _loadPricing(db, io, debugOn)
+  },
+
+  addPricing: function(db, io, data, debugOn) {
+
+    if (debugOn) { console.log('addPricing', data) }
+
+    data.id = uuidv4()
+    data.text = []
+    db.pricingCollection.insertOne(data, function(err, res) {
+      if (err) throw err
+      _loadPricing(db, io, debugOn)
+    })
+  },
+
+  updatePricing: function(db, io, data, debugOn) {
+
+    if (debugOn) { console.log('updatePricing', data) }
+
+    const id = data.id
+    delete data.id
+    delete data._id
+    db.pricingCollection.updateOne({id: id}, {$set: data}, function(err, res) {
+      if (err) throw err
+      _loadPricing(db, io, debugOn)
+    })
+  },
+
+  selectPricing: function(db, io, data, debugOn) {
+
+    if (debugOn) { console.log('selectPricing', data) }
+
+    db.pricingCollection.find().toArray(function(err, res) {
+      if (err) throw err
+      for (let i = 0; i < res.length; i++) {
+        const selected = res[i].id == data.id
+        db.pricingCollection.updateOne({id: res[i].id}, {$set: {selected: selected}}, function(err) {
+          if (err) throw err
+        })
+      }
+      _loadPricing(db, io, debugOn)
+    })
+  },
+
+  deletePricing: function(db, io, data, debugOn) {
+
+    if (debugOn) { console.log('deletePricing', data) }
+
+    db.pricingCollection.deleteOne({id: data.id}, function(err, res) {
+      if (err) throw err
+      _loadPricing(db, io, debugOn)
     })
   }
 }

@@ -73,6 +73,17 @@ bus.$on('sendDeleteFaq', (data) => { socket.emit('sendDeleteFaq', data) })
 
 socket.on('loadFaqs', (data) => { bus.$emit('loadFaqs', data) })
 
+bus.$on('sendLoadPricing', (data) => { socket.emit('sendLoadPricing', data) })
+
+bus.$on('sendAddPricing', (data) => { socket.emit('sendAddPricing', data) })
+
+bus.$on('sendUpdatePricing', (data) => { socket.emit('sendUpdatePricing', data) })
+
+bus.$on('sendSelectPricing', (data) => { socket.emit('sendSelectPricing', data) })
+
+bus.$on('sendDeletePricing', (data) => { socket.emit('sendDeletePricing', data) })
+
+socket.on('loadPricing', (data) => { bus.$emit('loadPricing', data) })
 
 // --------------------------------------------------------------
 // Labs

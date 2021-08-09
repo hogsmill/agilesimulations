@@ -12,6 +12,7 @@ const collection = 'agileSimulations'
 const updatesCollection = 'agileSimulationsUpdates'
 const gameDatesCollection = 'agileSimulationsGameDates'
 const faqsCollection = 'agileSimulationsFaqs'
+const pricingCollection = 'agileSimulationsPricing'
 
 ON_DEATH(function(signal, err) {
   let logStr = new Date()
@@ -89,6 +90,7 @@ MongoClient.connect(url, { useUnifiedTopology: true, maxIdleTimeMS: maxIdleTime 
   db.updatesCollection = db.collection(updatesCollection)
   db.gameDatesCollection = db.collection(gameDatesCollection)
   db.faqsCollection = db.collection(faqsCollection)
+  db.pricingCollection = db.collection(pricingCollection)
   db.collection = db.collection(collection)
 
   sitemap.createSiteMap(db, debugOn)
@@ -145,6 +147,16 @@ MongoClient.connect(url, { useUnifiedTopology: true, maxIdleTimeMS: maxIdleTime 
     socket.on('sendUpdateFaq', (data) => { adminStore.updateFaq(db, io, data, debugOn) })
 
     socket.on('sendDeleteFaq', (data) => { adminStore.deleteFaq(db, io, data, debugOn) })
+
+    socket.on('sendLoadPricing', (data) => { adminStore.loadPricing(db, io, data, debugOn) })
+
+    socket.on('sendAddPricing', (data) => { adminStore.addPricing(db, io, data, debugOn) })
+
+    socket.on('sendUpdatePricing', (data) => { adminStore.updatePricing(db, io, data, debugOn) })
+    
+    socket.on('sendSelectPricing', (data) => { adminStore.selectPricing(db, io, data, debugOn) })
+
+    socket.on('sendDeletePricing', (data) => { adminStore.deletePricing(db, io, data, debugOn) })
 
     // From accounts
 
