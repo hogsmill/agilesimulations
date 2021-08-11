@@ -1,5 +1,5 @@
 <template>
-  <div class="popular">
+  <div v-if="games.length" class="popular">
     Most popular this week:
     <span v-for="(game, index) in games" :key="index">
       <a :href="game.href">
