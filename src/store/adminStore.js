@@ -48,6 +48,26 @@ function _loadPricings(db, io, debugOn) {
   })
 }
 
+function _loadGames(db, io, debugOn) {
+
+  if (debugOn) { console.log('loadGames') }
+
+  db.gamesCollection.find().toArray(function(err, res) {
+    if (err) throw err
+    io.emit('loadGames', res)
+  })
+}
+
+function _loadPopularGames(db, io, debugOn) {
+
+  if (debugOn) { console.log('loadPopularGames') }
+
+  db.gamesCollection.find({popular: true}).toArray(function(err, res) {
+    if (err) throw err
+    io.emit('loadPopularGames', res)
+  })
+}
+
 module.exports = {
 
   // Updates
@@ -230,6 +250,52 @@ module.exports = {
     db.pricingCollection.deleteOne({id: data.id}, function(err, res) {
       if (err) throw err
       _loadPricings(db, io, debugOn)
+    })
+  },
+
+  // Games
+
+  loadGames: function(db, io, debugOn) {
+
+    _loadGames(db, io, debugOn)
+  },
+
+  loadPopularGames: function(db, io, debugOn) {
+
+    _loadPopularGames(db, io, debugOn)
+  },
+
+  addGame: function(db, io, data, debugOn) {
+
+    if (debugOn) { console.log('addGame', data) }
+
+    data.id = uuidv4()
+    db.gamesCollection.insertOne(data, function(err, res) {
+      if (err) throw err
+      _loadGames(db, io, debugOn)
+    })
+  },
+
+  updateGame: function(db, io, data, debugOn) {
+
+    if (debugOn) { console.log('updateGame', data) }
+
+    const id = data.id
+    delete data.id
+    delete data._id
+    db.gamesCollection.updateOne({id: id}, {$set: data}, function(err, res) {
+      if (err) throw err
+      _loadGames(db, io, debugOn)
+    })
+  },
+
+  deleteGame: function(db, io, data, debugOn) {
+
+    if (debugOn) { console.log('deleteGame', data) }
+
+    db.gamesCollection.deleteOne({id: data.id}, function(err, res) {
+      if (err) throw err
+      _loadGames(db, io, debugOn)
     })
   }
 }

@@ -2,6 +2,7 @@
   <div>
     <Header />
     <Jumbotron />
+    <Popular />
     <div class="content">
       <Main v-if="tab == 'main'" />
       <Admin v-if="tab == 'admin'" />
@@ -32,6 +33,7 @@ import params from './lib/params.js'
 
 import Header from './components/Header.vue'
 import Jumbotron from './components/Jumbotron.vue'
+import Popular from './components/Popular.vue'
 import Main from './components/Main.vue'
 import Admin from './components/Admin.vue'
 import MonteCarlo from './components/games/MonteCarlo.vue'
@@ -57,6 +59,7 @@ export default {
   components: {
     Header,
     Jumbotron,
+    Popular,
     Main,
     Admin,
     MonteCarlo,

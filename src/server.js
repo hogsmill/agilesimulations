@@ -13,6 +13,7 @@ const updatesCollection = 'agileSimulationsUpdates'
 const gameDatesCollection = 'agileSimulationsGameDates'
 const faqsCollection = 'agileSimulationsFaqs'
 const pricingCollection = 'agileSimulationsPricing'
+const gamesCollection = 'agileSimulationsGames'
 
 ON_DEATH(function(signal, err) {
   let logStr = new Date()
@@ -86,11 +87,13 @@ MongoClient.connect(url, { useUnifiedTopology: true, maxIdleTimeMS: maxIdleTime 
   db.createCollection(updatesCollection, function(error, updatesCollection) {})
   db.createCollection(gameDatesCollection, function(error, gameDatesCollection) {})
   db.createCollection(faqsCollection, function(error, faqsCollection) {})
+  db.createCollection(gamesCollection, function(error, gamesCollection) {})
 
   db.updatesCollection = db.collection(updatesCollection)
   db.gameDatesCollection = db.collection(gameDatesCollection)
   db.faqsCollection = db.collection(faqsCollection)
   db.pricingCollection = db.collection(pricingCollection)
+  db.gamesCollection = db.collection(gamesCollection)
   db.collection = db.collection(collection)
 
   sitemap.createSiteMap(db, debugOn)
@@ -157,6 +160,16 @@ MongoClient.connect(url, { useUnifiedTopology: true, maxIdleTimeMS: maxIdleTime 
     socket.on('sendSelectPricing', (data) => { adminStore.selectPricing(db, io, data, debugOn) })
 
     socket.on('sendDeletePricing', (data) => { adminStore.deletePricing(db, io, data, debugOn) })
+
+    socket.on('sendLoadGames', (data) => { adminStore.loadGames(db, io, data, debugOn) })
+
+    socket.on('sendLoadPopularGames', (data) => { adminStore.loadPopularGames(db, io, data, debugOn) })
+
+    socket.on('sendAddGame', (data) => { adminStore.addGame(db, io, data, debugOn) })
+
+    socket.on('sendUpdateGame', (data) => { adminStore.updateGame(db, io, data, debugOn) })
+
+    socket.on('sendDeleteGame', (data) => { adminStore.deleteGame(db, io, data, debugOn) })
 
     // From accounts
 

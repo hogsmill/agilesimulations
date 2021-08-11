@@ -35,6 +35,8 @@ bus.$on('sendLogout', (data) => { socket.emit('sendLogout', data) })
 
 // Receive
 
+socket.on('loadPopularGames', (data) => { bus.$emit('loadPopularGames', data) })
+
 socket.on('loginSuccess', (data) => { bus.$emit('loginSuccess', data) })
 
 socket.on('loginError', (data) => { bus.$emit('loginError', data) })
@@ -84,6 +86,18 @@ bus.$on('sendSelectPricing', (data) => { socket.emit('sendSelectPricing', data) 
 bus.$on('sendDeletePricing', (data) => { socket.emit('sendDeletePricing', data) })
 
 socket.on('loadPricings', (data) => { bus.$emit('loadPricings', data) })
+
+bus.$on('sendLoadGames', (data) => { socket.emit('sendLoadGames', data) })
+
+bus.$on('sendLoadPopularGames', (data) => { socket.emit('sendLoadPopularGames', data) })
+
+bus.$on('sendAddGame', (data) => { socket.emit('sendAddGame', data) })
+
+bus.$on('sendUpdateGame', (data) => { socket.emit('sendUpdateGame', data) })
+
+bus.$on('sendDeleteGame', (data) => { socket.emit('sendDeleteGame', data) })
+
+socket.on('loadGames', (data) => { bus.$emit('loadGames', data) })
 
 // --------------------------------------------------------------
 // Labs

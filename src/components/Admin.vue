@@ -13,11 +13,15 @@
       <div :class="{ 'selected': scope == 'pricing' }">
         <i class="fas fa-pound-sign" title="Edit Pricing" @click="setScope('pricing')" />
       </div>
+      <div :class="{ 'selected': scope == 'popular' }">
+        <i class="fas fa-thumbs-up" title="Edit Popular" @click="setScope('popular')" />
+      </div>
     </h2>
     <Updates v-if="scope == 'updates'" />
     <GameDates v-if="scope == 'gameDates'" />
     <FAQs v-if="scope == 'faqs'" />
     <Pricing v-if="scope == 'pricing'" />
+    <Popular v-if="scope == 'popular'" />
   </div>
 </template>
 
@@ -26,13 +30,15 @@ import Updates from './admin/Updates.vue'
 import GameDates from './admin/GameDates.vue'
 import FAQs from './admin/FAQs.vue'
 import Pricing from './admin/Pricing.vue'
+import Popular from './admin/Popular.vue'
 
 export default {
   components: {
     Updates,
     GameDates,
     FAQs,
-    Pricing
+    Pricing,
+    Popular
   },
   data() {
     return {

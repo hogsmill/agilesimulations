@@ -41,6 +41,7 @@ export default {
     color: #fff !important;
     padding: 50px 25px 36px 25px !important;
     font-family: Montserrat, sans-serif;
+    margin-bottom: 0 !important;
 
     p {
       color: #fff !important;
