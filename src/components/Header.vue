@@ -345,7 +345,7 @@ export default {
         li {
           display: inline-block;
           list-style-type: none;
-          padding: 15px;
+          padding: 15px 13px;
           color: #fff !important;
 
           &.login, &.logout {

@@ -210,8 +210,9 @@ export default {
     .price-tab-footer {
       position: absolute;
       bottom: 0;
+      left: 0 !important;
       height: 96px;
-      width: 84%;
+      width: 100%;
     }
   }
 
