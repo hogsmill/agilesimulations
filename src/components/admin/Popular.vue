@@ -20,6 +20,10 @@
         <td>
           {{ g.game }}
         </td>
+        <td>
+          href: <input :id="'href-' + g.id" type="text" :value="g.href">
+          <i class="far fa-save" @click="updateHref(g.id)" />
+        </td>
       </tr>
     </table>
   </div>
@@ -61,7 +65,11 @@ export default {
     updatePopular(id) {
       const game = this.game(id)
       game.popular = document.getElementById('popular-' + id).checked
-      console.log(game)
+      bus.$emit('sendUpdateGame', game)
+    },
+    updateHref(id) {
+      const game = this.game(id)
+      game.href = document.getElementById('href-' + id).value
       bus.$emit('sendUpdateGame', game)
     }
   }
