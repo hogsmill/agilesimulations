@@ -6,7 +6,43 @@
         <i class="fas fa-rss-square" />
       </a>
     </h2>
-    <table class="game-dates">
+    <table v-if="rss.id" class="rss-game-date">
+      <tr>
+        <td class="right">
+          Date of Game:
+        </td>
+        <td class="left">
+          {{ gameDate() }}
+        </td>
+      </tr>
+      <tr>
+        <td class="right">
+          Game Played:
+        </td>
+        <td class="left">
+          {{ gameField('game') }}
+        </td>
+      </tr>
+      <tr v-if="gameField('link')">
+        <td class="right">
+          Link to Video:
+        </td>
+        <td>
+          <a :href="gameField('link')" target="blank" title="Link to video">
+            <i class="fas fa-external-link-alt" />
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td class="right">
+          Description:
+        </td>
+        <td class="left">
+          {{ gameField('description') }}
+        </td>
+      </tr>
+    </table>
+    <table v-if="!rss.id" class="game-dates">
       <thead>
         <tr>
           <th>
@@ -21,18 +57,18 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(date, index) in gameDates" :class="{ 'selected': rss.id == date.id }" :key="index">
+        <tr v-for="(date, index) in gameDates" :key="index">
           <td>
             {{ gameDate(date) }}
           </td>
           <td>
-            {{ date.game }}
-            <a v-if="date.link" :href="date.link" target="blank" title="Link to video">
+            {{ gameField('game', date) }}
+            <a v-if="gameField('link', date)" :href="gameField('link', date)" target="blank" title="Link to video">
               <i class="fas fa-external-link-alt" />
             </a>
           </td>
           <td>
-            {{ date.description }}
+            {{ gameField('description', date) }}
           </td>
         </tr>
       </tbody>
@@ -42,6 +78,11 @@
 
 <script>
 export default {
+  data() {
+    return {
+      rssGameDate: {}
+    }
+  },
   computed: {
     rss() {
       return this.$store.getters.getRss
@@ -51,19 +92,52 @@ export default {
     }
   },
   methods: {
+    getRssGameDate() {
+      return this.gameDates.find((g) => {
+        return g.id == this.rss.id
+      })
+    },
     gameDate(date) {
+      if (this.rss.id) {
+        date = this.getRssGameDate()
+      }
       const month = date.month < 10 ? '0' + date.month : date.month
       const day = date.day < 10 ? '0' + date.day : date.day
       return date.year + '-' + month + '-' + day
+    },
+    gameField(field, date) {
+      if (this.rss.id) {
+        date = this.getRssGameDate()
+      }
+      return date[field]
     }
   }
 }
 </script>
 
 <style lang="scss">
+  .rss-game-date {
+    font-size: larger;
+
+    td {
+
+      &.left {
+        text-align: left;
+      }
+      &.right {
+        text-align: right;
+      }
+    }
+  }
+
   .game-dates {
     td {
       text-align: left;
+      border: 1px solid;
+
+      &.right {
+        text-align: right;
+      }
     }
   }
 </style>

@@ -20,7 +20,7 @@ function _loadUpdates(db, io, debugOn, updated) {
   })
 }
 
-function _loadGameDates(db, io, debugOn) {
+function _loadGameDates(db, io, debugOn, updated) {
 
   if (debugOn) { console.log('loadGameDates') }
 
@@ -65,7 +65,7 @@ function _loadGames(db, io, debugOn) {
   })
 }
 
-function _loadPopularGames(db, io, debugOn) {
+function _loadPopularGames(db, io, debugOn, updated) {
 
   if (debugOn) { console.log('loadPopularGames') }
 
