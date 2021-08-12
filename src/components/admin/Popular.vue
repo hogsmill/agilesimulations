@@ -21,7 +21,7 @@
           {{ g.game }}
         </td>
         <td>
-          href: <input :id="'href-' + g.id" type="text" :value="g.href">
+          href: <input :id="'href-' + g.id" type="text" class="href" :value="g.href">
           <i class="far fa-save" @click="updateHref(g.id)" />
         </td>
       </tr>
@@ -84,6 +84,10 @@ export default {
       td {
         border: 1px solid;
         padding: 6px;
+
+        .href {
+          width: 500px;
+        }
       }
     }
   }

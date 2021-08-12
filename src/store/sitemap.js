@@ -64,7 +64,13 @@ module.exports = {
         for (let i = 0; i < res.length; i++) {
           writeItem('?update=' + res[i].id, date)
         }
-        footer()
+        db.gamesCollection.find().toArray(function(err, res) {
+          if (err) throw err
+          for (let i = 0; i < res.length; i++) {
+            writeItem(res[i].href, date)
+          }
+          footer()
+        })
       })
     })
   }
