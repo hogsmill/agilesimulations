@@ -27,7 +27,7 @@
         <td class="right">
           Link to Video:
         </td>
-        <td>
+        <td class="left">
           <a :href="gameField('link')" target="blank" title="Link to video">
             <i class="fas fa-external-link-alt" />
           </a>
