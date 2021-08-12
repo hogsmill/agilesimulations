@@ -67,8 +67,10 @@ module.exports = {
         db.gamesCollection.find().toArray(function(err, res) {
           if (err) throw err
           for (let i = 0; i < res.length; i++) {
-            const href = res[i].href.replace(/\?walkThrough/, '')
-            writeItem(href, date)
+            if (res[i].href) {
+              const href = res[i].href.replace(/\?walkThrough/, '')
+              writeItem(href, date)
+            }
           }
           footer()
         })

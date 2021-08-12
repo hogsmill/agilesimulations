@@ -3,14 +3,18 @@ const { v4: uuidv4 } = require('uuid')
 
 const sortFuns = require('./lib/sort.js')
 const rss = require('./rss.js')
+const sitemap = require('./sitemap.js')
 
-function _loadUpdates(db, io, debugOn) {
+function _loadUpdates(db, io, debugOn, updated) {
 
   if (debugOn) { console.log('loadUpdates') }
 
   db.updatesCollection.find().toArray(function(err, res) {
     if (err) throw err
-    rss.createUpdates(db, debugOn)
+    if (updated) {
+      sitemap.createSitmap(db, debugOn)
+      rss.createUpdates(db, debugOn)
+    }
     res = sortFuns.sortByDate(res)
     io.emit('loadUpdates', res)
   })
@@ -22,7 +26,10 @@ function _loadGameDates(db, io, debugOn) {
 
   db.gameDatesCollection.find().toArray(function(err, res) {
     if (err) throw err
-    rss.createGameDates(db, debugOn)
+    if (updated) {
+      sitemap.createSitmap(db, debugOn)
+      rss.createGameDates(db, debugOn)
+    }
     res = sortFuns.sortByDate(res)
     io.emit('loadGameDates', res)
   })
@@ -64,6 +71,9 @@ function _loadPopularGames(db, io, debugOn) {
 
   db.gamesCollection.find({popular: true}).toArray(function(err, res) {
     if (err) throw err
+    if (updated) {
+      sitemap.createSitmap(db, debugOn)
+    }
     io.emit('loadPopularGames', res)
   })
 }
@@ -99,7 +109,7 @@ module.exports = {
     delete data._id
     db.updatesCollection.updateOne({id: id}, {$set: data}, function(err, res) {
       if (err) throw err
-      _loadUpdates(db, io, debugOn)
+      _loadUpdates(db, io, debugOn, true)
     })
   },
 
@@ -109,7 +119,7 @@ module.exports = {
 
     db.updatesCollection.deleteOne({id: data.id}, function(err, res) {
       if (err) throw err
-      _loadUpdates(db, io, debugOn)
+      _loadUpdates(db, io, debugOn, true)
     })
   },
 
@@ -140,7 +150,7 @@ module.exports = {
     delete data._id
     db.gameDatesCollection.updateOne({id: id}, {$set: data}, function(err, res) {
       if (err) throw err
-      _loadGameDates(db, io, debugOn)
+      _loadGameDates(db, io, debugOn, true)
     })
   },
 
@@ -150,7 +160,7 @@ module.exports = {
 
     db.gameDatesCollection.deleteOne({id: data.id}, function(err, res) {
       if (err) throw err
-      _loadGameDates(db, io, debugOn)
+      _loadGameDates(db, io, debugOn, true)
     })
   },
 
@@ -285,7 +295,7 @@ module.exports = {
     delete data._id
     db.gamesCollection.updateOne({id: id}, {$set: data}, function(err, res) {
       if (err) throw err
-      _loadGames(db, io, debugOn)
+      _loadGames(db, io, debugOn, true)
     })
   },
 
@@ -295,7 +305,7 @@ module.exports = {
 
     db.gamesCollection.deleteOne({id: data.id}, function(err, res) {
       if (err) throw err
-      _loadGames(db, io, debugOn)
+      _loadGames(db, io, debugOn, true)
     })
   }
 }
