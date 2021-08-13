@@ -192,7 +192,7 @@ export default {
       &.pipeline-game {
         background-image: url("../assets/img/updates/pipeline-game.jpg");
       }
-      &.logged-games {
+      &.loggedin-games {
         background-image: url("../assets/img/updates/loggedin-games.png");
       }
     }
