@@ -56,11 +56,13 @@ module.exports = {
         if (res.passCode == data.passCode) {
           data.session = uuidv4()
           data.route = res.route
+          data.level = res.level
           data.loggedInAsUser = true
           codeMatch = true
         } else if (res.adminPassCode == data.passCode) {
           data.session = uuidv4()
           data.route = res.route
+          data.level = res.level
           data.loggedInAsAdmin = true
           codeMatch = true
         }
@@ -93,6 +95,7 @@ module.exports = {
             io.emit('loginSuccess', {
               id: data.id,
               route: res.route,
+              level: res.level,
               userName: data.session.userName,
               session: data.session.session,
               loggedInAsAdmin: data.session.loggedInAsAdmin,

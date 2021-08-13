@@ -8,61 +8,11 @@ export const store = new Vuex.Store({
     id: '',
     session: null,
     route: '',
+    level: '',
     userName: '',
     admin: false,
     mobile: false,
     tab: 'main',
-    /*
-    pricing: {
-      facilitation: {
-        title: 'Facilitation',
-        icon: 'fa-chalkboard-teacher',
-        text: [
-          'We can facilitate any of the games as a workshop, retro, team building session, or part of any of your existing training courses.',
-          'We can also offer "train the coach" sessions to train your coaches/facilitators in how to run the games, and the learnings ' +
-              'to bring out from them. Debrief materials supplied and included.'
-        ],
-        price: 99,
-        from: true,
-        timing: 'session'
-      },
-      dedicated: {
-        title: 'Dedicated',
-        icon: 'fa-server',
-        text: [
-          'Have your own, private, secure set of the games customised to your organisational needs and branding, ' +
-              'with full training on games and learnings. Early access to new games and custom features if required',
-          'Includes data persistence, secure login, phone support, custom games and full configuration ' +
-              'with no limits on number of players, etc.'
-        ],
-        price: 24.99,
-        timing: 'month'
-      },
-      regularUse: {
-        title: 'Regular Use',
-        icon: 'fa-calendar-alt',
-        text: [
-          'All the "single use" games, plus all the games and activities that can be run regularly such as Team Health Checks, ' +
-            '5 Team Dysfunctions, Planning Poker and more. All with trend graphs and consolidation across teams and the whole ' +
-            'organisation.',
-          'All on a dedicated server where your data is stored securely and persistently.'
-        ],
-        price: 12.99,
-        selected: true,
-        timing: 'month'
-      },
-      using: {
-        title: 'Using',
-        icon: 'fa-tv',
-        text: [
-          'Just use all the "single-use" games, whenever you want, with configuration to allow you to make them as relevant and applicable ' +
-              'to your organisation/team/circumstances.'
-        ],
-        price: 5.99,
-        timing: 'month'
-      }
-    },
-    */
     pricings: [],
     games: [],
     rss: {
@@ -82,6 +32,9 @@ export const store = new Vuex.Store({
     },
     getRoute: (state) => {
       return state.route
+    },
+    getLevel: (state) => {
+      return state.level
     },
     getUserName: (state) => {
       return state.userName
@@ -121,6 +74,7 @@ export const store = new Vuex.Store({
     updateLogin: (state, payload) => {
       state.session = payload.session
       state.route = payload.route
+      state.level = payload.level
       state.userName = payload.userName
       state.admin = payload.loggedInAsAdmin
     },

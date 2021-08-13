@@ -1,5 +1,6 @@
 <template>
   <div id="main-tab" class="container-fluid text-center">
+    <LoggedInGames v-if="session" />
     <div class="row slideanim">
       <h2>We build remote agile <a @click="setTab('games')">games, workshops and activities</a> that are...</h2>
       <div class="col-sm-4">
@@ -108,7 +109,12 @@
 <script>
 import bus from '../socket.js'
 
+import LoggedInGames from './loggedin/Games.vue'
+
 export default {
+  components: {
+    LoggedInGames
+  },
   computed: {
     session() {
       return this.$store.getters.getSession
