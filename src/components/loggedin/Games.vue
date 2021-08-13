@@ -13,6 +13,9 @@
           <a :href="getUrl(link, true)">
             <i class="fas fa-info-circle" title="Link to a walk through of the game" />
           </a>
+          <a v-if="link.mobile" :href="getMobileUrl(link)">
+            <i class="fas fa-mobile-alt" title="Mobile app" />
+          </a>
         </li>
       </ul>
     </div>
@@ -49,8 +52,8 @@ export default {
     return {
       root: 'https://agilesimulations.co.uk',
       use: [
-        {name: 'No Estimates', url: 'no-estimates'},
-        {name: 'Kanban Playground', url: 'kanban-playground'},
+        {name: 'No Estimates', url: 'no-estimates', mobile: 'no-estimates-mobile'},
+        {name: 'Kanban Playground', url: 'kanban-playground', mobile: 'kanban-playground-mobile'},
         {name: 'Coin Game', url: 'coin-game'},
         {name: 'Agile Battleships', url: 'battleships'},
         {name: 'Context Switching', url: 'context-switching'},
@@ -81,6 +84,9 @@ export default {
         url = url + '?walkThrough'
       }
       return url
+    },
+    getMobileUrl(link) {
+      return this.root + '/' + link.mobile + '-' + this.route
     },
     hasLevel(required) {
       return levels.hasLevel(this.level, required)
