@@ -63,7 +63,7 @@
             </div>
             <div>
               <i class="far fa-plus-square" @click="addPara(u.id)" />
-              <input :id="'new-para-' + u.id" type="text">
+              <input :id="'new-para-' + u.id" class="new-para" type="text">
             </div>
           </td>
           <td>
@@ -226,6 +226,10 @@ export default {
 
       td {
         vertical-align: top;
+
+        .new-para {
+          width: 90%;
+        }
       }
     }
   }
