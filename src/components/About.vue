@@ -192,6 +192,9 @@ export default {
       &.pipeline-game {
         background-image: url("../assets/img/updates/pipeline-game.jpg");
       }
+      &.logged-games {
+        background-image: url("../assets/img/updates/loggedin-games.png");
+      }
     }
     padding: 12px 24px;
     .tags {

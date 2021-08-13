@@ -79,14 +79,21 @@ export default {
   },
   methods: {
     getUrl(link, walkThrough) {
-      let url = this.root + '/' + link.url + '-' + this.route
+      let url = this.root + '/' + link.url
+      if (link.route) {
+        url = url + '-' + this.route
+      }
       if (walkThrough) {
         url = url + '?walkThrough'
       }
       return url
     },
     getMobileUrl(link) {
-      return this.root + '/' + link.mobile + '-' + this.route
+      let url = this.root + '/' + link.mobile
+      if (link.route) {
+        url = url + '-' + this.route
+      }
+      return url
     },
     hasLevel(required) {
       return levels.hasLevel(this.level, required)
