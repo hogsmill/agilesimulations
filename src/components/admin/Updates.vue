@@ -83,7 +83,7 @@
             </div>
             <div>
               <i class="far fa-plus-square" @click="addTag(u.id)" />
-              <input :id="'new-tag-' + u.id" type="text">
+              <input :id="'new-tag-' + u.id" class="new-tag" type="text">
             </div>
           </td>
           <td>
@@ -229,6 +229,9 @@ export default {
 
         .new-para {
           width: 90%;
+        }
+        .new-tag {
+          width: 80%;
         }
       }
     }
