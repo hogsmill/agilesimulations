@@ -2,7 +2,7 @@
   <div v-if="games.length" class="popular">
     Most popular this week:
     <span v-for="(game, index) in games" :key="index">
-      <a :href="game.href">
+      <a :href="game.href + '?walkThrough'">
         {{ game.game }}
       </a>
       <span v-if="index < games.length - 1">
