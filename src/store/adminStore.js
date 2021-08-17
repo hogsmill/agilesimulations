@@ -5,6 +5,18 @@ const sortFuns = require('./lib/sort.js')
 const rss = require('./rss.js')
 const sitemap = require('./sitemap.js')
 
+const gameDefinitions = [
+  {name: 'No Estimates',             enabled: true, popular: 3, level: 'Use',         limited: 'Demo', url: 'no-estimates',      mobile: 'no-estimates-mobile'},
+  {name: 'Kanban Playground',        enabled: true, popular: 0, level: 'Use',         limited: 'Demo', url: 'kanban-playground', mobile: 'kanban-playground-mobile'},
+  {name: 'Coin Game',                enabled: true, popular: 2, level: 'Use',         limited: 'Demo', url: 'coin-game'},
+  {name: 'Agile Battleships',        enabled: true, popular: 0, level: 'Use',         limited: null,   url: 'battleships'},
+  {name: 'Context Switching',        enabled: true, popular: 0, level: 'Use',         limited: null,   url: 'context-switching'},
+  {name: 'Survival at Sea',          enabled: true, popular: 0, level: 'Use',         limited: null,   url: 'survival'},
+  {name: 'Planning Poker',           enabled: true, popular: 0, level: 'Regular Use', limited: 'Demo',       url: 'planning-poker'},
+  {name: 'Spotify Health Check',     enabled: true, popular: 0, level: 'Regular Use', limited: 'Individual', url: 'team-health-check'},
+  {name: '5 Dysfunctions of a Team', enabled: true, popular: 1, level: 'Regular Use', limited: 'Individual', url: 'five-dysfunctions'}
+]
+
 function _loadUpdates(db, io, debugOn, updated) {
 
   if (debugOn) { console.log('loadUpdates') }
@@ -65,20 +77,25 @@ function _loadGames(db, io, debugOn) {
   })
 }
 
-function _loadPopularGames(db, io, debugOn, updated) {
-
-  if (debugOn) { console.log('loadPopularGames') }
-
-  db.gamesCollection.find({popular: true}).toArray(function(err, res) {
-    if (err) throw err
-    if (updated) {
-      sitemap.createSitmap(db, debugOn)
-    }
-    io.emit('loadPopularGames', res)
-  })
-}
-
 module.exports = {
+
+  checkGameDefinitions: function(db, io, debugOn) {
+
+    if (debugOn) { console.log('checkAdminAccounts') }
+
+    db.gamesCollection.findOne(function(err, res) {
+      if (err) throw err
+      if (!res) {
+        for (let i = 0; i < gameDefinitions.length; i++) {
+          gameDefinitions[i].id = uuidv4()
+          db.gamesCollection.insertOne(gameDefinitions[i], function(err, res) {
+            if (err) throw err
+          })
+        }
+        _loadGames(db, io, debugOn)
+      }
+    })
+  },
 
   // Updates
 
@@ -268,11 +285,6 @@ module.exports = {
   loadGames: function(db, io, debugOn) {
 
     _loadGames(db, io, debugOn)
-  },
-
-  loadPopularGames: function(db, io, debugOn) {
-
-    _loadPopularGames(db, io, debugOn)
   },
 
   addGame: function(db, io, data, debugOn) {

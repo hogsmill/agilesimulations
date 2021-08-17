@@ -45,6 +45,8 @@ socket.on('logout', (data) => { bus.$emit('logout', data) })
 
 // Admin
 
+bus.$on('sendCheckGameDefinitions', (data) => { socket.emit('sendCheckGameDefinitions', data) })
+
 bus.$on('sendLoadUpdates', (data) => { socket.emit('sendLoadUpdates', data) })
 
 bus.$on('sendAddUpdate', (data) => { socket.emit('sendAddUpdate', data) })

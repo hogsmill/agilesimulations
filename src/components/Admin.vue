@@ -1,58 +1,85 @@
 <template>
   <div class="admin">
-    <h2 class="menu">
-      <div :class="{ 'selected': scope == 'gameDates' }">
-        <i class="fas fa-dice" title="Edit Game Dates" @click="setScope('gameDates')" />
-      </div>
-      <div :class="{ 'selected': scope == 'updates' }">
-        <i class="fas fa-book" title="Edit Updates" @click="setScope('updates')" />
-      </div>
-      <div :class="{ 'selected': scope == 'faqs' }">
-        <i class="fas fa-question-circle" title="Edit FAQs" @click="setScope('faqs')" />
-      </div>
-      <div :class="{ 'selected': scope == 'pricing' }">
-        <i class="fas fa-pound-sign" title="Edit Pricing" @click="setScope('pricing')" />
-      </div>
-      <div :class="{ 'selected': scope == 'popular' }">
-        <i class="fas fa-thumbs-up" title="Edit Popular" @click="setScope('popular')" />
-      </div>
+    <h2>
+      Admin for {{ userName }}
     </h2>
-    <Updates v-if="scope == 'updates'" />
-    <GameDates v-if="scope == 'gameDates'" />
-    <FAQs v-if="scope == 'faqs'" />
-    <Pricing v-if="scope == 'pricing'" />
-    <Popular v-if="scope == 'popular'" />
+    <div class="details">
+      <h3>
+        Game Details
+      </h3>
+      <p>
+        Games that are enabled here will be shown on the splash screen list of games on the home
+        page when logged in.
+      </p>
+      <table>
+        <thead>
+          <th>
+            Game
+          </th>
+          <th>
+            Enabled for Users?
+          </th>
+          <th>
+            URL
+          </th>
+        </thead>
+        <tbody>
+          <tr v-for="(g, index) in games" :key="index">
+            <td>
+              {{ g.name }}
+            </td>
+            <td class="center">
+              <input :id="'enabled-' + g.id" type="checkbox" :checked="g.enabled" @click="updateEnabled(g.id)">
+            </td>
+            <td>
+              <a :href="url(g.url)">
+                {{ url(g.url) }}
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </template>
 
 <script>
-import Updates from './admin/Updates.vue'
-import GameDates from './admin/GameDates.vue'
-import FAQs from './admin/FAQs.vue'
-import Pricing from './admin/Pricing.vue'
-import Popular from './admin/Popular.vue'
+import bus from '../socket.js'
 
 export default {
-  components: {
-    Updates,
-    GameDates,
-    FAQs,
-    Pricing,
-    Popular
-  },
   data() {
     return {
-      scope: 'updates'
+      games: []
     }
   },
   computed: {
     userName() {
       return this.$store.getters.getUserName
+    },
+    route() {
+      return this.$store.getters.getRoute
     }
   },
+  created() {
+    bus.$emit('sendLoadGames')
+
+    bus.$on('loadGames', (data) => {
+      this.games = data
+    })
+  },
   methods: {
-    setScope(scope) {
-      this.scope = scope
+    game(id) {
+      return this.games.find((d) => {
+        return d.id == id
+      })
+    },
+    url(url) {
+      return this.route ? url + '-' + this.route : url
+    },
+    updateEnabled(id) {
+      const game = this.game(id)
+      game.enabled = document.getElementById('enabled-' + id).checked
+      bus.$emit('sendUpdateGame', game)
     }
   }
 }
@@ -60,41 +87,33 @@ export default {
 
 <style lang="scss">
 .admin {
-
-  .fas, .far {
-    margin: 0 4px;
-  }
-
-  padding: 6px;
+  max-width: 850px;
+  margin: 0 auto;
 
   h2 {
     text-align: center;
+  }
 
-    &.menu {
-      div {
-        width: 70px;
-        height: 55px;
+  .details {
+    margin: 0 24px;
+
+    table {
+      margin: 0 auto;
+      width: 100%;
+
+      th, td {
+        border: 1px solid;
         padding: 6px;
-        display: inline-block;
-
-        &.selected {
-          background-color: #f4511e;
-          border-radius: 12px;
-
-          i {
-            color: #fff;
-          }
-        }
       }
-    }
 
-    i {
-      color: #f4511e;
-      margin: 2px 6px;
+      th {
+        text-align: center;
+      }
 
-      &:hover {
-        cursor: pointer;
-        color: #444;
+      td {
+        &.center {
+          text-align: center;
+        }
       }
     }
   }

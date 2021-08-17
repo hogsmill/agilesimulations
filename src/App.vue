@@ -5,6 +5,7 @@
     <Popular />
     <div class="content">
       <Main v-if="tab == 'main'" />
+      <SiteAdmin v-if="tab == 'siteAdmin'" />
       <Admin v-if="tab == 'admin'" />
       <MonteCarlo v-if="tab == 'monte-carlo'" />
       <Pipeline v-if="tab == 'pipeline'" />
@@ -29,12 +30,15 @@
 </template>
 
 <script>
+import bus from './socket.js'
+
 import params from './lib/params.js'
 
 import Header from './components/Header.vue'
 import Jumbotron from './components/Jumbotron.vue'
 import Popular from './components/Popular.vue'
 import Main from './components/Main.vue'
+import SiteAdmin from './components/SiteAdmin.vue'
 import Admin from './components/Admin.vue'
 import MonteCarlo from './components/games/MonteCarlo.vue'
 import Pipeline from './components/games/Pipeline.vue'
@@ -61,6 +65,7 @@ export default {
     Jumbotron,
     Popular,
     Main,
+    SiteAdmin,
     Admin,
     MonteCarlo,
     Pipeline,
@@ -96,6 +101,8 @@ export default {
   },
   created() {
     this.$store.dispatch('updateMobile', window.outerWidth < 768)
+
+    bus.$emit('sendCheckGameDefinitions')
 
     const gameDate = params.getParam('gameDate')
     const update = params.getParam('update')

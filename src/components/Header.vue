@@ -8,7 +8,10 @@
         <li :class="{'active': tab == 'main'}" @click="setTab('main')">
           HOME
         </li>
-        <li v-if="isAdmin()" :class="{'active': tab == 'admin'}" @click="setTab('admin')">
+        <li v-if="isAdmin()" :class="{'active': tab == 'siteAdmin'}" @click="setTab('siteAdmin')">
+          SITE ADMIN
+        </li>
+        <li v-if="admin" :class="{'active': tab == 'admin'}" @click="setTab('admin')">
           ADMIN
         </li>
         <li :class="{'active': tab == 'pricing'}" @click="setUrl('pricing')">

@@ -9,7 +9,9 @@
       </h3>
       <ul>
         <li v-for="(link, index) in use" :key="index">
-          <a :href="getUrl(link)">{{ link.name }}</a>
+          <a :href="getUrl(link)">
+            {{ link.name }}
+          </a>
           <a :href="getUrl(link, true)">
             <i class="fas fa-info-circle" title="Link to a walk through of the game" />
           </a>
@@ -33,8 +35,8 @@
             <i class="fas fa-info-circle" title="Link to a walk through of the game" />
           </a>
           <br>
-          <span v-if="!hasLevel(link.levelNeeded)" class="limited">
-            ({{ link.limited }})
+          <span v-if="!hasLevel(link.level)" class="limited">
+            ({{ link.limited }} use only)
           </span>
         </li>
       </ul>
@@ -51,19 +53,8 @@ export default {
   data() {
     return {
       root: 'https://agilesimulations.co.uk',
-      use: [
-        {name: 'No Estimates', url: 'no-estimates', mobile: 'no-estimates-mobile'},
-        {name: 'Kanban Playground', url: 'kanban-playground', mobile: 'kanban-playground-mobile'},
-        {name: 'Coin Game', url: 'coin-game'},
-        {name: 'Agile Battleships', url: 'battleships'},
-        {name: 'Context Switching', url: 'context-switching'},
-        {name: 'Survival at Sea', url: 'survival'}
-      ],
-      regularUse: [
-        {name: 'Planning Poker', url: 'planning-poker', levelNeeded: 'Regular Use', limited: 'Demo Mode Only'},
-        {name: 'Spotify Health Check', url: 'team-health-check', levelNeeded: 'Regular Use', limited: 'Individual Only'},
-        {name: '5 Dysfunctions of a Team', url: 'five-dysfunctions', levelNeeded: 'Regular Use', limited: 'Individual Only'}
-      ]
+      use: [],
+      regularUse: []
     }
   },
   computed: {
@@ -77,10 +68,35 @@ export default {
       return this.$store.getters.getLevel
     }
   },
+  created() {
+    bus.$emit('sendLoadGames')
+
+    bus.$on('loadGames', (data) => {
+      this.setupGames(data)
+    })
+  },
   methods: {
+    setupGames(games) {
+      const use = []
+      const regularUse = []
+      for (let i = 0; i < games.length; i++) {
+        if (games[i].enabled) {
+          switch(games[i].level) {
+            case 'Use':
+              use.push(games[i])
+              break
+            case 'Regular Use':
+              regularUse.push(games[i])
+              break
+          }
+        }
+      }
+      this.use = use
+      this.regularUse = regularUse
+    },
     getUrl(link, walkThrough) {
       let url = this.root + '/' + link.url
-      if (link.route) {
+      if (this.route) {
         url = url + '-' + this.route
       }
       if (walkThrough) {
@@ -90,7 +106,7 @@ export default {
     },
     getMobileUrl(link) {
       let url = this.root + '/' + link.mobile
-      if (link.route) {
+      if (this.route) {
         url = url + '-' + this.route
       }
       return url
