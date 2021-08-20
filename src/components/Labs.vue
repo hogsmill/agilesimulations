@@ -84,6 +84,7 @@ export default {
     bus.$emit('sendLoadLabGames')
 
     bus.$on('loadLabGames', (data) => {
+      console.log('here', data)
       this.$store.dispatch('loadLabGames', data)
     })
   },

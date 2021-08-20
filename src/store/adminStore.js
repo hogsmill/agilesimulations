@@ -6,16 +6,17 @@ const rss = require('./rss.js')
 const sitemap = require('./sitemap.js')
 
 const gameDefinitions = [
-  {name: 'No Estimates',              enabled: true,  popular: 3, level: 'Use',         limited: 'Demo', url: 'no-estimates',      mobile: 'no-estimates-mobile'},
-  {name: 'Kanban Playground',         enabled: true,  popular: 0, level: 'Use',         limited: 'Demo', url: 'kanban-playground', mobile: 'kanban-playground-mobile'},
-  {name: 'Coin Game',                 enabled: true,  popular: 2, level: 'Use',         limited: 'Demo', url: 'coin-game'},
-  {name: 'Agile Battleships',         enabled: true,  popular: 0, level: 'Use',         limited: null,   url: 'battleships'},
-  {name: 'Context Switching',         enabled: true,  popular: 0, level: 'Use',         limited: null,   url: 'context-switching'},
-  {name: 'Survival at Sea',           enabled: true,  popular: 0, level: 'Use',         limited: null,   url: 'survival'},
-  {name: 'Planning Poker',            enabled: true,  popular: 0, level: 'Regular Use', limited: 'Demo',       url: 'planning-poker'},
-  {name: 'Spotify Health Check',      enabled: true,  popular: 0, level: 'Regular Use', limited: 'Individual', url: 'team-health-check'},
-  {name: '5 Dysfunctions of a Team',  enabled: true,  popular: 1, level: 'Regular Use', limited: 'Individual', url: 'five-dysfunctions'},
-  {name: 'Agile Maturity Assessment', enabled: false, popular: 0, level: 'Regular Use', limited: 'Individual', url: 'agile-maturity'}
+  {name: 'No Estimates',               enabled: true,  popular: 3, level: 'Use',         limited: 'Demo', url: 'no-estimates',      mobile: 'no-estimates-mobile'},
+  {name: 'Kanban Playground',          enabled: true,  popular: 0, level: 'Use',         limited: 'Demo', url: 'kanban-playground', mobile: 'kanban-playground-mobile'},
+  {name: 'Coin Game',                  enabled: true,  popular: 2, level: 'Use',         limited: 'Demo', url: 'coin-game'},
+  {name: 'Agile Battleships',          enabled: true,  popular: 0, level: 'Use',         limited: null,   url: 'battleships'},
+  {name: 'Context Switching',          enabled: true,  popular: 0, level: 'Use',         limited: null,   url: 'context-switching'},
+  {name: 'Survival at Sea',            enabled: true,  popular: 0, level: 'Use',         limited: null,   url: 'survival'},
+  {name: 'Team Dependency Simulation', enabled: false, popular: 0, level: 'Use',         limited: null,   url: 'do-others-work-first'},
+  {name: 'Planning Poker',             enabled: true,  popular: 0, level: 'Regular Use', limited: 'Demo',       url: 'planning-poker'},
+  {name: 'Spotify Health Check',       enabled: true,  popular: 0, level: 'Regular Use', limited: 'Individual', url: 'team-health-check'},
+  {name: '5 Dysfunctions of a Team',   enabled: true,  popular: 1, level: 'Regular Use', limited: 'Individual', url: 'five-dysfunctions'},
+  {name: 'Agile Maturity Assessment',  enabled: false, popular: 0, level: 'Regular Use', limited: 'Individual', url: 'agile-maturity'}
 ]
 
 function _loadUpdates(db, io, debugOn, updated) {
