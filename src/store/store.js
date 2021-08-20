@@ -15,6 +15,7 @@ export const store = new Vuex.Store({
     tab: 'main',
     pricings: [],
     games: [],
+    labGames: [],
     rss: {
       scope: '',
       id: ''
@@ -50,6 +51,9 @@ export const store = new Vuex.Store({
     },
     getGames: (state) => {
       return state.games
+    },
+    getLabGames: (state) => {
+      return state.labGames
     },
     getGameDates: (state) => {
       return state.gameDates
@@ -87,6 +91,9 @@ export const store = new Vuex.Store({
     loadGames: (state, payload) => {
       state.games = payload
     },
+    loadLabGames: (state, payload) => {
+      state.labGames = payload
+    },
     updateGameDates: (state, payload) => {
       state.gameDates = payload
     },
@@ -121,6 +128,9 @@ export const store = new Vuex.Store({
     },
     loadGames: ({ commit }, payload) => {
       commit('loadGames', payload)
+    },
+    loadLabGames: ({ commit }, payload) => {
+      commit('loadLabGames', payload)
     },
     updateGameDates: ({ commit }, payload) => {
       commit('updateGameDates', payload)

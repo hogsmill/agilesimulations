@@ -77,14 +77,13 @@ export default {
       return this.$store.getters.getMobile
     },
     games() {
-      return this.$store.getters.getGames
+      return this.$store.getters.getLabGames
     }
   },
   created() {
     bus.$emit('sendLoadLabGames')
 
     bus.$on('loadLabGames', (data) => {
-      console.log('here', data)
       this.$store.dispatch('loadLabGames', data)
     })
   },
