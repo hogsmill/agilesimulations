@@ -105,11 +105,11 @@ socket.on('loadGames', (data) => { bus.$emit('loadGames', data) })
 // Labs
 
 if (connectToLabs) {
-  bus.$on('sendLoadGames', () => { labsSocket.emit('sendLoadGames') })
+  bus.$on('sendLoadLabGames', () => { labsSocket.emit('sendLoadGames') })
 
   bus.$on('sendVoteFor', (data) => { labsSocket.emit('sendVoteFor', data) })
 
-  labsSocket.on('loadGames', (data) => { bus.$emit('loadGames', data) })
+  labsSocket.on('loadGames', (data) => { bus.$emit('loadLabGames', data) })
 }
 
 export default bus

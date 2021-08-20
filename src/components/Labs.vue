@@ -81,10 +81,10 @@ export default {
     }
   },
   created() {
-    bus.$emit('sendLoadGames')
+    bus.$emit('sendLoadLabGames')
 
-    bus.$on('loadGames', (data) => {
-      this.$store.dispatch('loadGames', data)
+    bus.$on('loadLabGames', (data) => {
+      this.$store.dispatch('loadLabGames', data)
     })
   },
   methods: {
