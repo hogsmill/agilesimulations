@@ -16,7 +16,7 @@ const gameDefinitions = [
   {name: 'Planning Poker',             enabled: true,  popular: 0, level: 'Regular Use', limited: 'Demo',       url: 'planning-poker'},
   {name: 'Spotify Health Check',       enabled: true,  popular: 0, level: 'Regular Use', limited: 'Individual', url: 'team-health-check'},
   {name: '5 Dysfunctions of a Team',   enabled: true,  popular: 1, level: 'Regular Use', limited: 'Individual', url: 'five-dysfunctions'},
-  {name: 'Agile Maturity Assessment',  enabled: false, popular: 0, level: 'Regular Use', limited: 'Individual', url: 'agile-maturity'}
+  {name: 'Agile Maturity Assessment',  enabled: true,  popular: 0, level: 'Regular Use', limited: 'Individual', url: 'agile-maturity'}
 ]
 
 function _loadUpdates(db, io, debugOn, updated) {
