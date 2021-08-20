@@ -34,7 +34,7 @@
       </thead>
       <tbody>
         <tr v-for="(g, index) in games" :key="index">
-          <td>
+          <td :class="{'popular': g.popular}">
             {{ g.name }}
           </td>
           <td :class="{'popular': g.popular}">
@@ -176,8 +176,12 @@ export default {
         &.popular {
           color: #fff;
           background-color: #f4511e;
+
+          div, i {
+            color: #fff;
+          }
         }
-        
+
         .url-label {
           width: 52px;
           display: inline-block;
