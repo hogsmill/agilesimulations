@@ -180,6 +180,10 @@ export default {
           div, i {
             color: #fff;
           }
+
+          select, input {
+            color: #444;
+          }
         }
 
         .url-label {
