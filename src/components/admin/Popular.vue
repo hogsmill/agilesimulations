@@ -38,7 +38,7 @@
             {{ g.name }}
           </td>
           <td :class="{'popular': g.popular}">
-            <select :id="'popular-' + g.id" :value="g.popular" @click="updatePopular(g.id)">
+            <select :id="'popular-' + g.id" :value="g.popular <= 0" @click="updatePopular(g.id)">
               <option value="0">
                 0
               </option>
@@ -47,7 +47,7 @@
               </option>
             </select>
           </td>
-          <td :class="{'popular': g.popular}">
+          <td :class="{'popular': g.popular <= 0}">
             <select :id="'level-' + g.id" :value="g.level" @change="updateLevel(g.id)">
               <option value="">
                 -- Select --
@@ -60,7 +60,7 @@
               </option>
             </select>
           </td>
-          <td :class="{'popular': g.popular}">
+          <td :class="{'popular': g.popular <= 0}">
             <select :id="'limited-' + g.id" :value="g.limited" @change="updateLimited(g.id)">
               <option value="">
                 -- Select --
@@ -73,7 +73,7 @@
               </option>
             </select> use only
           </td>
-          <td :class="{'popular': g.popular}">
+          <td :class="{'popular': g.popular <= 0}">
             <div class="url-label">
               url:
             </div>
