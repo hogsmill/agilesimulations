@@ -120,6 +120,15 @@ module.exports = {
     })
   },
 
+  rating: function(db, io, data, debugOn) {
+
+    if (debugOn) { console.log('rating', data) }
+
+    db.ratingsCollection.insertOne({game: data.game, rating: data.rating}, function(err, res) {
+      if (err) throw err
+    })
+  },
+
   // Accounts
 
   loadAccounts: function(db, io, data, debugOn) {
