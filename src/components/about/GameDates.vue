@@ -65,7 +65,7 @@
             {{ gameDate(date) }}
           </td>
           <td>
-            <div class="country" :class="date.location ? date.location.code : 'uk'" :title="date.location ? date.location.name : 'UK'" />
+            <div class="country" :class="date.location ? date.location.code : 'world'" :title="date.location ? date.location.name : 'Worldwide'" />
           </td>
           <td>
             {{ gameField('game', date) }}
@@ -153,6 +153,9 @@ export default {
         background-position: center;
         background-repeat: no-repeat;
 
+        &.world {
+          background-image: url('../../assets/img/countries/world.png');
+        }
         &.uk {
           background-image: url('../../assets/img/countries/gb.png');
         }

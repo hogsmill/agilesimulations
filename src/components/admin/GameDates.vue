@@ -79,7 +79,7 @@
           </td>
           <td>
             <div v-if="editingLocation != date.id">
-              {{ date.location ? date.location.name : 'UK' }}
+              {{ date.location ? date.location.name : 'Worldwide' }}
               <i class="far fa-edit" @click="editLocation(date.id)" />
             </div>
             <div v-if="editingLocation == date.id">
