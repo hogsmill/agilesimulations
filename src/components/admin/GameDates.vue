@@ -158,6 +158,7 @@ export default {
       editingLink: '',
       editingDescription: '',
       countries: [
+        {name: 'UK', code: 'uk'},
         {name: 'India', code: 'india'},
         {name: 'USA', code: 'us'},
         {name: 'Belarus', code: 'belarus'}
