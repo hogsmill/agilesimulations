@@ -49,6 +49,9 @@
             Date
           </th>
           <th>
+            Location
+          </th>
+          <th>
             Game
           </th>
           <th>
@@ -72,6 +75,22 @@
               <Month :id="date.id" :month="date.month" /> /
               <Year :id="date.id" :year="date.year" />
               <i class="far fa-save" @click="saveDate(date.id)" />
+            </div>
+          </td>
+          <td>
+            <div v-if="editingLocation != date.id">
+              {{ date.location ? date.location.name : 'UK' }}
+              <i class="far fa-edit" @click="editLocation(date.id)" />
+            </div>
+            <div v-if="editingLocation == date.id">
+              <select :id="'select-location-' + date.id" :value="date.location ? date.location.code : ''" @change="saveLocation(date.id)">
+                <option value="">
+                  -- Select --
+                </option>
+                <option v-for="(country, cindex) in countries" :key="cindex" :value="country.code">
+                  {{ country.name }}
+                </option>
+              </select>
             </div>
           </td>
           <td>
@@ -134,9 +153,15 @@ export default {
     return {
       dates: [],
       editingDate: '',
+      editingLocation: '',
       editingGame: '',
       editingLink: '',
-      editingDescription: ''
+      editingDescription: '',
+      countries: [
+        {name: 'India', code: 'india'},
+        {name: 'USA', code: 'us'},
+        {name: 'Belarus', code: 'belarus'}
+      ]
     }
   },
   created() {
@@ -172,6 +197,20 @@ export default {
     },
     deleteGameDate(id) {
       bus.$emit('sendDeleteGameDate', {id: id})
+    },
+    editLocation(id) {
+      this.editingLocation = id
+    },
+    saveLocation(id) {
+      const date = this.dates.find((d) => {
+        return d.id == id
+      })
+      const location = document.getElementById('select-location-' + id).value
+      date.location = this.countries.find((c) => {
+        return location == c.code
+      })
+      bus.$emit('sendUpdateGameDate', date)
+      this.editingLocation = ''
     },
     editDate(id) {
       this.editingDate = id

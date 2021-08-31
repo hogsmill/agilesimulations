@@ -49,6 +49,9 @@
             Date
           </th>
           <th>
+            Where
+          </th>
+          <th>
             Game
           </th>
           <th>
@@ -60,6 +63,9 @@
         <tr v-for="(date, index) in gameDates" :key="index">
           <td>
             {{ gameDate(date) }}
+          </td>
+          <td>
+            <div class="country" :class="date.location ? date.location.code : 'uk'" :title="date.location ? date.location.name : 'UK'" />
           </td>
           <td>
             {{ gameField('game', date) }}
@@ -137,6 +143,28 @@ export default {
 
       &.right {
         text-align: right;
+      }
+
+      .country {
+        width: 40px;
+        height: 20px;
+        margin: auto auto;
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+
+        &.uk {
+          background-image: url('../../assets/img/countries/gb.png');
+        }
+        &.us {
+          background-image: url('../../assets/img/countries/us.png');
+        }
+        &.india {
+          background-image: url('../../assets/img/countries/in.png');
+        }
+        &.belarus {
+          background-image: url('../../assets/img/countries/by.png');
+        }
       }
     }
   }

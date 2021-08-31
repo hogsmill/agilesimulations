@@ -42,7 +42,7 @@
               <option value="0">
                 0
               </option>
-              <option v-for="(n, index) in 3" :key="index">
+              <option v-for="(n, nindex) in 3" :key="nindex">
                 {{ n }}
               </option>
             </select>

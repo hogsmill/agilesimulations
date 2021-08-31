@@ -26,7 +26,7 @@ function _loadUpdates(db, io, debugOn, updated) {
   db.updatesCollection.find().toArray(function(err, res) {
     if (err) throw err
     if (updated) {
-      sitemap.createSitmap(db, debugOn)
+      sitemap.createSitemap(db, debugOn)
       rss.createUpdates(db, debugOn)
     }
     res = sortFuns.sortByDate(res)
