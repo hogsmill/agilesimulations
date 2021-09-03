@@ -139,7 +139,7 @@ export default {
   .game-dates {
     td {
       text-align: left;
-      border: 1px solid;
+      border: 1px solid #ddd;
 
       &.right {
         text-align: right;
