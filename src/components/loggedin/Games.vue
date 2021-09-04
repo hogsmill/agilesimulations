@@ -4,9 +4,6 @@
       Game Links for {{ userName }}
     </h2>
     <div v-if="level == 'Single Game'" class="col-sm-12">
-      <h3>
-        Single Game
-      </h3>
       <ul>
         <li v-for="(link, index) in loggedInGames" :key="index">
           <a :href="getUrl(link)">
