@@ -1,5 +1,6 @@
 
 const levels = [
+  'Single Game',
   'Using',
   'Regular Use',
   'Dedicated'

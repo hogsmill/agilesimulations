@@ -3,7 +3,12 @@
     <h2>
       Game Links for {{ userName }}
     </h2>
-    <div class="col-sm-6">
+    <div v-if="level != 'Single Game'" class="col-sm-6">
+      <h3>
+        Single Game
+      </h3>
+    </div>
+    <div v-if="level != 'Single Game'" class="col-sm-6">
       <h3>
         Single Use
       </h3>

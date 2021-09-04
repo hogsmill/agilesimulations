@@ -189,7 +189,7 @@ module.exports = {
 
     if (debugOn) { console.log('updateLevel', data) }
 
-    db.collection.updateOne({userName: data.userName}, {$set: {level: data.level}}, function(err, res) {
+    db.collection.updateOne({userName: data.userName}, {$set: {level: data.level, games: data.games}}, function(err, res) {
       if (err) throw err
       _loadAccounts(db, io, {id: data.id}, debugOn)
     })
