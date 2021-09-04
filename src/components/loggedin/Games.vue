@@ -122,7 +122,7 @@ export default {
     setupSingleGames(games) {
       const loggedInGames = []
       for (let i = 0; i < games.length; i++) {
-        if (this.games[i][games[i].name]) {
+        if (this.games[i][this.games[i].name]) {
           loggedInGames.push(games[i])
         }
       }
