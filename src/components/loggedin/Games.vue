@@ -7,6 +7,19 @@
       <h3>
         Single Game
       </h3>
+      <ul>
+        <li v-for="(link, index) in loggedInGames" :key="index">
+          <a :href="getUrl(link)">
+            {{ link.name }}
+          </a>
+          <a :href="getUrl(link, true)">
+            <i class="fas fa-info-circle" title="Link to a walk through of the game" />
+          </a>
+          <a v-if="link.mobile" :href="getMobileUrl(link)">
+            <i class="fas fa-mobile-alt" title="Mobile app" />
+          </a>
+        </li>
+      </ul>
     </div>
     <div v-if="level != 'Single Game'" class="col-sm-6">
       <h3>
@@ -59,7 +72,8 @@ export default {
     return {
       root: 'https://agilesimulations.co.uk',
       use: [],
-      regularUse: []
+      regularUse: [],
+      loggedInGames: []
     }
   },
   computed: {
@@ -71,6 +85,9 @@ export default {
     },
     level() {
       return this.$store.getters.getLevel
+    },
+    games() {
+      return this.$store.getters.getLoggedInGames
     }
   },
   created() {
@@ -78,6 +95,9 @@ export default {
 
     bus.$on('loadGames', (data) => {
       this.setupGames(data)
+      if (this.level == 'Single Game') {
+        this.setupSingleGames(data)
+      }
     })
   },
   methods: {
@@ -98,6 +118,15 @@ export default {
       }
       this.use = use
       this.regularUse = regularUse
+    },
+    setupSingleGames(games) {
+      const loggedInGames = []
+      for (let i = 0; i < games.length; i++) {
+        if (this.games[i][games[i].name]) {
+          loggedInGames.push(games[i])
+        }
+      }
+      this.loggedInGames = loggedInGames
     },
     getUrl(link, walkThrough) {
       let url = this.root + '/' + link.url

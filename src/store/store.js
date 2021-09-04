@@ -9,6 +9,7 @@ export const store = new Vuex.Store({
     session: null,
     route: '',
     level: '',
+    loggedInGames: {},
     userName: '',
     admin: false,
     mobile: false,
@@ -79,6 +80,7 @@ export const store = new Vuex.Store({
       state.session = payload.session
       state.route = payload.route
       state.level = payload.level
+      state.loggedInGames = payload.games
       state.userName = payload.userName
       state.admin = payload.loggedInAsAdmin
     },

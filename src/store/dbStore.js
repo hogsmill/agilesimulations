@@ -57,12 +57,14 @@ module.exports = {
           data.session = uuidv4()
           data.route = res.route
           data.level = res.level
+          data.games = res.games
           data.loggedInAsUser = true
           codeMatch = true
         } else if (res.adminPassCode == data.passCode) {
           data.session = uuidv4()
           data.route = res.route
           data.level = res.level
+          data.games = res.games
           data.loggedInAsAdmin = true
           codeMatch = true
         }
@@ -96,6 +98,7 @@ module.exports = {
               id: data.id,
               route: res.route,
               level: res.level,
+              games: res.games,
               userName: data.session.userName,
               session: data.session.session,
               loggedInAsAdmin: data.session.loggedInAsAdmin,
