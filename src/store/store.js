@@ -38,6 +38,9 @@ export const store = new Vuex.Store({
     getLevel: (state) => {
       return state.level
     },
+    getLoggedInGames: (state) => {
+      return state.loggedInGames
+    },
     getUserName: (state) => {
       return state.userName
     },

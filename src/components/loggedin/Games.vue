@@ -121,8 +121,9 @@ export default {
     },
     setupSingleGames(games) {
       const loggedInGames = []
+      console.log(games, this.games)
       for (let i = 0; i < games.length; i++) {
-        if (this.games[i][this.games[i].name]) {
+        if (this.games[games[i].name]) {
           loggedInGames.push(games[i])
         }
       }
