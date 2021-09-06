@@ -211,7 +211,7 @@
       </p>
 
       <div class="row slideanim">
-        <div class="col-sm-4">
+        <div class="col-sm-3">
           <i class="fas section-icon fa-ambulance" name="team-health-check" />
           <h4>
             <a href="team-health-check">Spotify Health Check</a> <New />
@@ -225,7 +225,7 @@
           </p>
           <p><b>#teamhealthcheck</b> <b>#spotify</b></p>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-3">
           <i class="fas section-icon fa-pizza-slice" name="team-health-check" />
           <h4>
             <a href="agile-maturity">Agile Maturity Assessment</a> <New />
@@ -239,7 +239,7 @@
           </p>
           <p><b>#agilematurity</b></p>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-3">
           <i class="fas section-icon fa-toilet-paper" name="five-dysfunctions" />
           <h4>
             <a href="five-dysfunctions">5 Dysfunctions</a> <New />
@@ -251,6 +251,19 @@
             <a href="https://en.wikipedia.org/wiki/The_Five_Dysfunctions_of_a_Team">here</a>
           </p>
           <p><b>#5dysfunctions</b> <b>#lencioni</b></p>
+        </div>
+        <div class="col-sm-3">
+          <i class="fas section-icon fa-book-reader" name="scrum-master" />
+          <h4>
+            <a href="scrum-master">Scrum Master Asessment</a>
+            <div class="under-construction" title="Under Construction" />
+          </h4>
+          <p>
+            We tell the team to use retrospectives to inspect and continuously improve themselves. But
+            what about us as Scrum Masters? Shouldn’t we take the time to reflect,
+            identify our areas of improvement, and take actions to get better as Scrum Masters?
+          </p>
+          <p><b>#scrummaster</b> <b>#lencioni</b></p>
         </div>
       </div>
     </div>
