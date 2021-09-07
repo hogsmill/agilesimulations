@@ -211,7 +211,7 @@
       </p>
 
       <div class="row slideanim">
-        <div class="col-sm-3">
+        <div class="col-sm-6">
           <i class="fas section-icon fa-ambulance" name="team-health-check" />
           <h4>
             <a href="team-health-check">Spotify Health Check</a> <New />
@@ -225,7 +225,7 @@
           </p>
           <p><b>#teamhealthcheck</b> <b>#spotify</b></p>
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm-6">
           <i class="fas section-icon fa-pizza-slice" name="team-health-check" />
           <h4>
             <a href="agile-maturity">Agile Maturity Assessment</a> <New />
@@ -239,7 +239,9 @@
           </p>
           <p><b>#agilematurity</b></p>
         </div>
-        <div class="col-sm-3">
+      </div>
+      <div class="row slideanim">
+        <div class="col-sm-6">
           <i class="fas section-icon fa-toilet-paper" name="five-dysfunctions" />
           <h4>
             <a href="five-dysfunctions">5 Dysfunctions</a> <New />
@@ -252,7 +254,7 @@
           </p>
           <p><b>#5dysfunctions</b> <b>#lencioni</b></p>
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm-6">
           <i class="fas section-icon fa-book-reader" name="scrum-master" />
           <h4>
             <a href="scrum-master">Scrum Master Asessment</a>
