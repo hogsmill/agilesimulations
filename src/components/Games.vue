@@ -265,6 +265,10 @@
             what about us as Scrum Masters? Shouldn’t we take the time to reflect,
             identify our areas of improvement, and take actions to get better as Scrum Masters?
           </p>
+          <p>
+            Thanks to <a href="https://www.linkedin.com/in/amparocorrea">Amparo Correa</a> for
+            this excellent assessment.
+          </p>
           <p><b>#scrummaster</b> <b>#lencioni</b></p>
         </div>
       </div>
