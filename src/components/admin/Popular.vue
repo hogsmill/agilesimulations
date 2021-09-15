@@ -16,6 +16,9 @@
       <thead>
         <tr>
           <th>
+            Enabled?
+          </th>
+          <th>
             Name
           </th>
           <th>
@@ -34,6 +37,9 @@
       </thead>
       <tbody>
         <tr v-for="(g, index) in games" :key="index">
+          <td :class="{'popular': g.popular > 0}">
+            <input type="checkbox" :checked="g.enabled" @click="updateEnabled(g.id)">
+          </td>
           <td :class="{'popular': g.popular > 0}">
             {{ g.name }}
           </td>
@@ -124,6 +130,11 @@ export default {
     },
     deleteGame(id) {
       bus.$emit('sendDeleteGame', {id: id})
+    },
+    updateEnabled(id) {
+      const game = this.game(id)
+      game.enabled = !game.enabled
+      bus.$emit('sendUpdateGame', game)
     },
     updateLevel(id) {
       const game = this.game(id)
