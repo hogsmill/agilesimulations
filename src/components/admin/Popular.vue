@@ -117,7 +117,7 @@ export default {
     addGame() {
       const game = document.getElementById('new-game').value
       const data = {
-        game: game,
+        name: game,
         popular: false
       }
       bus.$emit('sendAddGame', data)
