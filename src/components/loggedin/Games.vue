@@ -1,5 +1,5 @@
 <template>
-  <div class="row loggedin-games">
+  <div class="row loggedin-games-list">
     <h2>
       Game Links for {{ userName }}
     </h2>
@@ -154,7 +154,7 @@ export default {
 </script>
 
 <style lang="scss">
-  .loggedin-games {
+  .loggedin-games-list {
     padding: 12px;
     max-width: 600px;
     margin: 24px auto 12px auto;
