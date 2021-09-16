@@ -195,6 +195,9 @@ export default {
       &.loggedin-games {
         background-image: url("../assets/img/updates/loggedin-games.png");
       }
+      &.health-check {
+        background-image: url("../assets/img/updates/health-check.png");
+      }
     }
     padding: 12px 24px;
     .tags {
