@@ -41,7 +41,7 @@ function _loadGameDates(db, io, debugOn, updated) {
   db.gameDatesCollection.find().toArray(function(err, res) {
     if (err) throw err
     if (updated) {
-      sitemap.createSitmap(db, debugOn)
+      sitemap.createSitemap(db, debugOn)
       rss.createGameDates(db, debugOn)
     }
     res = sortFuns.sortByDate(res)
