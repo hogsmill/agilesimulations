@@ -231,8 +231,13 @@ export default {
 
 @media screen and (max-width: 768px) {
   #main-tab {
+  
     .pic {
       margin-bottom: 24px;
+
+      .caption {
+        position: initial;
+      }
     }
   }
 }
