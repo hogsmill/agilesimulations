@@ -4,6 +4,9 @@ if [ "$1" == "-f" ]; then
   FORCE=true
 fi
 
+rm package-lock.json
+rm node_modules
+
 git stash
 GIT=`git pull`
 echo $GIT
@@ -18,8 +21,11 @@ rm /var/www/html/js/*
 cp -R dist/* /var/www/html/
 
 if [ -f "src/server.js" ]; then
-    SERVER=`ps -ef | grep server.js | grep "agilesimulations" | awk {'print $2'}`
-    if [ "$SERVER" != "" ]; then
-      kill -9 $SERVER
-    fi
+  SERVER=`ps -ef | grep server.js | grep "agilesimulations" | awk {'print $2'}`
+  if [ "$SERVER" != "" ]; then
+    kill -9 $SERVER
   fi
+fi
+
+rm -rf node_modules/.cache
+rm -rf dist
