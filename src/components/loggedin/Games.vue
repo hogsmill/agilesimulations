@@ -1,5 +1,5 @@
 <template>
-  <div class="row loggedin-games-list">
+  <div class="row loggedin-games-list" :class="listWidth()">
     <h2>
       Game Links for {{ userName }}
     </h2>
@@ -18,7 +18,7 @@
         </li>
       </ul>
     </div>
-    <div v-if="level != 'Single Game'" class="col-sm-6">
+    <div v-if="level != 'Single Game'" :class="'col-sm-' + colWidth()">
       <h3>
         Single Use
       </h3>
@@ -36,7 +36,7 @@
         </li>
       </ul>
     </div>
-    <div v-if="level != 'Single Game'" class="col-sm-6">
+    <div v-if="level != 'Single Game'" :class="'col-sm-' + colWidth()">
       <h3>
         Regular Use
       </h3>
@@ -56,6 +56,19 @@
         </li>
       </ul>
     </div>
+    <div v-if="hasLevel('Dedicated')" :class="'col-sm-' + colWidth()">
+      <h3>
+        Dedicated
+      </h3>
+      <ul>
+        <li v-for="(link, index) in dedicated" :key="index">
+          <a :href="getUrl(link)">{{ link.name }}</a>
+          <a :href="getUrl(link, true)">
+            <i class="fas fa-info-circle" title="Link to a walk through of the game" />
+          </a>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -70,6 +83,7 @@ export default {
       root: 'https://agilesimulations.co.uk',
       use: [],
       regularUse: [],
+      dedicated: [],
       loggedInGames: []
     }
   },
@@ -98,10 +112,18 @@ export default {
     })
   },
   methods: {
+    listWidth() {
+      return 'list-' + this.colWidth()
+    },
+    colWidth() {
+      return this.hasLevel('Dedicated') ? 4 : 6
+    },
     setupGames(games) {
       const use = []
       const regularUse = []
+      const dedicated = []
       for (let i = 0; i < games.length; i++) {
+        console.log(games[i].name, games[i].level, games[i])
         if (games[i].enabled) {
           switch(games[i].level) {
             case 'Use':
@@ -110,15 +132,18 @@ export default {
             case 'Regular Use':
               regularUse.push(games[i])
               break
+            case 'Dedicated':
+              dedicated.push(games[i])
+              break
           }
         }
       }
       this.use = use
       this.regularUse = regularUse
+      this.dedicated = dedicated
     },
     setupSingleGames(games) {
       const loggedInGames = []
-      console.log(games, this.games)
       for (let i = 0; i < games.length; i++) {
         if (this.games[games[i].name]) {
           loggedInGames.push(games[i])
@@ -156,10 +181,16 @@ export default {
 <style lang="scss">
   .loggedin-games-list {
     padding: 12px;
-    max-width: 600px;
     margin: 24px auto 12px auto;
     border: 4px solid #f4511e;
     border-radius: 8px;
+
+    &.list-6 {
+      max-width: 600px;
+    }
+    &.list-4 {
+      max-width: 900px;
+    }
 
     li {
       text-align: left;

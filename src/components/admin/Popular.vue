@@ -64,6 +64,9 @@
               <option>
                 Regular Use
               </option>
+              <option>
+                Dedicated
+              </option>
             </select>
           </td>
           <td :class="{'popular': g.popular > 0}">
