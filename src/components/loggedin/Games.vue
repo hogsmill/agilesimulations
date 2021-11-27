@@ -135,6 +135,9 @@ export default {
             case 'Dedicated':
               dedicated.push(games[i])
               break
+            case 'Admin':
+              dedicated.push(games[i])
+              break
           }
         }
       }
