@@ -3,7 +3,8 @@ const levels = [
   'Single Game',
   'Using',
   'Regular Use',
-  'Dedicated'
+  'Dedicated',
+  'Admin'
 ]
 
 const Levels = {
