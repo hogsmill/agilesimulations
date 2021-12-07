@@ -5,7 +5,7 @@ if [ "$1" == "-f" ]; then
 fi
 
 rm package-lock.json
-rm node_modules
+rm -rf node_modules
 
 git stash
 GIT=`git pull`
