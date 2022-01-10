@@ -26,7 +26,7 @@ function _loadUpdates(db, io, debugOn, updated) {
   db.updatesCollection.find().toArray(function(err, res) {
     if (err) throw err
     if (updated) {
-      sitemap.createSitemap(db, debugOn)
+      sitemap.createSiteMap(db, debugOn)
       rss.createUpdates(db, debugOn)
     }
     res = sortFuns.sortByDate(res)
@@ -41,7 +41,7 @@ function _loadGameDates(db, io, debugOn, updated) {
   db.gameDatesCollection.find().toArray(function(err, res) {
     if (err) throw err
     if (updated) {
-      sitemap.createSitemap(db, debugOn)
+      sitemap.createSiteMap(db, debugOn)
       rss.createGameDates(db, debugOn)
     }
     res = sortFuns.sortByDate(res)
