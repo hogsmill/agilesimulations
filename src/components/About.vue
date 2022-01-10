@@ -198,6 +198,9 @@ export default {
       &.health-check {
         background-image: url("../assets/img/updates/health-check.png");
       }
+      &.french {
+        background-image: url("../assets/img/updates/french.jpg");
+      }
     }
     padding: 12px 24px;
     .tags {
