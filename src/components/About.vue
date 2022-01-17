@@ -201,6 +201,9 @@ export default {
       &.french {
         background-image: url("../assets/img/updates/french.jpg");
       }
+      &.google-meet {
+        background-image: url("../assets/img/updates/google-meet.jpg");
+      }
     }
     padding: 12px 24px;
     .tags {
