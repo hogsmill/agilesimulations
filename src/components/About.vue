@@ -205,7 +205,7 @@ export default {
         background-image: url("../assets/img/updates/google-meet.jpg");
       }
       &.organisation-model {
-        background-image: url("../assets/img/updates/organisaton-model.jpg");
+        background-image: url("../assets/img/updates/organisation-model.jpg");
       }
     }
     padding: 12px 24px;
