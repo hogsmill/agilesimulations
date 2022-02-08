@@ -160,6 +160,7 @@ export default {
       height: 200px;
       background-size: cover;
       margin: 0 0 4px 8px;
+      padding: 12px 24px;
 
       &.healthCheck {
         height: 320px;
@@ -207,11 +208,11 @@ export default {
       &.organisation-model {
         background-image: url("../assets/img/updates/organisation-model.jpg");
       }
-      &.monte-carlo {
-        background-image: url("../assets/img/updates/monte-carlo.jpg");
+      &.monte-carlo-update {
+        background-image: url("../assets/img/updates/monte-carlo-update.jpg");
       }
     }
-    padding: 12px 24px;
+
     .tags {
       text-align: right;
 
