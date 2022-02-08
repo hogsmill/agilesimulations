@@ -207,6 +207,9 @@ export default {
       &.organisation-model {
         background-image: url("../assets/img/updates/organisation-model.jpg");
       }
+      &.monte-carlo {
+        background-image: url("../assets/img/updates/monte-carlo.jpg");
+      }
     }
     padding: 12px 24px;
     .tags {
