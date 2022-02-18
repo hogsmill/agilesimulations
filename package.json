@@ -8,6 +8,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "array.prototype.flatmap": "^1.2.5",
     "core-js": "^3.21.1",
     "death": "^1.1.0",
     "jquery": "^3.6.0",
