@@ -49,7 +49,7 @@ if (!prod) {
 } else {
   const options = {
     key: fs.readFileSync('/etc/ssl/private/agilesimulations.co.uk.key'),
-    cert: fs.readFileSync('/etc/ssl/certs/093D24D3AAD8E4E7F53B12AB4F48BE22.cer')
+    cert: fs.readFileSync('/etc/ssl/certs/agilesimulations.cer')
   }
   httpServer = require('https').createServer(options)
   io = require('socket.io')(httpServer, {
