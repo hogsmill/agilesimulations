@@ -126,9 +126,9 @@ export default {
     }
   },
   created() {
-    bus.$emit('sendLoadPricings')
+    bus.emit('sendLoadPricings')
 
-    bus.$on('loadPricings', (data) => {
+    bus.on('loadPricings', (data) => {
       this.pricings = data
     })
   },
@@ -143,43 +143,43 @@ export default {
       const data = {
         title: title
       }
-      bus.$emit('sendAddPricing', data)
+      bus.emit('sendAddPricing', data)
     },
     deletePricing(id) {
-      bus.$emit('sendDeletePricing', {id: id})
+      bus.emit('sendDeletePricing', {id: id})
     },
     updateOrder(id) {
       const pricing = this.pricing(id)
       pricing.order = document.getElementById('order-' + id).value
-      bus.$emit('sendUpdatePricing', pricing)
+      bus.emit('sendUpdatePricing', pricing)
     },
     updateTitle(id) {
       const pricing = this.pricing(id)
       pricing.title = document.getElementById('title-' + id).value
-      bus.$emit('sendUpdatePricing', pricing)
+      bus.emit('sendUpdatePricing', pricing)
     },
     updateIcon(id) {
       const pricing = this.pricing(id)
       pricing.icon = document.getElementById('icon-' + id).value
-      bus.$emit('sendUpdatePricing', pricing)
+      bus.emit('sendUpdatePricing', pricing)
     },
     updatePrice(id) {
       const pricing = this.pricing(id)
       pricing.price = document.getElementById('price-' + id).value
-      bus.$emit('sendUpdatePricing', pricing)
+      bus.emit('sendUpdatePricing', pricing)
     },
     updateTiming(id) {
       const pricing = this.pricing(id)
       pricing.timing = document.getElementById('timing-' + id).value
-      bus.$emit('sendUpdatePricing', pricing)
+      bus.emit('sendUpdatePricing', pricing)
     },
     updateFrom(id) {
       const pricing = this.pricing(id)
       pricing.from = !pricing.from
-      bus.$emit('sendUpdatePricing', pricing)
+      bus.emit('sendUpdatePricing', pricing)
     },
     updateSelected(id) {
-      bus.$emit('sendSelectPricing', {id: id})
+      bus.emit('sendSelectPricing', {id: id})
     },
     addPara(id) {
       const pricing = this.pricing(id)
@@ -187,7 +187,7 @@ export default {
       const para = document.getElementById('new-para-' + id).value
       text.push(para)
       pricing.text = text
-      bus.$emit('sendUpdatePricing', pricing)
+      bus.emit('sendUpdatePricing', pricing)
       document.getElementById('new-para-' + id).value = ''
     },
     deletePara(id, para) {
@@ -199,7 +199,7 @@ export default {
         }
       }
       pricing.text = text
-      bus.$emit('sendUpdatePricing', pricing)
+      bus.emit('sendUpdatePricing', pricing)
     }
   }
 }

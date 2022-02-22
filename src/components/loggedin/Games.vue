@@ -102,9 +102,9 @@ export default {
     }
   },
   created() {
-    bus.$emit('sendLoadGames')
+    bus.emit('sendLoadGames')
 
-    bus.$on('loadGames', (data) => {
+    bus.on('loadGames', (data) => {
       this.setupGames(data)
       if (this.level == 'Single Game') {
         this.setupSingleGames(data)
@@ -175,7 +175,7 @@ export default {
       return levels.hasLevel(this.level, required)
     },
     contact() {
-      bus.$emit('contact', {})
+      bus.emit('contact', {})
     }
   }
 }

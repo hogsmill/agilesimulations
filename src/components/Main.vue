@@ -131,7 +131,7 @@ export default {
       return this.route ? url + '-' + this.route : url
     },
     contact() {
-      bus.$emit('contact', {})
+      bus.emit('contact', {})
     }
   }
 }
@@ -231,7 +231,7 @@ export default {
 
 @media screen and (max-width: 768px) {
   #main-tab {
-  
+
     .pic {
       margin-bottom: 24px;
 

@@ -48,77 +48,6 @@
       </ul>
     </div>
 
-    <modal name="login" :height="320" :classes="['rounded', 'feedback']">
-      <div class="float-right mr-2 mt-1">
-        <button type="button" class="close" @click="hide('login')" aria-label="Close">
-          <i class="fas fa-times" />
-        </button>
-      </div>
-      <div class="mt-4">
-        <h4>Login</h4>
-        <p class="feedback-form">
-          Please login to your designated area.
-        </p>
-        <div class="feedback-form">
-          <table>
-            <tr>
-              <td>
-                Username/Company
-              </td>
-              <td>
-                <input type="text" id="username" class="form-control" placeholder="Username/Company">
-              </td>
-            </tr>
-            <tr>
-              <td>
-                Passcode
-              </td>
-              <td>
-                <input type="text" id="passcode" class="form-control" placeholder="* * * * * *">
-              </td>
-            </tr>
-            <tr>
-              <td colspan="2" class="forgotten">
-                <a @click="forgotten()">I've forgotten my username/company or passcode...</a>
-              </td>
-            </tr>
-            <tr>
-              <td colspan="2" class="login-button">
-                <button class="btn btn-primary" @click="login()">
-                  <span v-if="!checking">Log me in...</span>
-                  <span v-if="checking">Checking...</span>
-                </button>
-              </td>
-            </tr>
-          </table>
-        </div>
-      </div>
-    </modal>
-
-    <modal name="feedback" :height="420" :classes="['rounded', 'feedback']">
-      <div class="float-right mr-2 mt-1">
-        <button type="button" class="close" @click="hide('feedback')" aria-label="Close">
-          <i class="fas fa-times" />
-        </button>
-      </div>
-      <div class="mt-4">
-        <h4>Contact Us</h4>
-        <p class="feedback-form">
-          Thanks for visiting Agile Simulations; please let us know what you would like
-          to know, or tell us, in the comments box below
-        </p>
-        <div class="feedback-form">
-          <input type="text" id="email" class="form-control" placeholder="Email (optional)">
-          <br>
-          <textarea id="comments" rows="6" class="form-control" placeholder="Your comments" />
-          <br>
-          <button class="btn btn-primary" @click="sendContact()">
-            Send
-          </button>
-        </div>
-      </div>
-    </modal>
-
     <div id="feedback-mobile" class="feedback-mobile" v-if="mobileContact">
       <div class="float-right mr-2 mt-1">
         <button type="button" class="close" @click="hide" aria-label="Close">
@@ -156,8 +85,7 @@ export default {
   data() {
     return {
       mobileContact: false,
-      hideMenu: true,
-      checking: false
+      hideMenu: true
     }
   },
   computed: {
@@ -192,16 +120,16 @@ export default {
     let session = localStorage.getItem('session-agilesimulations')
     if (session) {
       session = JSON.parse(session)
-      bus.$emit('sendCheckLogin', {id: this.id, session: session})
+      bus.emit('sendCheckLogin', {id: this.id, session: session})
     } else {
       this.clearLogin()
     }
 
-    bus.$on('showContact', () => {
+    bus.on('showContact', () => {
       self.show('feedback')
     })
 
-    bus.$on('loginSuccess', (data) => {
+    bus.on('loginSuccess', (data) => {
       if (data.id == this.id) {
         this.checking = false
         this.hide('login')
@@ -216,7 +144,8 @@ export default {
       }
     })
 
-    bus.$on('loginError', (data) => {
+    bus.on('loginError', (data) => {
+      console.log('loginError', data)
       if (data.id == this.id) {
         this.checking = false
         this.hide('login')
@@ -224,14 +153,14 @@ export default {
       }
     })
 
-    bus.$on('logout', (data) => {
+    bus.on('logout', (data) => {
       if (data.userName == this.userName) {
         this.clearLogin()
         localStorage.removeItem('session-agilesimulations')
       }
     })
 
-    bus.$on('logout', () => {
+    bus.on('logout', () => {
       this.clearLogin()
     })
   },
@@ -265,14 +194,12 @@ export default {
         this.mobileContact = !this.mobileContact
         window.scrollTo(0, 0)
       } else {
-        this.$modal.show(modal)
+        this.$store.dispatch('showModal', modal)
       }
     },
     hide(modal) {
       if (this.mobile) {
         this.mobileContact = false
-      } else {
-        this.$modal.hide(modal)
       }
     },
     forgotten() {
@@ -301,21 +228,6 @@ export default {
         'Thanks for your interest - we\'ll get back to you soon!'
       )
       this.hide()
-    },
-    login() {
-      const userName = document.getElementById('username').value
-      const passCode = document.getElementById('passcode').value
-      if (!userName && !passCode) {
-        alert('Please enter your username and passcode')
-      } else if (!passCode.match(/^\d{6}$/) && !passCode.match(/^as_/)) {
-        alert('Incorrect passcode format')
-      } else {
-        this.checking = true
-        bus.$emit('sendLogin', {id: this.id, userName: userName, passCode: passCode})
-      }
-    },
-    logout() {
-      bus.$emit('sendLogout', {id: this.id, userName: this.userName, session: this.session.session})
     }
   },
 }

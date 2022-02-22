@@ -38,15 +38,15 @@ export default {
     }
   },
   created() {
-    bus.$emit('sendLoadFaqs')
+    bus.emit('sendLoadFaqs')
 
-    bus.$on('loadFaqs', (data) => {
+    bus.on('loadFaqs', (data) => {
       this.$store.dispatch('updateFaqs', data)
     })
   },
   methods: {
     contact() {
-      bus.$emit('contact', {})
+      bus.emit('contact', {})
     }
   }
 }

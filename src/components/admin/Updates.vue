@@ -118,9 +118,9 @@ export default {
     }
   },
   created() {
-    bus.$emit('sendLoadUpdates')
+    bus.emit('sendLoadUpdates')
 
-    bus.$on('loadUpdates', (data) => {
+    bus.on('loadUpdates', (data) => {
       this.updates = data
     })
   },
@@ -139,10 +139,10 @@ export default {
         month: month,
         year: year
       }
-      bus.$emit('sendAddUpdate', data)
+      bus.emit('sendAddUpdate', data)
     },
     deleteUpdate(id) {
-      bus.$emit('sendDeleteUpdate', {id: id})
+      bus.emit('sendDeleteUpdate', {id: id})
     },
     editDate(id) {
       this.editingDate = id
@@ -152,7 +152,7 @@ export default {
       update.day = document.getElementById('select-day-' + id).value
       update.month = document.getElementById('select-month-' + id).value
       update.year = document.getElementById('select-year-' + id).value
-      bus.$emit('sendUpdateUpdate', update)
+      bus.emit('sendUpdateUpdate', update)
       this.editingDate = ''
     },
     addPara(id) {
@@ -161,7 +161,7 @@ export default {
       const para = document.getElementById('new-para-' + id).value
       text.push(para)
       update.text = text
-      bus.$emit('sendUpdateUpdate', update)
+      bus.emit('sendUpdateUpdate', update)
       document.getElementById('new-para-' + id).value = ''
     },
     deletePara(id, para) {
@@ -173,7 +173,7 @@ export default {
         }
       }
       update.text = text
-      bus.$emit('sendUpdateUpdate', update)
+      bus.emit('sendUpdateUpdate', update)
     },
     editImage(id) {
       this.editingImage = id
@@ -181,7 +181,7 @@ export default {
     saveImage(id) {
       const update = this.update(id)
       update.image = document.getElementById('editing-image-' + id).value
-      bus.$emit('sendUpdateUpdate', update)
+      bus.emit('sendUpdateUpdate', update)
       this.editingImage = ''
     },
     addTag(id) {
@@ -190,7 +190,7 @@ export default {
       const tag = document.getElementById('new-tag-' + id).value
       tags.push(tag)
       update.tags = tags
-      bus.$emit('sendUpdateUpdate', update)
+      bus.emit('sendUpdateUpdate', update)
       document.getElementById('new-tag-' + id).value = ''
     },
     deleteTag(id, tag) {
@@ -202,7 +202,7 @@ export default {
         }
       }
       update.tags = tags
-      bus.$emit('sendUpdateUpdate', update)
+      bus.emit('sendUpdateUpdate', update)
     }
   }
 }

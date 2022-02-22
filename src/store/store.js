@@ -1,10 +1,13 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
 
-Vue.use(Vuex)
+import { createStore } from 'vuex'
 
-export const store = new Vuex.Store({
+export const store = createStore({
   state: {
+    modals: {
+      feedback: false,
+      login: false
+    },
+    selectedGame: null,
     id: '',
     session: null,
     route: '',
@@ -53,6 +56,12 @@ export const store = new Vuex.Store({
     getTab: (state) => {
       return state.tab
     },
+    getModals: (state) => {
+      return state.modals
+    },
+    getSelectedGame: (state) => {
+      return state.selectedGame
+    },
     getGames: (state) => {
       return state.games
     },
@@ -93,6 +102,15 @@ export const store = new Vuex.Store({
     updateTab: (state, payload) => {
       state.tab = payload
     },
+    showModal: (state, payload) => {
+      state.modals[payload] = true
+    },
+    hideModal: (state, payload) => {
+      state.modals[payload] = false
+    },
+    setSelectedGame: (state, payload) => {
+      state.selectedGame = payload
+    },
     loadGames: (state, payload) => {
       state.games = payload
     },
@@ -130,6 +148,15 @@ export const store = new Vuex.Store({
     },
     updateTab: ({ commit }, payload) => {
       commit('updateTab', payload)
+    },
+    showModal: ({ commit }, payload) => {
+      commit('showModal', payload)
+    },
+    hideModal: ({ commit }, payload) => {
+      commit('hideModal', payload)
+    },
+    setSelectedGame: ({ commit }, payload) => {
+      commit('setSelectedGame', payload)
     },
     loadGames: ({ commit }, payload) => {
       commit('loadGames', payload)

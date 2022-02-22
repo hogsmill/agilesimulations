@@ -353,7 +353,7 @@ export default {
       this.$store.dispatch('updateTab', tab)
     },
     contact() {
-      bus.$emit('contact', {})
+      bus.emit('contact', {})
     }
   }
 }

@@ -71,9 +71,9 @@ export default {
     }
   },
   created() {
-    bus.$emit('sendLoadFaqs')
+    bus.emit('sendLoadFaqs')
 
-    bus.$on('loadFaqs', (data) => {
+    bus.on('loadFaqs', (data) => {
       this.faqs = data
     })
   },
@@ -85,12 +85,12 @@ export default {
          question: question,
          answer: answer
        }
-       bus.$emit('sendAddFaq', data)
+       bus.emit('sendAddFaq', data)
        document.getElementById('new-question').value = ''
        document.getElementById('new-answer').value = ''
     },
     deleteFaq(id) {
-      bus.$emit('sendDeleteFaq', {id: id})
+      bus.emit('sendDeleteFaq', {id: id})
     },
   }
 }

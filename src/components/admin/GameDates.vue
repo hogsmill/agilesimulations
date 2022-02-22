@@ -166,9 +166,9 @@ export default {
     }
   },
   created() {
-    bus.$emit('sendLoadGameDates')
+    bus.emit('sendLoadGameDates')
 
-    bus.$on('loadGameDates', (data) => {
+    bus.on('loadGameDates', (data) => {
       this.dates = data
     })
   },
@@ -188,7 +188,7 @@ export default {
         link: link,
         description: description
       }
-      bus.$emit('sendAddGameDate', data)
+      bus.emit('sendAddGameDate', data)
       document.getElementById('select-day').value = ''
       document.getElementById('select-month').value = ''
       document.getElementById('select-year').value = ''
@@ -197,7 +197,7 @@ export default {
       document.getElementById('new-description').value = ''
     },
     deleteGameDate(id) {
-      bus.$emit('sendDeleteGameDate', {id: id})
+      bus.emit('sendDeleteGameDate', {id: id})
     },
     editLocation(id) {
       this.editingLocation = id
@@ -210,7 +210,7 @@ export default {
       date.location = this.countries.find((c) => {
         return location == c.code
       })
-      bus.$emit('sendUpdateGameDate', date)
+      bus.emit('sendUpdateGameDate', date)
       this.editingLocation = ''
     },
     editDate(id) {
@@ -223,7 +223,7 @@ export default {
       date.day = document.getElementById('select-day-' + id).value
       date.month = document.getElementById('select-month-' + id).value
       date.year = document.getElementById('select-year-' + id).value
-      bus.$emit('sendUpdateGameDate', date)
+      bus.emit('sendUpdateGameDate', date)
       this.editingDate = ''
     },
     editGame(id) {
@@ -234,7 +234,7 @@ export default {
         return d.id == id
       })
       date.game = document.getElementById('select-game-' + id).value
-      bus.$emit('sendUpdateGameDate', date)
+      bus.emit('sendUpdateGameDate', date)
       this.editingGame = ''
     },
     editLink(id) {
@@ -245,7 +245,7 @@ export default {
         return d.id == id
       })
       date.link = document.getElementById('editing-link-' + id).value
-      bus.$emit('sendUpdateGameDate', date)
+      bus.emit('sendUpdateGameDate', date)
       this.editingLink = ''
     },
     editDescription(id) {
@@ -256,7 +256,7 @@ export default {
         return d.id == id
       })
       date.description = document.getElementById('editing-description-' + id).value
-      bus.$emit('sendUpdateGameDate', date)
+      bus.emit('sendUpdateGameDate', date)
       this.editingDescription = ''
     }
   }

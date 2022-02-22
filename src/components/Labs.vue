@@ -37,29 +37,6 @@
         </div>
       </div>
     </div>
-
-    <modal name="selected-game" :height="420" :classes="['rounded']">
-      <div v-if="selectedGame.status" class="game-details" :class="selectedGame.status.replace(/ /g, '-').toLowerCase()">
-        <div class="float-right mr-2 mt-1">
-          <button type="button" class="close" @click="hide" aria-label="Close">
-            <i class="fas fa-times" />
-          </button>
-        </div>
-        <div class="mt-4">
-          <h4>{{ selectedGame.name }}</h4>
-          <h5 class="details-status">
-            Status: {{ selectedGame.status }}
-          </h5>
-          <div v-if="selectedGame.name" class="details-image" :class="selectedGame.name.replace(/ /g, '-').toLowerCase()" />
-          <p>
-            {{ selectedGame.details }}
-          </p>
-          <p v-if="selectedGame.link">
-            Link: <a :href="selectedGame.link.url">{{ selectedGame.link.text }}</a>
-          </p>
-        </div>
-      </div>
-    </modal>
   </div>
 </template>
 
@@ -67,11 +44,6 @@
 import bus from '../socket.js'
 
 export default {
-  data() {
-    return {
-      selectedGame: {}
-    }
-  },
   computed: {
     mobile() {
       return this.$store.getters.getMobile
@@ -81,9 +53,9 @@ export default {
     }
   },
   created() {
-    bus.$emit('sendLoadLabGames')
+    bus.emit('sendLoadLabGames')
 
-    bus.$on('loadLabGames', (data) => {
+    bus.on('loadLabGames', (data) => {
       this.$store.dispatch('loadLabGames', data)
     })
   },
@@ -96,12 +68,8 @@ export default {
       return str
     },
     setSelectedGame(game) {
-      this.selectedGame = game
-      this.$modal.show('selected-game')
-    },
-    hide() {
-      this.selectedGame = {}
-      this.$modal.hide('selected-game')
+      this.$store.dispatch('setSelectedGame', game)
+      this.$store.dispatch('showModal', 'labs')
     },
     setTab(tab) {
       this.$store.dispatch('updateTab', tab)

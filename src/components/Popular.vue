@@ -33,9 +33,9 @@ export default {
     }
   },
   created() {
-    bus.$emit('sendLoadGames')
+    bus.emit('sendLoadGames')
 
-    bus.$on('loadGames', (data) => {
+    bus.on('loadGames', (data) => {
       this.popular1 = data.find((g) => {
         return g.popular == 1
       })

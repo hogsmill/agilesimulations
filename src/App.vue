@@ -18,12 +18,12 @@
       <FAQs v-if="tab == 'faqs'" />
       <Resources v-if="tab == 'resources'" />
       <Labs v-if="tab == 'labs'" />
-      <Diary v-if="tab == 'diary'" />
       <About v-if="tab == 'about'" />
       <SubscriptionDescription v-if="tab == 'subscriptiondescription'" />
       <Suggest v-if="tab == 'suggest'" />
       <TandCs v-if="tab == 'tandcs'" />
       <Security v-if="tab == 'security'" />
+      <Modals />
       <Footer v-if="!mobile" />
     </div>
   </div>
@@ -56,6 +56,7 @@ import SubscriptionDescription from './components/SubscriptionDescription.vue'
 import Suggest from './components/labs/Suggest.vue'
 import TandCs from './components/footer/TandCs.vue'
 import Security from './components/footer/Security.vue'
+import Modals from './components/Modals.vue'
 import Footer from './components/Footer.vue'
 
 export default {
@@ -83,6 +84,7 @@ export default {
     Suggest,
     TandCs,
     Security,
+    Modals,
     Footer
   },
   data() {
@@ -102,7 +104,7 @@ export default {
   created() {
     this.$store.dispatch('updateMobile', window.outerWidth < 768)
 
-    bus.$emit('sendCheckGameDefinitions')
+    bus.emit('sendCheckGameDefinitions')
 
     const gameDate = params.getParam('gameDate')
     const update = params.getParam('update')

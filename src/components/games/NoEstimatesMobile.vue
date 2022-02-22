@@ -63,7 +63,7 @@ export default {
   },
   methods: {
     contact() {
-      bus.$emit('contact', {})
+      bus.emit('contact', {})
     }
   }
 }

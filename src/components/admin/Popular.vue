@@ -111,9 +111,9 @@ export default {
     }
   },
   created() {
-    bus.$emit('sendLoadGames')
+    bus.emit('sendLoadGames')
 
-    bus.$on('loadGames', (data) => {
+    bus.on('loadGames', (data) => {
       this.games = data
     })
   },
@@ -129,40 +129,40 @@ export default {
         name: game,
         popular: false
       }
-      bus.$emit('sendAddGame', data)
+      bus.emit('sendAddGame', data)
     },
     deleteGame(id) {
-      bus.$emit('sendDeleteGame', {id: id})
+      bus.emit('sendDeleteGame', {id: id})
     },
     updateEnabled(id) {
       const game = this.game(id)
       game.enabled = !game.enabled
-      bus.$emit('sendUpdateGame', game)
+      bus.emit('sendUpdateGame', game)
     },
     updateLevel(id) {
       const game = this.game(id)
       game.level = document.getElementById('level-' + id).value
-      bus.$emit('sendUpdateGame', game)
+      bus.emit('sendUpdateGame', game)
     },
     updateLimited(id) {
       const game = this.game(id)
       game.limited = document.getElementById('limited-' + id).value
-      bus.$emit('sendUpdateGame', game)
+      bus.emit('sendUpdateGame', game)
     },
     updatePopular(id) {
       const game = this.game(id)
       game.popular = document.getElementById('popular-' + id).value
-      bus.$emit('sendUpdateGame', game)
+      bus.emit('sendUpdateGame', game)
     },
     updateUrl(id) {
       const game = this.game(id)
       game.url = document.getElementById('url-' + id).value
-      bus.$emit('sendUpdateGame', game)
+      bus.emit('sendUpdateGame', game)
     },
     updateMobile(id) {
       const game = this.game(id)
       game.mobile = document.getElementById('mobile-' + id).value
-      bus.$emit('sendUpdateGame', game)
+      bus.emit('sendUpdateGame', game)
     }
   }
 }

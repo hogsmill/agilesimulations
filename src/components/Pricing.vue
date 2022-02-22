@@ -42,15 +42,15 @@ export default {
     }
   },
   created() {
-    bus.$emit('sendLoadPricings')
+    bus.emit('sendLoadPricings')
 
-    bus.$on('loadPricings', (data) => {
+    bus.on('loadPricings', (data) => {
       this.$store.dispatch('updatePricings', data)
     })
   },
   methods: {
     contact() {
-      bus.$emit('contact', {})
+      bus.emit('contact', {})
     },
     setTab(tab) {
       if (this.mobile) {

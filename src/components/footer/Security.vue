@@ -54,7 +54,7 @@ import bus from '../../socket.js'
 export default {
   methods: {
     contact() {
-      bus.$emit('contact', {})
+      bus.emit('contact', {})
     }
   }
 }

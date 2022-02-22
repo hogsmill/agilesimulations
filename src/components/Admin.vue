@@ -61,9 +61,9 @@ export default {
     }
   },
   created() {
-    bus.$emit('sendLoadGames')
+    bus.emit('sendLoadGames')
 
-    bus.$on('loadGames', (data) => {
+    bus.on('loadGames', (data) => {
       this.games = data
     })
   },
@@ -79,7 +79,7 @@ export default {
     updateEnabled(id) {
       const game = this.game(id)
       game.enabled = document.getElementById('enabled-' + id).checked
-      bus.$emit('sendUpdateGame', game)
+      bus.emit('sendUpdateGame', game)
     }
   }
 }
