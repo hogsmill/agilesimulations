@@ -16,7 +16,7 @@
           {{ selectedGame().details }}
         </p>
         <p v-if="selectedGame().link">
-          Link: <a :href="selectedGame.link.url">{{ selectedGame().link.text }}</a>
+          Link: <a :href="selectedGame().link.url">{{ selectedGame().link.text }}</a>
         </p>
       </div>
     </div>
@@ -29,6 +29,11 @@ import { $vfm, VueFinalModal } from 'vue-final-modal'
 export default {
   components: {
     VueFinalModal
+  },
+  data() {
+    return {
+      thisGame: null
+    }
   },
   computed: {
     modals() {
@@ -46,10 +51,12 @@ export default {
       this.$store.dispatch('hideModal', 'labs')
     },
     selectedGame() {
-      const game = this.games.find((g) => {
-        return g.name == this.game.name
-      })
-      return game ? game : {}
+      if (!this.thisGame) {
+        this.thisGame = this.games.find((g) => {
+          return g.name == this.game.name
+        })
+      }
+      return this.thisGame
     }
   }
 }

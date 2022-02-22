@@ -28,14 +28,14 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 
-  ::v-deep .modal-container {
+  .modal-container {
     display: flex;
     justify-content: center;
     align-items: center;
   }
-  ::v-deep .modal-content {
+  .modal-content {
     display: flex;
     flex-direction: column;
     margin: 0 1rem;
@@ -50,22 +50,19 @@ export default {
     font-size: 1.5rem;
     font-weight: 700;
   }
-  .dark-mode div::v-deep .modal-content {
-    border-color: #2d3748;
-    background-color: #1a202c;
-  }
 
-  .feedback {
+  .modal-content {
     letter-spacing: 0;
     color: #212529;
-  }
 
-  p.feedback-form {
-    margin-bottom: 12px;
-  }
+    p.modal-form {
+      margin: o auto;
+      margin-bottom: 12px;
+    }
 
-  .feedback-form {
-    width: 80%;
-    margin: 0 auto;
+    .modal-form {
+      width: 80%;
+      margin: 0 auto;
+    }
   }
 </style>

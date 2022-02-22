@@ -7,10 +7,10 @@
     </div>
     <div class="mt-4">
       <h4>Login</h4>
-      <p class="feedback-form">
+      <p class="modal-form">
         Please login to your designated area.
       </p>
-      <div class="feedback-form">
+      <div class="modal-form">
         <table>
           <tr>
             <td>
@@ -35,7 +35,7 @@
           </tr>
           <tr>
             <td colspan="2" class="login-button">
-              <button class="btn btn-primary" @click="login()">
+              <button class="btn btn-sm btn-secondary smaller-font" @click="login()">
                 <span v-if="!checking">Log me in...</span>
                 <span v-if="checking">Checking...</span>
               </button>
@@ -71,19 +71,6 @@ export default {
       return this.$store.getters.getModals
     }
   },
-  created() {
-    if (!this.id) {
-      this.$store.dispatch('updateId', uuidv4())
-    }
-
-    let session = localStorage.getItem('session-agilesimulations')
-    if (session) {
-      session = JSON.parse(session)
-      bus.emit('sendCheckLogin', {id: this.id, session: session})
-    } else {
-      this.clearLogin()
-    }
-  },
   methods: {
     hide() {
       this.$store.dispatch('hideModal', 'login')
@@ -100,9 +87,6 @@ export default {
         bus.emit('sendLogin', {id: this.id, userName: userName, passCode: passCode})
       }
     },
-    logout() {
-      bus.emit('sendLogout', {id: this.id, userName: this.userName, session: this.session.session})
-    },
     clearLogin() {
       const data = {session: '', userName: '', route: '', loggedInAsAdmin: false}
       this.$store.dispatch('updateLogin', data)
@@ -110,3 +94,11 @@ export default {
   }
 }
 </script>
+
+<style scoped lang="scss">
+  .modal-container {
+
+
+
+  }
+</style>

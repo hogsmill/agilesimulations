@@ -10,7 +10,7 @@ if (location.hostname == 'localhost') {
   labsConnStr = 'https://agilesimulations.co.uk:3013'
 }
 
-const connectToLabs = location.hostname != 'localhost'
+const connectToLabs = true // location.hostname != 'localhost'
 console.log('Connecting to: ' + connStr)
 const socket = io(connStr)
 let labsSocket

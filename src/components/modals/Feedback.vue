@@ -7,11 +7,11 @@
     </div>
     <div class="mt-4">
       <h4>Feedback</h4>
-      <p class="feedback-form">
-        Thanks for using {{ thisGame }}; we'd love to hear any feedback you have
+      <p class="modal-form">
+        Thanks for visiting Agile Simulations; we'd love to hear any feedback you have
         so that we can constantly improve things.
       </p>
-      <div class="feedback-form">
+      <div class="modal-form">
         <input type="text" id="email" class="form-control" placeholder="Email (optional)">
         <br>
         <textarea id="comments" rows="6" class="form-control" placeholder="Your comments" />
@@ -36,9 +36,6 @@ export default {
   computed: {
     modals() {
       return this.$store.getters.getModals
-    },
-    thisGame() {
-      return this.$store.getters.thisGame
     }
   },
   methods: {
@@ -58,3 +55,17 @@ export default {
   }
 }
 </script>
+
+<style scoped lang="scss">
+  .modal-container {
+
+    p.feedback-form {
+      margin-bottom: 12px;
+    }
+
+    .feedback-form {
+      width: 80%;
+      margin: 0 auto;
+    }
+  }
+</style>

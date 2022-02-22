@@ -113,27 +113,26 @@ export default {
 
     this.setTabFromParams()
 
-//    if (!this.id) {
-//      this.$store.dispatch('updateId', uuidv4())
-//    }
-//
-//  let session = localStorage.getItem('session-agilesimulations')
-//    if (session) {
-//      session = JSON.parse(session)
-//      bus.emit('sendCheckLogin', {id: this.id, session: session})
-//    } else {
-//      this.clearLogin()
-//    }
+    if (!this.id) {
+      this.$store.dispatch('updateId', uuidv4())
+    }
+
+  let session = localStorage.getItem('session-agilesimulations')
+    if (session) {
+      session = JSON.parse(session)
+      bus.emit('sendCheckLogin', {id: this.id, session: session})
+    } else {
+      this.clearLogin()
+    }
 
     bus.on('showContact', () => {
       self.show('feedback')
     })
 
     bus.on('loginSuccess', (data) => {
-      console.log('loginSuccess', data)
       if (data.id == this.id) {
         this.checking = false
-        this.hide('login')
+        this.$store.dispatch('hideModal', 'login')
         this.$store.dispatch('updateLogin', data)
         const session = {
           session: data.session,
@@ -146,23 +145,18 @@ export default {
     })
 
     bus.on('loginError', (data) => {
-      console.log('loginError', data)
       if (data.id == this.id) {
         this.checking = false
-        this.hide('login')
+        this.$store.dispatch('hideModal', 'login')
         alert(data.message)
       }
     })
 
     bus.on('logout', (data) => {
+      this.clearLogin()
       if (data.userName == this.userName) {
-        this.clearLogin()
         localStorage.removeItem('session-agilesimulations')
       }
-    })
-
-    bus.on('logout', () => {
-      this.clearLogin()
     })
   },
   methods: {
@@ -182,10 +176,10 @@ export default {
         }
       }
     },
-//    clearLogin() {
-//      const data = {session: '', userName: '', route: '', loggedInAsAdmin: false}
-//      this.$store.dispatch('updateLogin', data)
-//    },
+    clearLogin() {
+      const data = {session: '', userName: '', route: '', loggedInAsAdmin: false}
+      this.$store.dispatch('updateLogin', data)
+    },
     toggleMenu() {
       this.hideMenu = !this.hideMenu
       this.hide()
@@ -229,6 +223,9 @@ export default {
         'Thanks for your interest - we\'ll get back to you soon!'
       )
       this.hide()
+    },
+    logout() {
+      bus.emit('sendLogout', {id: this.id, userName: this.userName, session: this.session.session})
     }
   },
 }
