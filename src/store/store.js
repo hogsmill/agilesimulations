@@ -103,6 +103,10 @@ export const store = createStore({
       state.tab = payload
     },
     showModal: (state, payload) => {
+      const modals = Object.keys(state.modals)
+      for (let i = 0; i < modals.length; i++) {
+        state.modals[modals[i]] = false
+      }
       state.modals[payload] = true
     },
     hideModal: (state, payload) => {

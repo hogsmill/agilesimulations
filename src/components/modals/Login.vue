@@ -48,6 +48,8 @@
 </template>
 
 <script>
+import { v4 as uuidv4 } from 'uuid'
+
 import bus from '../../socket.js'
 
 import { $vfm, VueFinalModal } from 'vue-final-modal'
@@ -62,8 +64,24 @@ export default {
     }
   },
   computed: {
+    id() {
+      return this.$store.getters.getId
+    },
     modals() {
       return this.$store.getters.getModals
+    }
+  },
+  created() {
+    if (!this.id) {
+      this.$store.dispatch('updateId', uuidv4())
+    }
+
+    let session = localStorage.getItem('session-agilesimulations')
+    if (session) {
+      session = JSON.parse(session)
+      bus.emit('sendCheckLogin', {id: this.id, session: session})
+    } else {
+      this.clearLogin()
     }
   },
   methods: {
@@ -84,6 +102,10 @@ export default {
     },
     logout() {
       bus.emit('sendLogout', {id: this.id, userName: this.userName, session: this.session.session})
+    },
+    clearLogin() {
+      const data = {session: '', userName: '', route: '', loggedInAsAdmin: false}
+      this.$store.dispatch('updateLogin', data)
     }
   }
 }

@@ -1,9 +1,9 @@
 <template>
   <div>
-    <Feedback />
-    <Login />
-    <Labs />
-    <Pricing />
+    <Feedback v-if="modals['feedback']" />
+    <Login v-if="modals['login']" />
+    <Labs v-if="modals['labs']" />
+    <Pricing v-if="modals['pricing']" />
   </div>
 </template>
 
@@ -19,6 +19,11 @@ export default {
     Login,
     Labs,
     Pricing
+  },
+  computed: {
+    modals() {
+      return this.$store.getters.getModals
+    }
   }
 }
 </script>

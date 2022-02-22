@@ -113,23 +113,24 @@ export default {
 
     this.setTabFromParams()
 
-    if (!this.id) {
-      this.$store.dispatch('updateId', uuidv4())
-    }
-
-    let session = localStorage.getItem('session-agilesimulations')
-    if (session) {
-      session = JSON.parse(session)
-      bus.emit('sendCheckLogin', {id: this.id, session: session})
-    } else {
-      this.clearLogin()
-    }
+//    if (!this.id) {
+//      this.$store.dispatch('updateId', uuidv4())
+//    }
+//
+//  let session = localStorage.getItem('session-agilesimulations')
+//    if (session) {
+//      session = JSON.parse(session)
+//      bus.emit('sendCheckLogin', {id: this.id, session: session})
+//    } else {
+//      this.clearLogin()
+//    }
 
     bus.on('showContact', () => {
       self.show('feedback')
     })
 
     bus.on('loginSuccess', (data) => {
+      console.log('loginSuccess', data)
       if (data.id == this.id) {
         this.checking = false
         this.hide('login')
@@ -181,10 +182,10 @@ export default {
         }
       }
     },
-    clearLogin() {
-      const data = {session: '', userName: '', route: '', loggedInAsAdmin: false}
-      this.$store.dispatch('updateLogin', data)
-    },
+//    clearLogin() {
+//      const data = {session: '', userName: '', route: '', loggedInAsAdmin: false}
+//      this.$store.dispatch('updateLogin', data)
+//    },
     toggleMenu() {
       this.hideMenu = !this.hideMenu
       this.hide()
