@@ -123,7 +123,6 @@ export default {
       const regularUse = []
       const dedicated = []
       for (let i = 0; i < games.length; i++) {
-        console.log(games[i].name, games[i].level, games[i])
         if (games[i].enabled) {
           switch(games[i].level) {
             case 'Use':

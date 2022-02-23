@@ -5,8 +5,10 @@ export const store = createStore({
   state: {
     modals: {
       feedback: false,
-      login: false
+      login: false,
+      pricing: false
     },
+    selectedPricing: null,
     selectedGame: null,
     id: '',
     session: null,
@@ -62,6 +64,9 @@ export const store = createStore({
     getSelectedGame: (state) => {
       return state.selectedGame
     },
+    getSelectedPricing: (state) => {
+      return state.selectedPricing
+    },
     getGames: (state) => {
       return state.games
     },
@@ -115,6 +120,9 @@ export const store = createStore({
     setSelectedGame: (state, payload) => {
       state.selectedGame = payload
     },
+    setSelectedPricing: (state, payload) => {
+      state.selectedPricing = payload
+    },
     loadGames: (state, payload) => {
       state.games = payload
     },
@@ -161,6 +169,9 @@ export const store = createStore({
     },
     setSelectedGame: ({ commit }, payload) => {
       commit('setSelectedGame', payload)
+    },
+    setSelectedPricing: ({ commit }, payload) => {
+      commit('setSelectedPricing', payload)
     },
     loadGames: ({ commit }, payload) => {
       commit('loadGames', payload)

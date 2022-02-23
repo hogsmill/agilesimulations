@@ -4,6 +4,12 @@
     <Login v-if="modals['login']" />
     <Labs v-if="modals['labs']" />
     <Pricing v-if="modals['pricing']" />
+
+<!--
+    <div v-for="(pricing, index) in pricings" :key="index">
+      <Pricing v-if="modals['pricing-' + pricing.id]" :pricing="pricing" />
+    </div>
+-->
   </div>
 </template>
 
@@ -23,6 +29,9 @@ export default {
   computed: {
     modals() {
       return this.$store.getters.getModals
+    },
+    pricings() {
+      return this.$store.getters.getPricings
     }
   }
 }

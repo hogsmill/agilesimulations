@@ -1,23 +1,41 @@
 <template>
-  <vue-final-modal name="feedback" classes="modal-container" content-class="vfm__content modal-content" v-model="modals['feedback']">
+  <vue-final-modal name="pricing" classes="modal-container" content-class="vfm__content modal-content" v-model="modals['pricing']">
     <div class="float-right mr-2 mt-1">
       <button type="button" class="close" @click="hide" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
+        <i class="fas fa-times" />
       </button>
     </div>
-    <div class="mt-4">
-      <h4>Feedback</h4>
-      <p class="feedback-form">
-        Thanks for using {{ thisGame }}; we'd love to hear any feedback you have
-        so that we can constantly improve things.
+    <div class="mt-4 quote-form">
+      <h4>{{ headingStr() }}</h4>
+      <p>
+        Thanks for your interest Agile Simulations; please let us know any further
+        information on your requirements in the comments box below.
       </p>
-      <div class="feedback-form">
-        <input type="text" id="email" class="form-control" placeholder="Email (optional)">
+      <div v-if="pricing.title == 'Facilitation'">
+        I am interested in facilitation of
+        <select id="game-select">
+          <option>-- Select --</option>
+          <option>No Estimates</option>
+          <option>Pipeline Game</option>
+          <option>Coin Game</option>
+          <option>Kanban Playground</option>
+          <option>Agile Battleships</option>
+          <option>Simulations</option>
+          <option>All Games</option>
+        </select>
+      </div>
+      <div>
+        <input type="text" id="name-pricing" class="form-control" placeholder="Name">
         <br>
-        <textarea id="comments" rows="6" class="form-control" placeholder="Your comments" />
+        <input type="text" id="email-pricing" class="form-control" placeholder="Email">
         <br>
-          <button class="btn btn-sm btn-secondary smaller-font" @click="sendFeedback()">
-          Send Feedback
+        <input type="text" id="company-pricing" class="form-control" placeholder="Company (Optional)">
+        <br>
+        <input type="text" id="mobile-pricing" class="form-control" placeholder="Mobile (optional)">
+        <br>
+        <textarea id="comments-pricing" rows="3" class="form-control" placeholder="Other information" />
+        <button class="btn btn-primary" @click="send()">
+          Send
         </button>
       </div>
     </div>
@@ -33,27 +51,44 @@ export default {
   components: {
     VueFinalModal
   },
+  data() {
+    return {
+      mobileQuote: false
+    }
+  },
   computed: {
     modals() {
       return this.$store.getters.getModals
     },
-    thisGame() {
-      return this.$store.getters.thisGame
+    pricing() {
+      return this.$store.getters.getSelectedPricing
     }
   },
   methods: {
-    hide() {
-      this.$store.dispatch('hideModal', 'feedback')
+    headingStr() {
+      let str = this.pricing.quote ? 'Request Quote for ' : 'Request More Info on '
+      str = str + this.pricing.title
+      return str
     },
-    sendFeedback() {
-      mailFuns.post({
-        action: 'Feedback from ' + this.thisGame,
-        email: encodeURIComponent(document.getElementById('email').value),
-        comments: encodeURIComponent(document.getElementById('comments').value)
+    hide() {
+      this.$store.dispatch('hideModal', 'pricing')
+    },
+    send() {
+      const success = mailFuns.post({
+        action: 'Request from Agile Simulations (' + this.pricing.title + ')',
+        type: this.pricing.quote ? 'Quote' : 'More Info',
+        game: this.pricing.title == 'Facilitation' ? document.getElementById('game-select').value : '',
+        name: encodeURIComponent(document.getElementById('name-pricing').value),
+        company: encodeURIComponent(document.getElementById('company-pricing').value),
+        email: encodeURIComponent(document.getElementById('email-pricing').value),
+        mobile: encodeURIComponent(document.getElementById('mobile-pricing').value),
+        comments: encodeURIComponent(document.getElementById('comments-pricing').value)
         },
-        'Thanks for your feedback - we appreciate it!'
+        'Thanks for your request - we\'ll get back to you soon!'
       )
-      this.hide()
+      if (success) {
+        this.hide()
+      }
     }
   }
 }
