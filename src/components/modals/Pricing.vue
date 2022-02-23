@@ -75,8 +75,7 @@ export default {
     },
     send() {
       const success = mailFuns.post({
-        action: 'Request from Agile Simulations (' + this.pricing.title + ')',
-        type: this.pricing.quote ? 'Quote' : 'More Info',
+        action: 'this.pricing.quote ? 'Quote' : 'More Info' + ' request from Agile Simulations (' + this.pricing.title + ')',
         game: this.pricing.title == 'Facilitation' ? document.getElementById('game-select').value : '',
         name: encodeURIComponent(document.getElementById('name-pricing').value),
         company: encodeURIComponent(document.getElementById('company-pricing').value),
