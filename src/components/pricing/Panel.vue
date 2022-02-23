@@ -18,44 +18,6 @@
         </button>
       </div>
     </div>
-
-    <div :name="'quote-mobile-' + pricing.id" class="quote-mobile" v-if="mobileQuote">
-      <div class="float-right mr-2 mt-1">
-        <button type="button" class="close" @click="hide" aria-label="Close">
-          <i class="fas fa-times" />
-        </button>
-      </div>
-      <div class="mt-4 quote-form">
-        <h4>{{ headingStr() }}</h4>
-        <p>
-          Thanks for your interest; please let us know any further
-          information on your requirements in the comments box below.
-        </p>
-        <div v-if="pricing.title == 'Facilitation'">
-          I am interested in facilitation of
-          <select id="game-select">
-            <option>-- Select --</option>
-            <option>No Estimates</option>
-            <option>Pipeline Game</option>
-            <option>Coin Game</option>
-            <option>Kanban Playground</option>
-            <option>Agile Battleships</option>
-            <option>Simulations</option>
-            <option>All Games</option>
-          </select>
-        </div>
-        <div>
-          <input type="text" :id="'name-' + pricing.id" class="form-control" placeholder="Name">
-          <input type="text" :id="'email-' + pricing.id" class="form-control" placeholder="Email">
-          <input type="text" :id="'company-' + pricing.id" class="form-control" placeholder="Company (Optional)">
-          <input type="text" :id="'mobile-' + pricing.id" class="form-control" placeholder="Mobile (optional)">
-          <textarea :id="'comments-' + pricing.id" rows="3" class="form-control" placeholder="Other information" />
-          <button class="btn btn-primary" @click="send()">
-            Send
-          </button>
-        </div>
-      </div>
-    </div>
   </div>
 </template>
 
@@ -66,12 +28,6 @@ export default {
   props: [
     'pricing'
   ],
-  data() {
-    return {
-      quote: true,
-      mobileQuote: false
-    }
-  },
   computed: {
     mobile() {
       return this.$store.getters.getMobile
@@ -85,34 +41,26 @@ export default {
     },
     showMoreInfo() {
       if (this.mobile) {
-        this.mobileQuote = !this.mobileQuote
         window.scrollTo(0, 0)
-      } else {
-        const pricing = this.pricing
-        pricing.quote = false
-        this.showModal(pricing)
       }
+      const pricing = this.pricing
+      pricing.quote = false
+      this.showModal(pricing)
     },
     showQuote() {
       if (this.mobile) {
-        this.mobileQuote = !this.mobileQuote
         window.scrollTo(0, 0)
-      } else {
-        const pricing = this.pricing
-        pricing.quote = true
-        this.showModal(pricing)
       }
+      const pricing = this.pricing
+      pricing.quote = true
+      this.showModal(pricing)
     },
     showModal(pricing) {
       this.$store.dispatch('setSelectedPricing', pricing)
       this.$store.dispatch('showModal', 'pricing')
     },
     hide() {
-      if (this.mobile) {
-        this.mobileQuote = false
-      } else {
-        this.$modal.hide('quote-' + this.pricing.id)
-      }
+      this.$store.dispatch('hideModal', 'pricing')
     }
   }
 }

@@ -74,7 +74,7 @@ export default {
       this.$store.dispatch('hideModal', 'pricing')
     },
     send() {
-      const action = this.pricing.quote ? 'Quote' : 'More Info'
+      let action = this.pricing.quote ? 'Quote' : 'More Info'
       action = action + ' request from Agile Simulations (' + this.pricing.title + ')'
       const success = mailFuns.post({
         action: action,

@@ -4,12 +4,6 @@
     <Login v-if="modals['login']" />
     <Labs v-if="modals['labs']" />
     <Pricing v-if="modals['pricing']" />
-
-<!--
-    <div v-for="(pricing, index) in pricings" :key="index">
-      <Pricing v-if="modals['pricing-' + pricing.id]" :pricing="pricing" />
-    </div>
--->
   </div>
 </template>
 

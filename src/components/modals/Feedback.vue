@@ -16,7 +16,7 @@
         <br>
         <textarea id="comments" rows="6" class="form-control" placeholder="Your comments" />
         <br>
-          <button class="btn btn-sm btn-secondary smaller-font" @click="sendFeedback()">
+        <button class="btn btn-sm btn-secondary smaller-font" @click="sendFeedback()">
           Send Feedback
         </button>
       </div>
