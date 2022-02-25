@@ -23,9 +23,6 @@ export default {
   computed: {
     modals() {
       return this.$store.getters.getModals
-    },
-    pricings() {
-      return this.$store.getters.getPricings
     }
   }
 }
