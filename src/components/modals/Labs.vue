@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import { $vfm, VueFinalModal } from 'vue-final-modal'
+import { VueFinalModal } from 'vue-final-modal'
 
 export default {
   components: {
