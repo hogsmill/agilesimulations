@@ -19,12 +19,12 @@
     "socket.io-client": "^4.5.1",
     "tiny-emitter": "^2.1.0",
     "uuid": "^8.3.2",
-    "vue": "^3.2.33",
+    "vue": "^3.2.37",
     "vue-final-modal": "^3.4.3",
     "vuex": "^4.0.0"
   },
   "devDependencies": {
-    "@babel/eslint-parser": "^7.17.0",
+    "@babel/eslint-parser": "^7.18.2",
     "@vue/cli-plugin-babel": "~5.0.6",
     "@vue/cli-plugin-eslint": "~5.0.6",
     "@vue/cli-service": "~5.0.6",
