@@ -22,8 +22,6 @@
 </template>
 
 <script>
-import mailFuns from '../../lib/mail.js'
-
 export default {
   props: [
     'pricing'

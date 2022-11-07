@@ -218,7 +218,9 @@ export default {
       mailFuns.post({
         action: 'Contact from Agile Simulations',
         email: encodeURIComponent(document.getElementById('email').value),
-        comments: encodeURIComponent(document.getElementById('comments').value)
+        comments: encodeURIComponent(document.getElementById('comments').value),
+        tomail: 'info@agilesimulations.co.uk',
+        fromsite: 'agilesimulations.co.uk'
         },
         'Thanks for your interest - we\'ll get back to you soon!'
       )

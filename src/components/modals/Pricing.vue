@@ -83,7 +83,9 @@ export default {
         company: encodeURIComponent(document.getElementById('company-pricing').value),
         email: encodeURIComponent(document.getElementById('email-pricing').value),
         mobile: encodeURIComponent(document.getElementById('mobile-pricing').value),
-        comments: encodeURIComponent(document.getElementById('comments-pricing').value)
+        comments: encodeURIComponent(document.getElementById('comments-pricing').value),
+        tomail: 'info@agilesimulations.co.uk',
+        fromsite: 'agilesimulations.co.uk'
         },
         'Thanks for your request - we\'ll get back to you soon!'
       )

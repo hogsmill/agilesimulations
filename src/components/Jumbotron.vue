@@ -26,6 +26,8 @@ export default {
         mailFuns.post({
           action: 'Contact from Agile Simulations (Jumbotron)',
           email: email,
+          tomail: 'info@agilesimulations.co.uk',
+          fromsite: 'agilesimulations.co.uk'
           },
           'Thanks for your interest - we\'ll get back to you soon!'
         )

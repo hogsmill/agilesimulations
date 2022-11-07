@@ -68,7 +68,9 @@ export default {
         action: 'Game Suggestion from Agile Simulations',
         name: encodeURIComponent(document.getElementById('suggest-name').value),
         email: encodeURIComponent(document.getElementById('suggest-email').value),
-        comments: encodeURIComponent(document.getElementById('suggest-comments').value)
+        comments: encodeURIComponent(document.getElementById('suggest-comments').value),
+        tomail: 'info@agilesimulations.co.uk',
+        fromsite: 'agilesimulations.co.uk'
         },
         'Thanks for your suggestion - we\'ll get back to you soon!'
       )
