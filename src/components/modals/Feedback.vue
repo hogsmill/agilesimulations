@@ -44,7 +44,7 @@ export default {
     },
     sendFeedback() {
       mailFuns.post({
-        action: 'Feedback from ' + this.thisGame,
+        action: 'Feedback from Agile Simulations',
         email: encodeURIComponent(document.getElementById('email').value),
         comments: encodeURIComponent(document.getElementById('comments').value),
         tomail: 'info@agilesimulations.co.uk',
