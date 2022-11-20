@@ -14,7 +14,7 @@
     "mongodb": "^4.12.0",
     "package-lock.json": "^1.0.0",
     "pkg.json": "^2.0.8",
-    "sass": "^1.54.4",
+    "sass": "^1.56.1",
     "socket.io": "^4.5.3",
     "socket.io-client": "^4.5.3",
     "tiny-emitter": "^2.1.0",
