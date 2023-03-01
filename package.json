@@ -11,7 +11,7 @@
     "core-js": "^3.29.0",
     "death": "^1.1.0",
     "jquery": "^3.6.3",
-    "mongodb": "^5.1.0",
+    "mongodb": "<5.1.0",
     "package-lock.json": "^1.0.0",
     "pkg.json": "^2.0.8",
     "sass": "^1.56.1",
