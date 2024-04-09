@@ -16,9 +16,9 @@ fi
 
 npm install --legacy-peer-deps
 npm run build
-rm /var/www/html/css/*
-rm /var/www/html/js/*
-cp -R dist/* /var/www/html/
+rm /var/www/html/agilesimulations/css/*
+rm /var/www/html/agilesimulations/js/*
+cp -R dist/* /var/www/html/agilesimulations
 
 if [ -f "src/server.js" ]; then
   SERVER=`ps -ef | grep server.js | grep "agilesimulations" | awk {'print $2'}`
