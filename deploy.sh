@@ -4,6 +4,12 @@ if [ "$1" == "-f" ]; then
   FORCE=true
 fi
 
+if [ ! -d /var/www/html/agilesimulations/ ]; then
+    mkdir /var/www/html/agilesimulations/
+    mkdir /var/www/html/agilesimulations/css
+    mkdir /var/www/html/agilesimulations/js
+fi
+
 rm package-lock.json
 rm -rf node_modules
 
@@ -16,6 +22,12 @@ fi
 
 npm install --legacy-peer-deps
 npm run build
+
+if [ ! -d /var/www/html/agilesimulations/ ]; then
+    mkdir /var/www/html/agilesimulations/
+    mkdir /var/www/html/agilesimulations/css
+    mkdir /var/www/html/agilesimulations/js
+fi
 rm /var/www/html/agilesimulations/css/*
 rm /var/www/html/agilesimulations/js/*
 cp -R dist/* /var/www/html/agilesimulations
